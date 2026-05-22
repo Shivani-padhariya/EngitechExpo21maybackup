@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -80,6 +80,8 @@ export default function App() {
           <Route path="/visitors" element={<Visitors />} />
 
           {/* Admin Routes */}
+          <Route path="/login" element={<Navigate to="/admin/login" replace />} />
+          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/*" element={
             <ProtectedRoute>
@@ -94,6 +96,9 @@ export default function App() {
               </AdminLayout>
             </ProtectedRoute>
           } />
+
+          {/* Catch-all */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
     </Router>
