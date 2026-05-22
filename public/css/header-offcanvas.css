@@ -51,7 +51,7 @@
 }
 
 body .rsoffwrap {
-  cursor: url(close.png), auto;
+  cursor: auto;
   width: 100%;
   left: 100%;
   transition: all 0.8s ease-out 0s;
