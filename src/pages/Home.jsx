@@ -37,7 +37,7 @@ export default function Home() {
 
 
                                             <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f82a1d7 e-con-full e-flex e-con e-child"
-                                                data-id="f82a1d7" data-element_type="container" data-e-type="container">
+                                                data-id="f82a1d7" data-element_type="container" data-e-type="container" style="margin-left: 80px;">
 
                                                 <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-2e3e7a0 e-flex e-con-boxed e-con e-child"
                                                     data-id="2e3e7a0" data-element_type="container"

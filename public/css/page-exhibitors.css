@@ -66,3 +66,21 @@ font-display:swap;
 			.hfe-layout-vertical .left-arrow ul .menu-item:hover a:before {
 				border-left: 6px solid 			}
 		
+/* Remove all hover effects on Industry Segments */
+.elementor-30998 .rs-addon-services.style2 .services-inner,
+.elementor-30998 .rs-addon-services.style2 .services-inner.box {
+  transition: none !important;
+}
+.elementor-30998 .rs-addon-services.style2 .services-inner:hover,
+.elementor-30998 .rs-addon-services.style2 .services-inner.box:hover {
+  background-color: rgb(38, 77, 103);
+  background-image: none !important;
+}
+.elementor-30998 .rs-addon-services.style2 .services-inner:hover .desc-text,
+.elementor-30998 .rs-addon-services.style2 .services-inner.box:hover .desc-text,
+.elementor-30998 .rs-addon-services.style2 .services-inner:hover .services-title .title,
+.elementor-30998 .rs-addon-services.style2 .services-inner.box:hover .services-title .title,
+.elementor-30998 .rs-addon-services.style2 .services-inner:hover .services-title .title a,
+.elementor-30998 .rs-addon-services.style2 .services-inner.box:hover .services-title .title a {
+  color: inherit !important;
+}

@@ -438,6 +438,35 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  useEffect(() => {
+    const ring = document.getElementById('cursor-ball');
+    if (!ring) return;
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+    let raf;
+
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    const animate = () => {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      raf = requestAnimationFrame(animate);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    raf = requestAnimationFrame(animate);
+    return () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const mobileMenu = buildMobileMenu(pathname);
   const desktopMenu = buildDesktopMenu(pathname);
   const footerMenu = buildFooterMenu(pathname);
@@ -548,7 +577,7 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
       </div>
 
       <div id="rs-mouse">
-        <div id="cursor-ball" style={{ height: 40, width: 40, borderWidth: 1, transform: 'translate(-50%, -50%)', backgroundColor: 'transparent', opacity: 1, borderColor: 'rgba(156,156,156,0.5)' }}></div>
+        <div id="cursor-ball" />
       </div>
     </div>
   );

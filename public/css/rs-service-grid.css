@@ -117,9 +117,7 @@
   clip-path: polygon(0% 0%, 79% 0, 100% 20%, 100% 100%, 0% 100%) !important;
 }
 .rs-addon-services.style2 .services-inner {
-  background-color: #f7f7f7;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  background-color: hsl(0, 0%, 97%);
   position: relative;
   border-radius: 2px;
 }
@@ -129,7 +127,7 @@
   right: 2px;
   width: 85px;
   height: 80px;
-  background-color: #f2f2f2;
+  background-color: #0d0d0d;
   border-radius: 0 2px 0 2px;
   display: flex;
   align-items: center;
@@ -187,6 +185,7 @@
   transition: all 0.3s ease 0s;
 }
 .rs-addon-services.style2 .services-inner .services-btn:hover svg {
+
   transform: translateX(15deg);
 }
 .rs-addon-services.style2 .services-inner .services-title {
@@ -210,31 +209,6 @@
 .rs-addon-services.style2 .services-inner .content_part {
   position: relative;
   padding: 40px 40px;
-}
-.rs-addon-services.style2 .services-inner:hover {
-  background-color: #1F1F1F;
-}
-.rs-addon-services.style2 .services-inner:hover .media_wrap {
-  background-color: #F7C600;
-}
-.rs-addon-services.style2 .services-inner:hover .media_wrap svg {
-  animation: foldAnimation ease 0.5s;
-}
-.rs-addon-services.style2 .services-inner:hover .btn-part {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.rs-addon-services.style2 .services-inner:hover .services-btn .ser-icon-right {
-  background: #323f7c;
-}
-.rs-addon-services.style2 .services-inner.box:hover .services-title .title, .rs-addon-services.style2 .services-inner.box:hover .services-title .title a {
-  color: #fff;
-}
-.rs-addon-services.style2 .services-inner.box:hover .desc-text {
-  color: #E6E6E6;
-}
-.rs-addon-services.style2 .services-inner.box:hover .media_wrap svg {
-  fill: #1F1F1F;
 }
 .rs-addon-services.style3 .services-inner {
   padding: 45px 60px 70px 40px;

@@ -338,93 +338,120 @@ export default function Contact() {
 
           {/* Form column */}
           <div className="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a12073c e-con-full e-flex e-con e-child" data-id="a12073c" data-element_type="container" data-e-type="container">
-            <div className="prelements-heading style1">
-              <div className="title-inner">
-                <h3 className="title rs-split-text-disable">Get in Touch</h3>
-              </div>
-            </div>
-
-            <div className="wpcf7 js">
-              {submitted ? (
-                <div className="wpcf7-response-output" style={{ display: 'block', borderColor: '#46b450', color: '#46b450', padding: '12px 20px', marginTop: '10px' }}>
-                  Message sent successfully! We will get back to you soon.
+            <div
+              className="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child"
+              style={{ maxWidth: '600px', margin: '0 auto 40px auto', padding: '0 20px' }}
+            >
+              <div style={{ width: '100%', borderTop: '3px solid #ffb600', backgroundColor: '#fff' }}>
+                <div className="elementor-widget-container">
+                  <div className="prelements-heading style1" style={{ marginTop: '30px' }}>
+                    <div className="title-inner">
+                      <h3 className="title rs-split-text-disable text-align-center">Get in Touch</h3>
+                    </div>
+                    {/* <div className="description">Get in Touch</div> */}
+                  </div>
                 </div>
-              ) : (
-                <form className="wpcf7-form" onSubmit={handleSubmit} noValidate>
-                  <p>
-                    <label>Your name<br />
-                      <input
-                        className="wpcf7-form-control wpcf7-text"
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Your name"
-                        required
-                      />
-                    </label>
-                  </p>
-                  <p>
-                    <label>Your email<br />
-                      <input
-                        className="wpcf7-form-control wpcf7-email"
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="Your email"
-                        required
-                      />
-                    </label>
-                  </p>
-                  <p>
-                    <label>Contact Number<br />
-                      <input
-                        className="wpcf7-form-control wpcf7-text"
-                        type="text"
-                        name="contactNumber"
-                        value={form.contactNumber}
-                        onChange={handleChange}
-                        placeholder="Contact number"
-                      />
-                    </label>
-                  </p>
-                  <p>
-                    <label>Your Company<br />
-                      <input
-                        className="wpcf7-form-control wpcf7-text"
-                        type="text"
-                        name="companyName"
-                        value={form.companyName}
-                        onChange={handleChange}
-                        placeholder="Company name"
-                      />
-                    </label>
-                  </p>
-                  <p>
-                    <label>Your message (optional)<br />
-                      <textarea
-                        className="wpcf7-form-control wpcf7-textarea"
-                        name="message"
-                        value={form.message}
-                        onChange={handleChange}
-                        rows={6}
-                        placeholder="Your message..."
-                      />
-                    </label>
-                  </p>
-                  <p>
-                    <input
-                      className="wpcf7-form-control wpcf7-submit has-spinner"
-                      type="submit"
-                      value={submitting ? 'Sending...' : 'Submit'}
-                      disabled={submitting}
-                    />
-                    {submitting && <span className="wpcf7-spinner"></span>}
-                  </p>
-                </form>
-              )}
+
+                <div className="elementor-widget-container">
+                  <div className="wpcf7 js">
+                    {submitted ? (
+                      <div className="wpcf7-response-output" style={{ display: 'block', borderColor: '#46b450', color: '#46b450', padding: '12px 20px', marginTop: '10px' }}>
+                        Message sent successfully! We will get back to you soon.
+                      </div>
+                    ) : (
+                      <form className="wpcf7-form init" onSubmit={handleSubmit} noValidate style={{ padding: '30px 30px' }}>
+                      <p>
+                        <label>Your name<br />
+                          <span className="wpcf7-form-control-wrap" data-name="name">
+                            <input
+                              size={40} maxLength={400}
+                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              autoComplete="name"
+                              aria-required="true"
+                              type="text"
+                              name="name"
+                              value={form.name}
+                              onChange={handleChange}
+                            />
+                          </span>
+                        </label>
+                      </p>
+                      <p>
+                        <label>Your email<br />
+                          <span className="wpcf7-form-control-wrap" data-name="email">
+                            <input
+                              size={40} maxLength={400}
+                              className="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                              autoComplete="email"
+                              aria-required="true"
+                              type="email"
+                              name="email"
+                              value={form.email}
+                              onChange={handleChange}
+                            />
+                          </span>
+                        </label>
+                      </p>
+                      <p>
+                        <label>Contact Number<br />
+                          <span className="wpcf7-form-control-wrap" data-name="contactNumber">
+                            <input
+                              size={40} maxLength={400}
+                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              autoComplete="tel"
+                              aria-required="true"
+                              type="text"
+                              name="contactNumber"
+                              value={form.contactNumber}
+                              onChange={handleChange}
+                            />
+                          </span>
+                        </label>
+                      </p>
+                      <p>
+                        <label>Your Company<br />
+                          <span className="wpcf7-form-control-wrap" data-name="companyName">
+                            <input
+                              size={40} maxLength={400}
+                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                              aria-required="true"
+                              type="text"
+                              name="companyName"
+                              value={form.companyName}
+                              onChange={handleChange}
+                            />
+                          </span>
+                        </label>
+                      </p>
+                      <p>
+                        <label>Your message (optional)<br />
+                          <span className="wpcf7-form-control-wrap" data-name="message">
+                            <textarea
+                              cols={40} rows={10} maxLength={2000}
+                              className="wpcf7-form-control wpcf7-textarea"
+                              name="message"
+                              value={form.message}
+                              onChange={handleChange}
+                            />
+                          </span>
+                        </label>
+                      </p>
+                      <p>
+                        <input
+                          className="wpcf7-form-control wpcf7-submit has-spinner"
+                          type="submit"
+                          value={submitting ? 'Sending...' : 'Submit'}
+                          disabled={submitting}
+                        />
+                        {submitting && <span className="wpcf7-spinner"></span>}
+                      </p>
+                    </form>
+                  )}
+                </div>
+              </div>
+
             </div>
+          </div>
           </div>
 
           {/* Maps column */}
