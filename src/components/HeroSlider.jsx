@@ -11,6 +11,7 @@ const slides = [
   {
     id: 1,
     image: '/images/Banner.webp',
+    bgPosition: 'right center',
     edition: '3rd Edition Rajkot',
     date: '19-20-21-22 DEC 2027',
     location: (
@@ -25,6 +26,7 @@ const slides = [
   {
     id: 2,
     image: '/images/ai-generated-advanced-robotic-assembly-lines-in-a-vast-industrial-factory-illuminated-by-the-warm-glow-of-afternoon-light-showcasing-the-future-of-industrial-automation-photo.webp',
+    bgPosition: 'center',
     edition: '2nd Edition Ahmedabad',
     date: '20-21-22-23 NOV 2026',
     location: (
@@ -39,6 +41,7 @@ const slides = [
   {
     id: 3,
     image: '/images/Engitech-Slider-Banner-03.webp',
+    bgPosition: 'right center',
     edition: '4th Edition Vadodara',
     date: '21-22-23-24 JAN 2028',
     location: (
@@ -73,9 +76,9 @@ export default function HeroSlider() {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div 
-              className="hero-slide-bg" 
-              style={{ backgroundImage: `url(${slide.image})` }}
+            <div
+              className="hero-slide-bg"
+              style={{ backgroundImage: `url(${slide.image})`, backgroundPosition: slide.bgPosition || 'center' }}
             >
               {/* Optional overlay to ensure text readability */}
               <div className="hero-slide-overlay"></div>
@@ -108,21 +111,15 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
         
-        {/* Custom Navigation */}
-        <div className="hero-controls">
+        {/* Pagination dots centered at bottom */}
+        <div className="hero-pagination-wrap">
           <div className="hero-pagination"></div>
-          <div className="hero-nav-buttons">
-            <button className="hero-prev">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-              </svg>
-            </button>
-            <button className="hero-next">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-              </svg>
-            </button>
-          </div>
+        </div>
+
+        {/* Bottom-right navigation arrows */}
+        <div className="hero-nav-buttons">
+          <button className="hero-prev">&#8592;</button>
+          <button className="hero-next">&#8594;</button>
         </div>
       </Swiper>
     </div>

@@ -3,1064 +3,936 @@ import Layout from '../components/Layout';
 import { formAPI } from '../admin/services/api';
 
 export default function StallBooking() {
+  // Scroll to top when page is rendered
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Lightbox State
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxTitle, setLightboxTitle] = useState("");
+
+  // Form State
   const [formStatus, setFormStatus] = useState('idle');
   const [formMessage, setFormMessage] = useState('');
+  const [formData, setFormData] = useState({
+    fullName: "",
+    businessCategory: "What is your business category?",
+    interestType: "Are you interested in",
+    stallSize: "Preferred Stall Size?",
+    city: "",
+    companyName: "",
+    email: "",
+    contactNumber: "",
+    message: ""
+  });
 
-  useEffect(() => {
-    const wireForm = (formId, handler) => {
-      const form = document.getElementById(formId);
-      if (!form) return () => {};
-      form.addEventListener('submit', handler);
-      return () => form.removeEventListener('submit', handler);
-    };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    const handleStallForm = async (e) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const data = new FormData(form);
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    
+    const { fullName, businessCategory, interestType, stallSize, city, companyName, email, contactNumber, message } = formData;
 
-      const fullName = (data.get('your-name') || '').trim();
-      const businessCategory = (data.get('select-434') || '').trim();
-      const interestedIn = (data.get('select-794') || '').trim();
-      const preferredStallSize = (data.get('select-134') || '').trim();
-      const city = (data.get('your-city') || '').trim();
-      const companyName = (data.get('company-name') || '').trim();
-      const email = (data.get('your-email') || '').trim();
-      const contactNumber = (data.get('your-contact-number') || '').trim();
+    if (!fullName || !city || !companyName || !email || !contactNumber) {
+      setFormMessage('Please fill all required fields.');
+      setFormStatus('error');
+      return;
+    }
 
-      if (!fullName || !businessCategory || !city || !companyName || !email || !contactNumber) {
-        setFormMessage('Please fill all required fields.');
-        setFormStatus('error');
-        return;
-      }
+    setFormStatus('submitting');
+    setFormMessage('');
 
-      setFormStatus('submitting');
-      setFormMessage('');
+    try {
+      await formAPI.submitStallBooking({
+        fullName,
+        businessCategory: businessCategory.includes("category?") ? "Other" : businessCategory,
+        interestedIn: interestType.includes("interested in") ? "Booking a Stall" : interestType,
+        preferredStallSize: stallSize.includes("Stall Size?") ? "9 Sq. M" : stallSize,
+        city,
+        companyName,
+        email,
+        contactNumber,
+        message
+      });
+      setFormStatus('success');
+      setFormMessage('Stall booking inquiry submitted! Our team will reach out to you shortly.');
+      setFormData({
+        fullName: "",
+        businessCategory: "What is your business category?",
+        interestType: "Are you interested in",
+        stallSize: "Preferred Stall Size?",
+        city: "",
+        companyName: "",
+        email: "",
+        contactNumber: "",
+        message: ""
+      });
+    } catch (err) {
+      console.error('Stall booking submit error:', err);
+      setFormStatus('error');
+      setFormMessage(err?.response?.data?.message || err?.message || 'Submission failed. Please try again.');
+    }
+  };
 
-      try {
-        await formAPI.submitStallBooking({ fullName, businessCategory, interestedIn, preferredStallSize, city, companyName, email, contactNumber });
-        setFormStatus('success');
-        setFormMessage('Stall booking inquiry submitted! Our team will reach out to you shortly.');
-        form.reset();
-      } catch (err) {
-        console.error('Stall booking submit error:', err);
-        setFormStatus('error');
-        setFormMessage(err?.response?.data?.message || err?.message || 'Submission failed. Please try again.');
-      }
-    };
+  const openLightbox = (imgSrc, title) => {
+    setLightboxImage(imgSrc);
+    setLightboxTitle(title);
+  };
 
-    const handleContactForm = async (e) => {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const data = new FormData(form);
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxTitle("");
+  };
 
-      const name = (data.get('your-name') || '').trim();
-      const email = (data.get('your-email') || '').trim();
-      const contactNumber = (data.get('your-contact-number') || '').trim();
-      const companyName = (data.get('company-name') || '').trim();
-      const message = (data.get('your-message') || '').trim();
+  // Stall Sizes Array
+  const stallStalls = [
+    {
+      size: "3M x 3M (9 Sq. Mtr) Stall",
+      features: [
+        "1 Nos. Table",
+        "1 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "2 Nos. Moulded Chairs",
+        "3 Participant Badges",
+        "3 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "4M x 3M (12 Sq. Mtr) Stall",
+      features: [
+        "2 Nos. Tables",
+        "1 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "2 Nos. Moulded Chairs",
+        "3 Participant Badges",
+        "4 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "6M x 3M (18 Sq. Mtr) Stall",
+      features: [
+        "4 Nos. Tables",
+        "2 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "4 Nos. Moulded Chairs",
+        "4 Participant Badges",
+        "6 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "9M x 3M (27 Sq. Mtr) Stall",
+      features: [
+        "5 Nos. Tables",
+        "2 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "6 Nos. Moulded Chairs",
+        "5 Participant Badges",
+        "9 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "6M x 6M (36 Sq. Mtr) Stall",
+      features: [
+        "6 Nos. Tables",
+        "2 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "8 Nos. Moulded Chairs",
+        "6 Participant Badges",
+        "9 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "9M x 6M (54 Sq. Mtr) Stall",
+      features: [
+        "6 Nos. Tables",
+        "2 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "8 Nos. Moulded Chairs",
+        "6 Participant Badges",
+        "10 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    },
+    {
+      size: "12M x 6M (72 Sq. Mtr) Stall",
+      features: [
+        "6 Nos. Tables",
+        "2 Nos. 5 Amp. Plug Point",
+        "1 Dustbin",
+        "8 Nos. Moulded Chairs",
+        "6 Participant Badges",
+        "12 Spot Lights",
+        "100 Nos. Invitation Cards",
+        "48 Nos. 200ml Bottle Per Day",
+        "Name On Fascia (Vinyl)",
+        "Carpet Flooring",
+        "Laminated Stall"
+      ]
+    }
+  ];
 
-      if (!name || !email) {
-        setFormMessage('Name and email are required.');
-        setFormStatus('error');
-        return;
-      }
+  const participationCharges = [
+    {
+      title: "Participation Charges Standard Booth",
+      bullets: ["INR 8,500 (Per Sq. M.)", "$ 150 (Per Sq. M.)"]
+    },
+    {
+      title: "Participation Charges Bare Space",
+      bullets: ["INR 7,500 (Per Sq. M.)", "$ 125 (Per Sq. M.)"]
+    },
+    {
+      title: "Additional Requirement Cost Compressor 3 CFM | 100 Psi",
+      bullets: ["INR 12,000 Per Connection", "$ 300 Per Connection"]
+    },
+    {
+      title: "Additional Requirement Cost Compressor 6 CFM | 100 Psi",
+      bullets: ["INR 16,000 Per Connection", "$ 400 Per Connection"]
+    },
+    {
+      title: "Additional Requirement Cost Compressor 10 CFM | 100 Psi",
+      bullets: ["INR 20,000 Per Connection", "$ 500 Per Connection"]
+    },
+    {
+      title: "Electricity",
+      bullets: ["INR 3000 (Per HP)", "$ 80 (Per HP)"]
+    },
+    {
+      title: "Premium Space Cost",
+      bullets: ["2 Sides Open 15% Extra", "3 Sides Open 25% Extra & 4 Sides Open 30% Extra"]
+    }
+  ];
 
-      setFormStatus('submitting');
-      setFormMessage('');
-
-      try {
-        await formAPI.submitContact({ name, email, contactNumber, companyName, message });
-        setFormStatus('success');
-        setFormMessage('Message sent successfully! We will get back to you soon.');
-        form.reset();
-      } catch (err) {
-        console.error('Contact form submit error:', err);
-        setFormStatus('error');
-        setFormMessage(err?.response?.data?.message || err?.message || 'Submission failed. Please try again.');
-      }
-    };
-
-    const cleanup1 = wireForm('stall-booking-form-1', handleStallForm);
-    const cleanup2 = wireForm('stall-booking-form-2', handleContactForm);
-    return () => { cleanup1(); cleanup2(); };
-  }, []);
   return (
     <Layout
       pageCss={[{ id: 'page-css-stall_booking', href: '/css/page-stall_booking.css' }]}
       bodyClass="page-template-default page page-id-275 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-275"
     >
-      <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
-				
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5e42932 e-flex e-con-boxed e-con e-child" data-id="5e42932" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5052d52 e-con-full e-flex e-con e-child" data-id="5052d52" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-76b8911 elementor-widget elementor-widget-page-title" data-id="76b8911" data-element_type="widget" data-e-type="widget" data-widget_type="page-title.default">
-				<div class="elementor-widget-container">
-							
-		<div class="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
-			
-			<h1 class="elementor-heading-title elementor-size">
-				Stall Booking			 
-			</h1> 
+      <div className="stall-booking-page-wrapper elementor-31036" style={{ background: "#fff", fontFamily: "'Outfit', sans-serif" }}>
+        
+        {/* CSS Helper for Responsive Layout */}
+        <style>{`
+          @media (max-width: 991px) {
+            .pricing-grid, .benefits-grid, .floorplan-grid {
+              grid-template-columns: 1fr !important;
+              gap: 30px !important;
+            }
+            .benefits-list-row {
+              grid-template-columns: 1fr !important;
+            }
+            .stall-card {
+              width: 100% !important;
+            }
+          }
+          .stall-card {
+            transition: all 0.3s ease;
+          }
+          .floor-plan-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border: 1px solid #f0f4f8;
+            background: #fff;
+            transition: all 0.3s ease;
+          }
+          .floor-plan-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+          }
+          .input-active:focus {
+            border-color: #f7c600 !important;
+            box-shadow: 0 0 0 3px rgba(247, 198, 0, 0.1) !important;
+          }
+        `}</style>
 
-								</div>
-						</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-9425f56 elementor-widget elementor-widget-rs-breadcrumb" data-id="9425f56" data-element_type="widget" data-e-type="widget" data-widget_type="rs-breadcrumb.default">
-				<div class="elementor-widget-container">
-					                    <div class="breadcrumb-area style3"> 
-                <div class="breadcrumbs-inner"> 
-                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Engitech Expo Ahmedabad." href="/" class="home"><span property="name">Engitech Expo Ahmedabad</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name" class="post post-page current-item">Stall Booking</span><meta property="url" content="https://engitechexpo.com/stall-booking/"><meta property="position" content="2"></span>                </div>
-            </div> 
-          
-    				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-				</div>
-		</div>			<div data-elementor-type="wp-page" data-elementor-id="31036" class="elementor elementor-31036">
-				
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-ee0d433 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="ee0d433" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-433b31b e-flex e-con-boxed e-con e-child" data-id="433b31b" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-e93ad0d e-con-full e-flex e-con e-child" data-id="e93ad0d" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-2052a76 elementor-widget elementor-widget-rs-heading" data-id="2052a76" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Types &amp; Pricing					</span>
-				<h2 class="title rs-split-text-disable ">Stall Types &amp; Pricing</h2>
-			</div>
-							<div class="description">
-					<strong>Stall Pricing: &nbsp;7500 Per Sq. Mtr</strong> 				</div>
-					</div>
-				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-087887d elementor-hidden-mobile e-flex e-con-boxed e-con e-child" data-id="087887d" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-23cc238 e-con-full e-flex e-con e-child" data-id="23cc238" data-element_type="container" data-e-type="container">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-48db8a5 e-con-full e-flex e-con e-child" data-id="48db8a5" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-bc2f43f elementor-widget elementor-widget-rs-service-grid" data-id="bc2f43f" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 3M x 3M (9 Sq. Mtr) Stall </h3>
+        {/* 1. HERO BREADCRUMB BANNER */}
+        <div dangerouslySetInnerHTML={{ __html: `
+          <div class="header-breadcamb-fixer">
+            <div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
+              <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="e-con-inner">
+                  <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5e42932 e-flex e-con-boxed e-con e-child" data-id="5e42932" data-element_type="container" data-e-type="container">
+                    <div class="e-con-inner">
+                      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5052d52 e-con-full e-flex e-con e-child" data-id="5052d52" data-element_type="container" data-e-type="container">
+                        <div class="elementor-element elementor-element-76b8911 elementor-widget elementor-widget-page-title" data-id="76b8911" data-element_type="widget" data-e-type="widget" data-widget_type="page-title.default">
+                          <div class="elementor-widget-container">
+                            <div class="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
+                              <h1 class="elementor-heading-title elementor-size">Stall Booking</h1>
                             </div>
-        
-                    <div class="desc-text">
-                1 Nos. Table, 1 Nos. 5 Amp. Plug Point, 1 Dustbin,
-2 Nos. Moulded Chairs. 3 Participant Badges, 3 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-0184432 elementor-widget elementor-widget-rs-service-grid" data-id="0184432" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 9M x 3M (27 Sq. Mtr) Stall </h3>
+                          </div>
+                        </div>
+                        <div class="elementor-element elementor-element-9425f56 elementor-widget elementor-widget-rs-breadcrumb" data-id="9425f56" data-element_type="widget" data-e-type="widget" data-widget_type="rs-breadcrumb.default">
+                          <div class="elementor-widget-container">
+                            <div class="breadcrumb-area style3">
+                              <div class="breadcrumbs-inner">
+                                <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Engitech Expo Ahmedabad." href="/" class="home"><span property="name">Engitech Expo Ahmedabad</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name" class="post post-page current-item">Stall Booking</span><meta property="url" content="https://engitechexpo.com/stall-booking/"><meta property="position" content="2"></span>
+                              </div>
                             </div>
-        
-                    <div class="desc-text">
-                5 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-6 Nos. Moulded Chairs. 5 Participant Badges, 9 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-233d157 e-con-full e-flex e-con e-child" data-id="233d157" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-348b85a elementor-widget elementor-widget-rs-service-grid" data-id="348b85a" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 4M x 3M (12 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                2 Nos. Tables, 1 Nos. 5 Amp. Plug Point, 1 Dustbin,
-2 Nos. Moulded Chairs. 3 Participant Badges, 4 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-b9c8cd4 elementor-widget elementor-widget-rs-service-grid" data-id="b9c8cd4" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 6M x 6M (36 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-8 Nos. Moulded Chairs. 6 Participant Badges, 9 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-7c666ac elementor-widget elementor-widget-rs-service-grid" data-id="7c666ac" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 12M x 6M (72 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-8 Nos. Moulded Chairs. 6 Participant Badges, 12 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-2054014 e-con-full e-flex e-con e-child" data-id="2054014" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-f06a0cf elementor-widget elementor-widget-rs-service-grid" data-id="f06a0cf" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 6M x 3M (18 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                4 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-4 Nos. Moulded Chairs. 4 Participant Badges, 6 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-76c038a elementor-widget elementor-widget-rs-service-grid" data-id="76c038a" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 9M x 6M (54 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point,    1 Dustbin, 8 Nos. Moulded Chairs. 6 Participant Badges, 10 Spot Lights,
-100 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day. Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-33977dc elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet e-flex e-con-boxed e-con e-child" data-id="33977dc" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a5dfad3 e-con-full e-flex e-con e-child" data-id="a5dfad3" data-element_type="container" data-e-type="container">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f927210 e-con-full e-flex e-con e-child" data-id="f927210" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-4a4db7f elementor-widget elementor-widget-rs-service-grid" data-id="4a4db7f" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 3M x 3M (9 Sq. Mtr) Stall </h3>
-                            </div>
-        
-                    <div class="desc-text">
-                1 Nos. Table, 1 Nos. 5 Amp. Plug Point, 1 Dustbin,
-2 Nos. Moulded Chairs. 3 Participant Badges, 3 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-771f1cd elementor-widget elementor-widget-rs-service-grid" data-id="771f1cd" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 4M x 3M (12 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                2 Nos. Tables, 1 Nos. 5 Amp. Plug Point, 1 Dustbin,
-2 Nos. Moulded Chairs. 3 Participant Badges, 4 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-5c49a47 elementor-widget elementor-widget-rs-service-grid" data-id="5c49a47" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 6M x 3M (18 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                4 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-4 Nos. Moulded Chairs. 4 Participant Badges, 6 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-cab5826 e-con-full e-flex e-con e-child" data-id="cab5826" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-ebbf74c elementor-widget elementor-widget-rs-service-grid" data-id="ebbf74c" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 9M x 3M (27 Sq. Mtr) Stall </h3>
-                            </div>
-        
-                    <div class="desc-text">
-                5 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-6 Nos. Moulded Chairs. 5 Participant Badges, 9 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-b23a141 elementor-widget elementor-widget-rs-service-grid" data-id="b23a141" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 6M x 6M (36 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-8 Nos. Moulded Chairs. 6 Participant Badges, 9 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-e3a7096 elementor-widget elementor-widget-rs-service-grid" data-id="e3a7096" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 9M x 6M (54 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point,    1 Dustbin, 8 Nos. Moulded Chairs. 6 Participant Badges, 10 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day. Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-1190f70 e-con-full e-flex e-con e-child" data-id="1190f70" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-77394a7 elementor-widget elementor-widget-rs-service-grid" data-id="77394a7" data-element_type="widget" data-e-type="widget" data-widget_type="rs-service-grid.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-addon-services style1">
-			<div class="services-inner clip-path-enable box">
-    
-    <div class="content_part">
-
-                            <div class="services-title">
-                                    <h3 class="title"> 12M x 6M (72 Sq. Mtr) Stall</h3>
-                            </div>
-        
-                    <div class="desc-text">
-                6 Nos. Tables, 2 Nos. 5 Amp. Plug Point, 1 Dustbin,
-8 Nos. Moulded Chairs. 6 Participant Badges, 12 Spot Lights,
-150 Nos. Invitation Cards, 48 Nos. 200ml Bottle Per Day.
-Name On Fascia (Vinyl), Carpet Flooring, Laminated Stall.            </div>
-        
-            </div>
-</div>		</div>
-
-				</div>
-				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-2c71a42 e-flex e-con-boxed e-con e-parent" data-id="2c71a42" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-474b73d elementor-absolute elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-rs-image" data-id="474b73d" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="rs-image.default">
-				<div class="elementor-widget-container">
-					
-        <div class="rs-image no ruler_image_no ruler_position_  ">
-                                                            <img decoding="async" class="rs-multi-image  reverse- blend_unset" src="/images/about-h3-shape1.png" alt="image">
-                                                                        </div>   
-          
-    				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-8e97c4f e-flex e-con-boxed e-con e-child" data-id="8e97c4f" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-72c1986 e-flex e-con-boxed e-con e-child" data-id="72c1986" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-1aed293 e-grid e-con-full e-con e-child" data-id="1aed293" data-element_type="container" data-e-type="container">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-c2be1b8 e-con-full e-flex e-con e-child" data-id="c2be1b8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-d36dbdb elementor-widget elementor-widget-image-box" data-id="d36dbdb" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Participation Charges </h3><p class="elementor-image-box-description">
-
-Standard Booth
-</p></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-ef50ea0 elementor-widget elementor-widget-text-editor" data-id="ef50ea0" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left ">
- 	<li class="elementor-repeater-item-53f9fea ">INR 8,500 (Per Sq. M.)</li>
- 	<li class="elementor-repeater-item-53f9fea ">$ 150 (Per Sq. M.)</li>
-</ul> 								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-026d8a8 e-con-full e-flex e-con e-child" data-id="026d8a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-1230f60 elementor-widget elementor-widget-image-box" data-id="1230f60" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Participation Charges</h3><p class="elementor-image-box-description">
- Bare Space
-</p></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-9e2354e elementor-widget elementor-widget-text-editor" data-id="9e2354e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left ">
- 	<li class="elementor-repeater-item-53f9fea ">INR 7,500 (Per Sq. M.)</li>
- 	<li class="elementor-repeater-item-53f9fea ">$ 125 (Per Sq. M.)</li>
-</ul> 								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-deadcfa e-con-full e-flex e-con e-child" data-id="deadcfa" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-88c8ce8 elementor-widget elementor-widget-image-box" data-id="88c8ce8" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Additional Requirement Cost </h3><p class="elementor-image-box-description">Compressor 3 CFM | 100 Psi
-</p></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-a578fa2 elementor-widget elementor-widget-text-editor" data-id="a578fa2" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left ">
- 	<li class="elementor-repeater-item-53f9fea ">INR 12,000 Per Connection</li>
- 	<li class="elementor-repeater-item-53f9fea ">$ 300 Per Connection</li>
-</ul> 								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-02f0d1b e-con-full e-flex e-con e-child" data-id="02f0d1b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-1c5fa07 elementor-widget elementor-widget-image-box" data-id="1c5fa07" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Additional Requirement Cost </h3><p class="elementor-image-box-description">Compressor 6 CFM | 100 Psi
-</p></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-345301f elementor-widget elementor-widget-text-editor" data-id="345301f" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left "><li class="elementor-repeater-item-53f9fea ">INR 16,000 Per Connection</li><li class="elementor-repeater-item-53f9fea ">$ 400 Per Connection</li></ul>								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-d3ba0b9 e-con-full e-flex e-con e-child" data-id="d3ba0b9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-98059a0 elementor-widget elementor-widget-image-box" data-id="98059a0" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Additional Requirement Cost </h3><p class="elementor-image-box-description">Compressor 10 CFM | 100 Psi</p></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-3917449 elementor-widget elementor-widget-text-editor" data-id="3917449" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left "><li class="elementor-repeater-item-53f9fea ">INR 20,000 Per Connection</li><li class="elementor-repeater-item-53f9fea ">$ 500 Per Connection</li></ul>								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-dbed786 e-con-full e-flex e-con e-child" data-id="dbed786" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-cb4a038 elementor-widget elementor-widget-image-box" data-id="cb4a038" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Electricity</h3></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-d4e5ddc elementor-widget elementor-widget-text-editor" data-id="d4e5ddc" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left "><li class="elementor-repeater-item-53f9fea ">INR 3000 (Per HP)</li><li class="elementor-repeater-item-53f9fea ">$ 80 (Per HP)</li></ul>								</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-3f058b9 e-con-full e-flex e-con e-child" data-id="3f058b9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-b4f0916 elementor-widget elementor-widget-image-box" data-id="b4f0916" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
-					<div class="elementor-image-box-wrapper"><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Premium Space Cost </h3></div></div>				</div>
-		
-				<div class="elementor-element elementor-element-3468ada elementor-widget elementor-widget-text-editor" data-id="3468ada" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul class="rs-pricing-table-features-list left ">
- 	<li class="elementor-repeater-item-53f9fea ">2 Sides Open 15% Extra</li>
- 	<li class="elementor-repeater-item-53f9fea ">3 Sides Open 25 % Extra 4 Sides Open 30% Extra</li>
-</ul> 								</div>
-				</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-4326747 e-flex e-con-boxed e-con e-parent" data-id="4326747" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7e97446 e-flex e-con-boxed e-con e-child" data-id="7e97446" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-9447bf5 e-flex e-con-boxed e-con e-child" data-id="9447bf5" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-2c79107 elementor-widget elementor-widget-rs-heading" data-id="2c79107" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Expo Benefits					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Pre - Expo Benefits</h2>
-			</div>
-							<div class="description">
-					<ul><li>1.5 Lakh Invitation Card to be distributed in all Our India. (150 cards) given to individual participant</li><li>'Your LOGO will be printed in our next brochure.</li><li>Whatsapp marketing in filtered data from our database of 8 milion so that you will gate interested visitors as well as genuine buyers.</li></ul>				</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-0da184e elementor-widget elementor-widget-rs-heading" data-id="0da184e" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Expo Benefits					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">During Exhibition Benefits</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-35d1542 e-grid e-con-full e-con e-child" data-id="35d1542" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-ceb98cf elementor-widget elementor-widget-text-editor" data-id="ceb98cf" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul>
- 	<li>Loading And Unloading Facility Will Be Provided Complimentary
-By Engitech (Hydra &amp; Forklift).</li>
- 	<li>Security Will Be Provided 24/7* For 4 Days With
-CCTV Camera Recording.</li>
- 	<li>You Will Receive 48 Nos. 200ml Water Bottle Per Day.</li>
-</ul> 								</div>
-		
-				<div class="elementor-element elementor-element-c432216 elementor-widget elementor-widget-text-editor" data-id="c432216" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
-									<ul><li>On Site H R Service Agency Available For Temporary Staff At Your Stall.</li><li>On Site H R Service Agency Available For Temporary Staff<br>At Your Stall.</li><li>Timing Is 10:00 AM To 06:00 PM.<br>(Last Day Of Exhibition 10:00 AM To 04:00 PM).</li></ul>								</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-bb9c2b3 e-flex e-con-boxed e-con e-parent" data-id="bb9c2b3" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-cd51d2f e-flex e-con-boxed e-con e-child" data-id="cd51d2f" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0de46f4 e-flex e-con-boxed e-con e-child" data-id="0de46f4" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-0553086 elementor-widget elementor-widget-rs-heading" data-id="0553086" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Floor Plan					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Floor Plan</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-aba33e7 e-con-full e-flex e-con e-child" data-id="aba33e7" data-element_type="container" data-e-type="container">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-071dc04 e-con-full e-flex e-con e-child" data-id="071dc04" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-e881461 elementor-widget elementor-widget-rs-heading" data-id="e881461" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-				<h2 class="title rs-split-text-enable split-in-fade">AHMEDABAD UPCOMING EXHIBITION-2026</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-3ef7554 elementor-widget elementor-widget-image" data-id="3ef7554" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-																<a href="./Stall Booking At EngiTech Expo _ Book Your Exhibition Space_files/Screenshot-2026-02-02-at-6.58.59-PM.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Ahmedabad Upcoming Exhibition 2026 – Floor Plan Layout" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MzE0ODIsInVybCI6Imh0dHBzOlwvXC9lbmdpdGVjaGV4cG8uY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDI2XC8wMlwvU2NyZWVuc2hvdC0yMDI2LTAyLTAyLWF0LTYuNTguNTktUE0ucG5nIn0%3D">
-							<img loading="lazy" decoding="async" width="588" height="1184" src="/images/Screenshot-2026-02-02-at-6.58.59-PM.png" class="attachment-full size-full wp-image-31482" alt="Detailed floor plan of Ahmedabad upcoming exhibition 2026 showing AC dome, inauguration stage, stalls, entry points, cafeteria, registration, and office areas">								</a>
-															</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-c6481d2 e-con-full e-flex e-con e-child" data-id="c6481d2" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-5296925 elementor-widget elementor-widget-rs-heading" data-id="5296925" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-				<h2 class="title rs-split-text-enable split-in-fade">RAJKOT UPCOMING EXHIBITION-2027</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-e3e9e58 elementor-widget elementor-widget-image" data-id="e3e9e58" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-																<a href="./Stall Booking At EngiTech Expo _ Book Your Exhibition Space_files/Screenshot-2026-02-02-at-7.04.14-PM.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Exhibition 2026–2027 Floor Plan | Rajkot Upcoming Industrial Exhibition" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MzE0ODMsInVybCI6Imh0dHBzOlwvXC9lbmdpdGVjaGV4cG8uY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDI2XC8wMlwvU2NyZWVuc2hvdC0yMDI2LTAyLTAyLWF0LTcuMDQuMTQtUE0ucG5nIn0%3D">
-							<img loading="lazy" decoding="async" width="861" height="1137" src="/images/Screenshot-2026-02-02-at-7.04.14-PM.png" class="attachment-full size-full wp-image-31483" alt="Detailed floor plan layout of Exhibition 2026 and Rajkot Upcoming Exhibition 2027 showing domes, exhibitor stalls, main gate, registration area, office, cafeteria, and canteen sections">								</a>
-															</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-04ae511 e-con-full e-flex e-con e-child" data-id="04ae511" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-cb6802a elementor-widget elementor-widget-rs-heading" data-id="cb6802a" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-				<h2 class="title rs-split-text-enable split-in-fade">VADODARA UPCOMING EXHIBITION-2028</h2>
-			</div>
-							<div class="description">
-					 				</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-1306748 elementor-widget elementor-widget-image" data-id="1306748" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-																<a href="./Stall Booking At EngiTech Expo _ Book Your Exhibition Space_files/Screenshot-2026-02-02-at-7.18.15-PM.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Vadodara Upcoming Exhibition 2028 Floor Plan Layout" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MzE0ODQsInVybCI6Imh0dHBzOlwvXC9lbmdpdGVjaGV4cG8uY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDI2XC8wMlwvU2NyZWVuc2hvdC0yMDI2LTAyLTAyLWF0LTcuMTguMTUtUE0ucG5nIn0%3D">
-							<img loading="lazy" decoding="async" width="991" height="1008" src="/images/Screenshot-2026-02-02-at-7.18.15-PM.png" class="attachment-full size-full wp-image-31484" alt="Floor plan of Vadodara Upcoming Exhibition 2028 showing domes, exhibitor stalls, 12x9 bare spaces, main gate, registration area, office, cafeteria, and participant canteen layout">								</a>
-															</div>
-				</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-387a771 e-con-full e-flex e-con e-parent" data-id="387a771" data-element_type="container" data-e-type="container">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f44ed16 e-con-full e-flex e-con e-child" data-id="f44ed16" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-e2a669c elementor-widget-laptop__width-initial elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-rs-heading" data-id="e2a669c" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-				<h3 class="title rs-split-text-disable ">Get In Touch</h3>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-26cf999 elementor-widget elementor-widget-rs-cf7" data-id="26cf999" data-element_type="widget" data-e-type="widget" data-widget_type="rs-cf7.default">
-				<div class="elementor-widget-container">
-					
-<div class="wpcf7 js" id="wpcf7-f33514-p31036-o1" lang="en-US" dir="ltr">
-<form id="stall-booking-form-1" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate">
-<p><label> Full Name<br>
-<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="name" aria-required="true" type="text" name="your-name"></span> </label>
-</p>
-<p><span class="wpcf7-form-control-wrap" data-name="select-434"><em class="select-full"><select class="wpcf7-form-control wpcf7-select" name="select-434"><option value="">What is your business category?</option><option value="Machine Tools">Machine Tools</option><option value="Automation/Robotics">Automation/Robotics</option><option value="Packaging Machinery">Packaging Machinery</option><option value="Power/Electrical Equipment">Power/Electrical Equipment</option><option value="Material Handling">Material Handling</option><option value="HVAC/Compressor">HVAC/Compressor</option><option value="Laser Cutting/Marking Machines">Laser Cutting/Marking Machines</option><option value="Renewable Energy/ Solar">Renewable Energy/ Solar</option><option value="Other">Other</option></select><select class="wpcf7-form-control wpcf7-select" name="select-794"><option value="">Are you interested in</option><option value="Booking a Stall">Booking a Stall</option><option value="Sponsorship Opportunities">Sponsorship Opportunities</option><option value="Visiting the Expo">Visiting the Expo</option></select><select class="wpcf7-form-control wpcf7-select" name="select-134"><option value="">Preferred Stall Size?</option><option value="9 Sq. M">9 Sq. M</option><option value="12 Sq. M">12 Sq. M</option><option value="18 Sq. M">18 Sq. M</option></select></em></span>
-</p>
-<p><label> City<br>
-<span class="wpcf7-form-control-wrap" data-name="your-city"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="address-level2" aria-required="true" type="text" name="your-city"></span> </label>
-</p>
-<p><label>Company Name<br>
-<span class="wpcf7-form-control-wrap" data-name="company-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" type="text" name="company-name"></span> </label>
-</p>
-<p><label> Your email<br>
-<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" type="email" name="your-email"></span> </label>
-</p>
-<p><label> Contact Number<br>
-<span class="wpcf7-form-control-wrap" data-name="your-contact-number"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="tel" aria-required="true" type="text" name="your-contact-number"></span> </label>
-</p>
-<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Submit"></p>
-</form>
-</div>
-				</div>
-				</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-87d7dab elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile e-flex e-con-boxed e-con e-parent" data-id="87d7dab" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-8b837fe e-flex e-con-boxed e-con e-child" data-id="8b837fe" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-e843b64 e-flex e-con-boxed e-con e-child" data-id="e843b64" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-bd48ceb elementor-widget elementor-widget-rs-heading" data-id="bd48ceb" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Floor Plan					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Ahmedabad Exhibition Floor Plan</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-63af46f elementor-widget elementor-widget-image" data-id="63af46f" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-																<a href="./Stall Booking At EngiTech Expo _ Book Your Exhibition Space_files/Screenshot-2026-01-27-at-9.57.59-PM.png" data-elementor-open-lightbox="yes" data-elementor-lightbox-title="Industrial Exhibition Floor Plan Layout – A.C. Dome 2026" data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6MzExNTksInVybCI6Imh0dHBzOlwvXC9lbmdpdGVjaGV4cG8uY29tXC93cC1jb250ZW50XC91cGxvYWRzXC8yMDI2XC8wMVwvU2NyZWVuc2hvdC0yMDI2LTAxLTI3LWF0LTkuNTcuNTktUE0ucG5nIn0%3D">
-							<img loading="lazy" decoding="async" width="434" height="921" src="/images/Screenshot-2026-01-27-at-9.57.59-PM.png" class="attachment-full size-full wp-image-31159" alt="Detailed floor plan of an industrial exhibition at A.C. Dome showing inauguration stage, general cafeteria, registration, entry, office area, domes, stalls, and aisle layout">								</a>
-															</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-188ab90 e-con-full e-flex e-con e-child" data-id="188ab90" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-914aa37 e-con-full e-flex e-con e-child" data-id="914aa37" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-		
-				<div class="elementor-element elementor-element-76186df elementor-widget__width-inherit elementor-widget elementor-widget-rs-heading" data-id="76186df" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Contact Us 					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Get in Touch</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-b0fe916 elementor-widget__width-inherit elementor-widget elementor-widget-rs-cf7" data-id="b0fe916" data-element_type="widget" data-e-type="widget" data-widget_type="rs-cf7.default">
-				<div class="elementor-widget-container">
-					
-<div class="wpcf7 js" id="wpcf7-f16-p31036-o2" lang="en-US" dir="ltr">
-<form id="stall-booking-form-2" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate">
-<p><label> Your name<br>
-<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="name" aria-required="true" type="text" name="your-name"></span> </label>
-</p>
-<p><label> Your email<br>
-<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" autocomplete="email" aria-required="true" type="email" name="your-email"></span> </label>
-</p>
-<p><label> Contact Number<br>
-<span class="wpcf7-form-control-wrap" data-name="your-contact-number"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="tel" aria-required="true" type="text" name="your-contact-number"></span> </label>
-</p>
-<p><label> Your Company<br>
-<span class="wpcf7-form-control-wrap" data-name="company-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" type="text" name="company-name"></span> </label>
-</p>
-<p><label> Your message (optional)<br>
-<span class="wpcf7-form-control-wrap" data-name="your-message"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" name="your-message"></textarea></span> </label>
-</p>
-<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Submit"></p>
-</form>
-</div>
-				</div>
-				</div>
-				</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-b4b231b elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile e-flex e-con-boxed e-con e-parent" data-id="b4b231b" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-90ca08b elementor-absolute elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-rs-image" data-id="90ca08b" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="rs-image.default">
-				<div class="elementor-widget-container">
-					
-        <div class="rs-image no ruler_image_no ruler_position_  ">
-                                                            <img decoding="async" class="rs-multi-image  reverse- blend_unset" src="/images/about-h3-shape2.png" alt="image">
-                                                                        </div>   
-          
-    				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-5ecbb50 elementor-absolute elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-rs-image" data-id="5ecbb50" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="rs-image.default">
-				<div class="elementor-widget-container">
-					
-        <div class="rs-image no ruler_image_no ruler_position_  ">
-                                                            <img decoding="async" class="rs-multi-image  reverse- blend_unset" src="/images/about-h3-shape1.png" alt="image">
-                                                                        </div>   
-          
-    				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-1349d37 e-flex e-con-boxed e-con e-child" data-id="1349d37" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5eef645 e-con-full e-flex e-con e-child" data-id="5eef645" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-0f42bd7 elementor-widget elementor-widget-rs-heading" data-id="0f42bd7" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Inclusions					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Inclusions</h2>
-			</div>
-							<div class="description">
-					Content Here				</div>
-					</div>
-				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-b9c8afe elementor-widget__width-initial elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-rs-progress" data-id="b9c8afe" data-element_type="widget" data-e-type="widget" data-widget_type="rs-progress.default">
-				<div class="elementor-widget-container">
-					
-		<div class="rs-skill-bar basic  style1 "> 
-            <div class="skillbar" data-percent="95"> 
-                <span class="skillbar-title">Providing Quality</span>
-
-                <p class="skillbar-bar" style="width: 95%;">
-                    
-
-                </p>
-                	                		                <span class="skill-bar-percent">95%</span> 
-		            	             
-            </div>
-        </div>
-
-        
-
-						</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-6e72250 elementor-hidden-mobile e-con-full e-flex e-con e-child" data-id="6e72250" data-element_type="container" data-e-type="container">
-		
-				<div class="elementor-element elementor-element-76e37a7 elementor-widget-tablet__width-inherit elementor-hidden-mobile elementor-invisible elementor-widget elementor-widget-image" data-id="76e37a7" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="image.default">
-															<img loading="lazy" decoding="async" width="640" height="664" src="/images/portfolio-4.png" class="attachment-large size-large wp-image-22473" alt="">															</div>
-				</div>
-					</div>
-				</div>
-					</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-9abdaf8 elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet elementor-hidden-mobile e-flex e-con-boxed e-con e-parent" data-id="9abdaf8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-868955b elementor-widget elementor-widget-rs-heading" data-id="868955b" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
-				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Booking Process					</span>
-				<h2 class="title rs-split-text-disable ">Booking Process</h2>
-			</div>
-					</div>
-				</div>
-				</div>
-		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-70174cf e-flex e-con-boxed e-con e-child" data-id="70174cf" data-element_type="container" data-e-type="container">
-					<div class="e-con-inner">
-		
-				<div class="elementor-element elementor-element-a25ab6c elementor-widget-tablet__width-inherit elementor-widget elementor-widget-rswork-process" data-id="a25ab6c" data-element_type="widget" data-e-type="widget" data-widget_type="rswork-process.default">
-				<div class="elementor-widget-container">
-					        <div class="rs-work-process-wrap clearfix">
-
-                           
-                <div class="work-item clearfix">
-                    <div class="rs-step-part"><span>01</span></div>
-                    <div class="right-part">
-                        <h5 class="item-period">Product Design and Planning</h5> 
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="timeline-desc">
-                        <p>The point of using Lorem Ipsum is that it has more-or-less normal.</p>
-                    </div>
+                  </div>
                 </div>
-                           
-                <div class="work-item clearfix">
-                    <div class="rs-step-part"><span>02</span></div>
-                    <div class="right-part">
-                        <h5 class="item-period">Component Sourcing and Procurement</h5> 
-                    </div>
-                    <div class="timeline-desc">
-                        <p>Reader will be distracted by the readable content of a page when looking.</p>
-                    </div>
+              </div>
+            </div>
+          </div>
+        ` }} />
+
+        {/* 2. STALL TYPES SECTION */}
+        <section style={{ padding: "85px 0", background: "#f8f9fa" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+            
+            <div style={{ marginBottom: "50px" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "5px" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 17 12" fill="none">
+                  <path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path>
+                </svg>
+                <span style={{ color: "#f7c600", fontSize: "12px", fontWeight: 700, textTransform: "uppercase" }}>
+                  TYPES &amp; PRICING
+                </span>
+              </div>
+              
+              <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#111", margin: "0 0 5px 0" }}>
+                Stall Types &amp; Pricing
+              </h2>
+              
+              <span style={{ fontSize: "13px", color: "#555", fontWeight: 600 }}>
+                Stall Pricing: 7500 Per Sq. Mtr
+              </span>
+            </div>
+
+            {/* Grid Layout of Stalls */}
+            <div 
+              className="pricing-grid"
+              style={{ 
+                display: "flex", 
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "20px" 
+              }}
+            >
+              {stallStalls.map((stall, idx) => (
+                <div 
+                  key={idx}
+                  className="stall-card"
+                  style={{
+                    background: "#264b62",
+                    width: "calc(33.333% - 15px)",
+                    minWidth: "300px",
+                    clipPath: "polygon(0 0, calc(100% - 35px) 0, 100% 35px, 100% 100%, 0 100%)",
+                    padding: "35px 28px",
+                    display: "flex",
+                    flexDirection: "column"
+                  }}
+                >
+                  <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#fff", margin: "0 0 12px 0" }}>
+                    {stall.size}
+                  </h3>
+
+                  <p style={{ fontSize: "13px", color: "#fff", lineHeight: "1.6", margin: 0, fontWeight: 400 }}>
+                    {stall.features.join(" , ")} .
+                  </p>
                 </div>
-                           
-                <div class="work-item clearfix">
-                    <div class="rs-step-part"><span>03</span></div>
-                    <div class="right-part">
-                        <h5 class="item-period">Testing and Quality Control</h5> 
-                    </div>
-                    <div class="timeline-desc">
-                        <p>Packages and web page editors now use  as their default model.</p>
-                    </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* 3. ADDITIONAL CHARGES SECTION */}
+        <section style={{ padding: "85px 0", background: "#f8f9fa" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+            
+            <div 
+              className="pricing-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "10px"
+              }}
+            >
+              {participationCharges.map((charge, idx) => (
+                <div 
+                  key={idx}
+                  style={{
+                    background: "#264b62",
+                    padding: "20px 25px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px"
+                  }}
+                >
+                  <h4 style={{ fontSize: "15px", fontWeight: 700, color: "#fff", margin: 0 }}>
+                    {charge.title}
+                  </h4>
+
+                  <ul style={{ paddingLeft: "18px", margin: 0, color: "#fff", fontSize: "13px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                    {charge.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
-                           
-                <div class="work-item clearfix">
-                    <div class="rs-step-part"><span>04</span></div>
-                    <div class="right-part">
-                        <h5 class="item-period">Final Assembly and Integration</h5> 
-                    </div>
-                    <div class="timeline-desc">
-                        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below.</p>
-                    </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* 4. PRE & DURING EXPO BENEFITS */}
+        <section style={{ padding: "60px 0", background: "#f8f9fa" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+            
+            {/* Pre Expo Benefits */}
+            <div style={{ marginBottom: "50px" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 17 12" fill="none">
+                  <path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path>
+                </svg>
+                <span style={{ color: "#f7c600", fontSize: "12px", fontWeight: 700, textTransform: "uppercase" }}>EXPO BENEFITS</span>
+              </div>
+              <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#111", margin: "0 0 20px 0" }}>Pre - Expo Benefits</h2>
+              <ul style={{ paddingLeft: "20px", color: "#666", fontSize: "14px", display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
+                <li>1.5 Lakh Invitation Card to be distributed in all over India. (150 cards) given to individual participant</li>
+                <li>Your LOGO will be printed in our next brochure.</li>
+                <li>Whatsapp marketing in filtered data from our database of 8 million so that you will gets interested visitors as well as genuine buyers.</li>
+              </ul>
+            </div>
+
+            {/* During Expo Benefits */}
+            <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 17 12" fill="none">
+                  <path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path>
+                </svg>
+                <span style={{ color: "#f7c600", fontSize: "12px", fontWeight: 700, textTransform: "uppercase" }}>EXPO BENEFITS</span>
+              </div>
+              <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#111", margin: "0 0 20px 0" }}>During Exhibition Benefits</h2>
+              
+              <div className="benefits-list-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
+                <ul style={{ paddingLeft: "20px", color: "#666", fontSize: "14px", display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
+                  <li>Loading and Unloading Facility Will Be Provided Complimentary By Engitech (Hydra &amp; Forklift).</li>
+                  <li>Security Will Be Provided 24/7* For 4 Days With CCTV Camera Recording.</li>
+                  <li>You Will Receive 48 Nos. 200ml Water Bottle Per Day.</li>
+                </ul>
+                <ul style={{ paddingLeft: "20px", color: "#666", fontSize: "14px", display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
+                  <li>On Site H R Service Agency Available For Temporary Staff At Your Stall.</li>
+                  <li>On Site H R Service Agency Available For Temporary Staff At Your Stall.</li>
+                  <li>Timing Is 10:00 AM To 06:00 PM. <br/>(Last Day Of Exhibition 10:00 AM To 04:00 PM).</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 5. FLOOR PLANS */}
+        <section style={{ padding: "85px 0", background: "#fff" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+            
+            <div style={{ textAlign: "center", marginBottom: "55px" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "15px" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
+                  <path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path>
+                  <path fillRule="evenodd" clipRule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path>
+                </svg>
+                <span style={{ color: "#f7c600", fontSize: "14px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase" }}>
+                  Floor Plans
+                </span>
+              </div>
+              
+              <h2 style={{ fontSize: "38px", fontWeight: 800, color: "#172d3e", margin: "0 0 10px 0" }}>
+                Exhibition Floor Plan Layouts
+              </h2>
+              <p style={{ fontSize: "15px", color: "#666", maxWidth: "700px", margin: "0 auto" }}>
+                Click on any floor plan to view the high-resolution architectural layout and available stall numbers.
+              </p>
+            </div>
+
+            <div 
+              className="floorplan-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "35px"
+              }}
+            >
+              {/* Ahmedabad */}
+              <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
+                  <img 
+                    src="/images/Screenshot-2026-02-02-at-6.58.59-PM.png" 
+                    alt="Ahmedabad Exhibition 2026 floor plan" 
+                    style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
+                    onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-6.58.59-PM.png", "AHMEDABAD UPCOMING EXHIBITION - 2026")}
+                  />
                 </div>
-                       </div>
-    				</div>
-				</div>
-		
-				<div class="elementor-element elementor-element-52068fc elementor-widget elementor-widget-rs-button" data-id="52068fc" data-element_type="widget" data-e-type="widget" data-widget_type="rs-button.default">
-				<div class="elementor-widget-container">
-							<div class="rs-button style2">
-						<a class="rs-btn" href="https://engitechexpo.com/wp-content/uploads/2026/01/Ahmedabad-2026-Rajkot-2027-6.pdf">	
-				<span>Download Brochure 
-									<em>
-						<svg aria-hidden="true" class="e-font-icon-svg e-fas-file-pdf" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>						<svg aria-hidden="true" class="e-font-icon-svg e-fas-file-pdf" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path></svg>					</em>	
-								</span>
-			</a>
-		</div>
-				</div>
-				</div>
-					</div>
-				</div>` }} />
+                <div style={{ padding: "20px 24px", borderTop: "1px solid #eef2f6", background: "#fff", textAlign: "center" }}>
+                  <h4 style={{ fontSize: "15px", fontWeight: 800, color: "#172d3e", margin: "0 0 6px 0", letterSpacing: "0.5px" }}>
+                    AHMEDABAD UPCOMING EXHIBITION-2026
+                  </h4>
+                  <span style={{ fontSize: "12px", color: "#888", fontWeight: 600 }}>Floor Plan Layout</span>
+                </div>
+              </div>
+
+              {/* Rajkot */}
+              <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
+                  <img 
+                    src="/images/Screenshot-2026-02-02-at-7.04.14-PM.png" 
+                    alt="Rajkot Exhibition 2027 floor plan" 
+                    style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
+                    onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-7.04.14-PM.png", "RAJKOT UPCOMING EXHIBITION - 2027")}
+                  />
+                </div>
+                <div style={{ padding: "20px 24px", borderTop: "1px solid #eef2f6", background: "#fff", textAlign: "center" }}>
+                  <h4 style={{ fontSize: "15px", fontWeight: 800, color: "#172d3e", margin: "0 0 6px 0", letterSpacing: "0.5px" }}>
+                    RAJKOT UPCOMING EXHIBITION-2027
+                  </h4>
+                  <span style={{ fontSize: "12px", color: "#888", fontWeight: 600 }}>Floor Plan Layout</span>
+                </div>
+              </div>
+
+              {/* Vadodara */}
+              <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
+                <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
+                  <img 
+                    src="/images/Screenshot-2026-02-02-at-7.18.15-PM.png" 
+                    alt="Vadodara Exhibition 2028 floor plan" 
+                    style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
+                    onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-7.18.15-PM.png", "VADODARA UPCOMING EXHIBITION - 2028")}
+                  />
+                </div>
+                <div style={{ padding: "20px 24px", borderTop: "1px solid #eef2f6", background: "#fff", textAlign: "center" }}>
+                  <h4 style={{ fontSize: "15px", fontWeight: 800, color: "#172d3e", margin: "0 0 6px 0", letterSpacing: "0.5px" }}>
+                    VADODARA UPCOMING EXHIBITION-2028
+                  </h4>
+                  <span style={{ fontSize: "12px", color: "#888", fontWeight: 600 }}>Floor Plan Layout</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 6. BOOKING FORM SECTION */}
+        <section 
+          id="stall-form-section"
+          style={{
+            background: "#f9fbfd",
+            padding: "85px 0",
+            borderTop: "1px solid #eef2f6",
+            borderBottom: "1px solid #eef2f6"
+          }}
+        >
+          <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px" }}>
+            
+            <div 
+              style={{
+                background: "#fff",
+                borderTop: "5px solid #f7c600",
+                borderRadius: "8px",
+                padding: "45px 35px",
+                boxShadow: "0 15px 40px rgba(0,0,0,0.05)",
+                borderLeft: "1px solid #eef2f6",
+                borderRight: "1px solid #eef2f6",
+                borderBottom: "1px solid #eef2f6"
+              }}
+            >
+              <div style={{ textAlign: "center", marginBottom: "35px" }}>
+                <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#172d3e", margin: "0 0 8px 0" }}>
+                  Get In Touch
+                </h2>
+                <span style={{ fontSize: "14px", color: "#888", fontWeight: 500, letterSpacing: "0.5px" }}>
+                  Book Your Exhibition Space
+                </span>
+              </div>
+
+              <form 
+                onSubmit={handleFormSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: "22px" }}
+              >
+                <div>
+                  <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                    Full Name
+                  </label>
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required
+                    className="input-active"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "4px",
+                      border: "1px solid #cbd5e1",
+                      background: "#fff",
+                      fontSize: "15px",
+                      color: "#334155",
+                      outline: "none",
+                      transition: "all 0.2s"
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                    Business Category
+                  </label>
+                  <select 
+                    name="businessCategory"
+                    value={formData.businessCategory}
+                    onChange={handleInputChange}
+                    className="input-active"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "4px",
+                      border: "1px solid #cbd5e1",
+                      background: "#fff",
+                      fontSize: "15px",
+                      color: "#334155",
+                      outline: "none",
+                      transition: "all 0.2s"
+                    }}
+                  >
+                    <option value="What is your business category?">What is your business category?</option>
+                    <option value="Machine Tools">Machine Tools</option>
+                    <option value="Automation/Robotics">Automation/Robotics</option>
+                    <option value="Packaging Machinery">Packaging Machinery</option>
+                    <option value="Power/Electrical Equipment">Power/Electrical Equipment</option>
+                    <option value="Material Handling">Material Handling</option>
+                    <option value="HVAC/Compressor">HVAC/Compressor</option>
+                    <option value="Laser Cutting/Marking Machines">Laser Cutting/Marking Machines</option>
+                    <option value="Renewable Energy/ Solar">Renewable Energy/ Solar</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                      Are you interested in
+                    </label>
+                    <select 
+                      name="interestType"
+                      value={formData.interestType}
+                      onChange={handleInputChange}
+                      className="input-active"
+                      style={{
+                        width: "100%",
+                        padding: "12px 16px",
+                        borderRadius: "4px",
+                        border: "1px solid #cbd5e1",
+                        background: "#fff",
+                        fontSize: "15px",
+                        color: "#334155",
+                        outline: "none",
+                        transition: "all 0.2s"
+                      }}
+                    >
+                      <option value="Are you interested in">Are you interested in</option>
+                      <option value="Booking a Stall">Booking a Stall</option>
+                      <option value="Sponsorship Opportunities">Sponsorship Opportunities</option>
+                      <option value="Visiting the Expo">Visiting the Expo</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                      Preferred Stall Size?
+                    </label>
+                    <select 
+                      name="stallSize"
+                      value={formData.stallSize}
+                      onChange={handleInputChange}
+                      className="input-active"
+                      style={{
+                        width: "100%",
+                        padding: "12px 16px",
+                        borderRadius: "4px",
+                        border: "1px solid #cbd5e1",
+                        background: "#fff",
+                        fontSize: "15px",
+                        color: "#334155",
+                        outline: "none",
+                        transition: "all 0.2s"
+                      }}
+                    >
+                      <option value="Preferred Stall Size?">Preferred Stall Size?</option>
+                      <option value="9 Sq. M">9 Sq. M</option>
+                      <option value="12 Sq. M">12 Sq. M</option>
+                      <option value="18 Sq. M">18 Sq. M</option>
+                      <option value="27 Sq. M or larger">27 Sq. M or larger</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                      City
+                    </label>
+                    <input 
+                      type="text" 
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      required
+                      className="input-active"
+                      style={{
+                        width: "100%",
+                        padding: "12px 16px",
+                        borderRadius: "4px",
+                        border: "1px solid #cbd5e1",
+                        background: "#fff",
+                        fontSize: "15px",
+                        color: "#334155",
+                        outline: "none",
+                        transition: "all 0.2s"
+                      }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                      Company Name
+                    </label>
+                    <input 
+                      type="text" 
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                      required
+                      className="input-active"
+                      style={{
+                        width: "100%",
+                        padding: "12px 16px",
+                        borderRadius: "4px",
+                        border: "1px solid #cbd5e1",
+                        background: "#fff",
+                        fontSize: "15px",
+                        color: "#334155",
+                        outline: "none",
+                        transition: "all 0.2s"
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                    Your email
+                  </label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="input-active"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "4px",
+                      border: "1px solid #cbd5e1",
+                      background: "#fff",
+                      fontSize: "15px",
+                      color: "#334155",
+                      outline: "none",
+                      transition: "all 0.2s"
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                    Contact Number
+                  </label>
+                  <input 
+                    type="text" 
+                    name="contactNumber"
+                    value={formData.contactNumber}
+                    onChange={handleInputChange}
+                    required
+                    className="input-active"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "4px",
+                      border: "1px solid #cbd5e1",
+                      background: "#fff",
+                      fontSize: "15px",
+                      color: "#334155",
+                      outline: "none",
+                      transition: "all 0.2s"
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
+                    Your message (optional)
+                  </label>
+                  <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows="5"
+                    className="input-active"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "4px",
+                      border: "1px solid #cbd5e1",
+                      background: "#fff",
+                      fontSize: "15px",
+                      color: "#334155",
+                      outline: "none",
+                      resize: "vertical",
+                      transition: "all 0.2s"
+                    }}
+                  />
+                </div>
+
+                <div style={{ marginTop: "10px" }}>
+                  <button 
+                    type="submit"
+                    disabled={formStatus === 'submitting'}
+                    style={{
+                      background: "#f7c600",
+                      color: "#172d3e",
+                      padding: "14px 45px",
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer',
+                      boxShadow: "0 4px 12px rgba(247, 198, 0, 0.2)",
+                      transition: "all 0.3s"
+                    }}
+                    onMouseOver={(e) => {
+                      if (formStatus !== 'submitting') {
+                        e.currentTarget.style.transform = "translateY(-2px)";
+                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(247, 198, 0, 0.35)";
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (formStatus !== 'submitting') {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "0 4px 12px rgba(247, 198, 0, 0.2)";
+                      }
+                    }}
+                  >
+                    {formStatus === 'submitting' ? 'Submitting...' : 'Submit'}
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+        {/* LIGHTBOX COMPONENT */}
+        {lightboxImage && (
+          <div 
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: "rgba(10, 20, 30, 0.95)",
+              zIndex: 99999,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "20px"
+            }}
+            onClick={closeLightbox}
+          >
+            {/* Close button */}
+            <button 
+              style={{
+                position: "absolute",
+                top: "20px",
+                right: "20px",
+                background: "transparent",
+                border: "none",
+                color: "#fff",
+                fontSize: "30px",
+                cursor: "pointer"
+              }}
+              onClick={closeLightbox}
+            >
+              ✕
+            </button>
+
+            {/* Title */}
+            <h3 style={{ color: "#fff", fontSize: "20px", fontWeight: 800, marginBottom: "20px", textAlign: "center" }}>
+              {lightboxTitle}
+            </h3>
+
+            {/* Image */}
+            <img 
+              src={lightboxImage} 
+              alt="Expanded view" 
+              style={{ 
+                maxWidth: "95%", 
+                maxHeight: "80vh", 
+                borderRadius: "4px", 
+                boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+                objectFit: "contain"
+              }} 
+              onClick={(e) => e.stopPropagation()} // Stop closing on image click
+            />
+            
+            <p style={{ color: "#ccc", fontSize: "13px", marginTop: "15px" }}>
+              Click anywhere outside to close.
+            </p>
+          </div>
+        )}
+
+      </div>
       {formMessage && (
         <div style={{
           position: 'fixed', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',

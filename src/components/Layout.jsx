@@ -1,5 +1,255 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About us", href: "/about" },
+  { label: "Exhibitors", href: "/exhibitors" },
+  { label: "Visitors", href: "/visitors" },
+  { label: "Stall Booking", href: "/stall-booking" },
+  { label: "Sponsors & Partners", href: "/sponsors-partners" },
+  { label: "Media & Gallery", href: "/media-gallery" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+function Footer({ pathname }) {
+  const colors = {
+    yellow: "#f7c600",
+    darkBlue: "#284d66",
+    greyText: "#4a5568",
+    border: "#eaeaea",
+  };
+
+  return (
+    <footer style={{ background: "#ffffff", borderTop: "1px solid " + colors.border, fontFamily: "'Outfit', sans-serif" }}>
+      {/* Main Footer Container */}
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "70px 20px 50px 20px",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 40,
+            textAlign: "left",
+          }}
+        >
+          {/* Column 1: Brand & Organiser */}
+          <div>
+            <img
+              src="/images/engitech-2-1-768x274-1.png"
+              alt="Engitech Expo"
+              style={{ height: 48, objectFit: "contain", marginBottom: 16, display: "block" }}
+            />
+            <p style={{ fontSize: 14, lineHeight: "1.7", color: colors.greyText, marginBottom: 24 }}>
+              Engitech Expo is a leading industrial exhibition where businesses explore cutting-edge technologies and global partnerships.
+            </p>
+            
+            {/* Organised By Brand graphics */}
+            <div style={{ marginTop: 20 }}>
+              <div
+                style={{
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  fontFamily: "Georgia, serif",
+                  color: "#d99726",
+                  marginBottom: 10,
+                  fontStyle: "italic",
+                }}
+              >
+                Organised By
+              </div>
+              <img
+                src="/images/Shree-Communication-Logo-600x325-1.png"
+                alt="Shree Communication"
+                style={{ height: 56, objectFit: "contain", display: "block" }}
+              />
+            </div>
+          </div>
+
+          {/* Column 2: Useful Links */}
+          <div style={{ paddingLeft: 10 }}>
+            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 20, textTransform: "uppercase", letterSpacing: "0.5px" }}>
+              Useful Links
+            </h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {NAV_LINKS.map((l) => {
+                const active = pathname === l.href;
+                return (
+                  <Link
+                    key={l.label}
+                    to={l.href}
+                    className="nav-link-item"
+                    style={{
+                      color: active ? colors.yellow : colors.greyText,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                    }}
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Column 3: Corporate Office Address structure */}
+          <div>
+            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 20, textTransform: "uppercase", letterSpacing: "0.5px" }}>
+              Corporate Office
+            </h3>
+            <p style={{ color: colors.greyText, fontSize: 14, lineHeight: "1.6", marginBottom: 20 }}>
+              301, 3rd Floor, Krishna Complex, Nr. H.P. Petrol Pump, Wonder Point, CTM, Ahmedabad-26
+            </p>
+            
+            <h3 style={{ color: colors.darkBlue, fontSize: 15, fontWeight: 700, marginBottom: 10, textTransform: "uppercase" }}>
+              Head Office
+            </h3>
+            <p style={{ color: colors.greyText, fontSize: 14, lineHeight: "1.6", marginBottom: 20 }}>
+              408, RK Empire, Near Mavdi Circle, 150 Feet Ring Road, Rajkot – 360004.
+            </p>
+
+            <h3 style={{ color: colors.darkBlue, fontSize: 15, fontWeight: 700, marginBottom: 8, textTransform: "uppercase" }}>
+              Branch
+            </h3>
+            <p style={{ color: colors.greyText, fontSize: 14 }}>
+              Vadodara
+            </p>
+          </div>
+
+          {/* Column 4: Email / Phone & Social Badges */}
+          <div>
+            {/* Email Address */}
+            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.5px" }}>
+              Email Address
+            </h3>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
+              <span style={{ fontSize: 14 }}>✉</span>
+              <a href="mailto:info@engitechexpo.com" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+                info@engitechexpo.com
+              </a>
+            </div>
+
+            {/* Phone Number */}
+            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.5px" }}>
+              Phone Number
+            </h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 28 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 14 }}>📞</span>
+                <a href="tel:+919601945255" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+                  +91 96019 45255
+                </a>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 14 }}>📞</span>
+                <a href="tel:+919574897793" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+                  +91 95748 97793
+                </a>
+              </div>
+            </div>
+
+            {/* Follow Us Social pills */}
+            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 14, textTransform: "uppercase", letterSpacing: "0.5px" }}>
+              Follow Us
+            </h3>
+            <div style={{ display: "flex", gap: 10 }}>
+              {[
+                {
+                  href: "https://www.facebook.com/engitechexpo",
+                  svg: (
+                    <svg width="14" height="14" viewBox="0 0 320 512" fill="white">
+                      <path d="M80 299.3V256H12v-54.7h68v-43.2c0-67.6 41.2-104.4 101.4-104.4 28.8 0 53.6 2.1 60.8 3v70.5h-41.7c-32.8 0-39.2 15.6-39.2 38.5v50.5h78.1L229 256h-68v185.3c-23.7 4.1-48 4.1-71.7 0z"/>
+                    </svg>
+                  ),
+                  color: "#1877f2"
+                },
+                {
+                  href: "https://www.instagram.com/engitechexpo_/",
+                  svg: (
+                    <svg width="14" height="14" viewBox="0 0 448 512" fill="white">
+                      <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7 0-41.1 33.5-74.7 74.7-74.7 41.1 0 74.7 33.5 74.7 74.7 0 41.1-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                  ),
+                  color: "#d9317a"
+                },
+                {
+                  href: "https://www.youtube.com/@EngitechExpo",
+                  svg: (
+                    <svg width="14" height="14" viewBox="0 0 576 512" fill="white">
+                      <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597C16 166.521 16 256 16 256s0 89.479 10.345 131.917c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-12.586c23.497-6.321 42.003-24.171 48.284-47.821C560 345.479 560 256 560 256s0-89.479-10.345-131.917zM218.257 325.268V186.732L348.86 256l-130.603 69.268z"/>
+                    </svg>
+                  ),
+                  color: "#ff0000"
+                },
+                {
+                  href: "https://www.linkedin.com/company/engitechexpo/",
+                  svg: (
+                    <svg width="14" height="14" viewBox="0 0 448 512" fill="white">
+                      <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                    </svg>
+                  ),
+                  color: "#0a66c2"
+                },
+              ].map((soc, index) => (
+                <a
+                  key={index}
+                  href={soc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: 36,
+                    height: 36,
+                    background: soc.color,
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "transform 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  {soc.svg}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Attribution Bar */}
+      <div
+        style={{
+          borderTop: "1px solid " + colors.border,
+          padding: "24px 20px",
+          textAlign: "center",
+          fontSize: 14,
+          color: colors.greyText,
+          fontWeight: 600,
+        }}
+      >
+        © 2026 ENGITECH. Designed & Developed By{" "}
+        <a
+          href="https://fuertedevelopers.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#d99726", fontWeight: "bold", textDecoration: "none" }}
+        >
+          Fuerte Developers.
+        </a>
+      </div>
+    </footer>
+  );
+}
 
 const NAV_ITEMS = [
   { path: '/', label: 'Home', id: '31226' },
@@ -275,267 +525,6 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
   <span class="d-block-dark"><i class="ri-moon-line"></i></span>
 </div>`;
 
-  const footerHtml = `
-<style>
-.custom-footer-section {
-  background-color: #fff;
-  padding: 60px 0 20px;
-  font-family: 'Poppins', sans-serif;
-  color: #616161;
-}
-.custom-footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-.custom-footer-top {
-  border-top: 1px solid #eaeaea;
-  padding-top: 50px;
-}
-.custom-footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 -15px;
-}
-.custom-footer-col {
-  padding: 0 15px;
-  margin-bottom: 30px;
-}
-.custom-footer-col-1 { width: 25%; }
-.custom-footer-col-2 { width: 20%; }
-.custom-footer-col-3 { width: 25%; }
-.custom-footer-col-4 { width: 25%; }
-
-.custom-footer-col h3.footer-widget-title {
-  font-size: 18px;
-  color: #055DA8;
-  font-weight: 700;
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.footer-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 20px 0;
-}
-.footer-logo img {
-  max-width: 200px;
-  height: auto;
-}
-.organised-by-text {
-  font-size: 18px;
-  font-weight: 600;
-  color: #F69025;
-  margin-bottom: 10px;
-  font-family: 'Space Grotesk', sans-serif;
-}
-.organiser-logo img {
-  max-width: 150px;
-  height: auto;
-}
-
-.footer-links-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-links-list li {
-  margin-bottom: 12px;
-}
-.footer-links-list li a {
-  color: #616161;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-.footer-links-list li a:hover {
-  color: #EA5501;
-}
-
-.footer-address-block {
-  margin-bottom: 20px;
-}
-.footer-address-block h4 {
-  font-size: 16px;
-  color: #055DA8;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-.footer-address-block p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.footer-contact-block {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: flex-start;
-}
-.footer-contact-icon {
-  margin-right: 15px;
-  margin-top: 3px;
-  color: #616161;
-}
-.footer-contact-icon svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
-}
-.footer-contact-details h4 {
-  font-size: 16px;
-  color: #055DA8;
-  font-weight: 700;
-  margin: 0 0 5px 0;
-}
-.footer-contact-details p, .footer-contact-details a {
-  font-size: 14px;
-  color: #616161;
-  text-decoration: none;
-  margin: 0;
-  display: block;
-}
-.footer-contact-details a:hover {
-  color: #EA5501;
-}
-
-.footer-social-title {
-  font-size: 16px;
-  color: #055DA8;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.footer-social-icons {
-  display: flex;
-  gap: 10px;
-}
-.footer-social-icons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-.footer-social-icons a:hover {
-  transform: translateY(-3px);
-}
-.footer-social-icons svg {
-  width: 100%;
-  height: 100%;
-}
-
-.custom-footer-bottom {
-  text-align: center;
-  padding: 25px 0;
-  border-top: 1px solid #eaeaea;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #616161;
-}
-.custom-footer-bottom a {
-  color: #f7a44c;
-  text-decoration: none;
-}
-.custom-footer-bottom a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 991px) {
-  .custom-footer-col-1, .custom-footer-col-3 { width: 50%; }
-  .custom-footer-col-2, .custom-footer-col-4 { width: 50%; }
-}
-@media (max-width: 767px) {
-  .custom-footer-col { width: 100%; }
-}
-</style>
-<div class="custom-footer-section">
-  <div class="custom-footer-container">
-    <div class="custom-footer-top">
-      <div class="custom-footer-row">
-        
-        <!-- Col 1 -->
-        <div class="custom-footer-col custom-footer-col-1">
-          <div class="footer-logo">
-            <a href="/"><img src="/images/engitech-2-1-768x274-1.png" alt="Engitech Expo"></a>
-          </div>
-          <div class="footer-desc">
-            Engitech Expo is a leading industrial exhibition where businesses explore cutting-edge technologies and global partnerships.
-          </div>
-          <div class="organised-by-text">Organised By</div>
-          <div class="organiser-logo">
-            <a href="/"><img src="/images/Shree-Communication-Logo-600x325-1.png" alt="Shree Communication"></a>
-          </div>
-        </div>
-
-        <!-- Col 2 -->
-        <div class="custom-footer-col custom-footer-col-2">
-          <h3 class="footer-widget-title">Useful Links</h3>
-          <ul class="footer-links-list">
-            ${footerMenu}
-          </ul>
-        </div>
-
-        <!-- Col 3 -->
-        <div class="custom-footer-col custom-footer-col-3">
-          <div class="footer-address-block">
-            <h4>Corporate Office</h4>
-            <p>301, 3rd Floor, Krishna Complex, Nr. H.P. Petrol Pump, Wonder Point, CTM, Ahmedabad-26</p>
-          </div>
-          <div class="footer-address-block">
-            <h4>Head Office</h4>
-            <p>408, RK Empire, Near Mavdi Circle, 150 Feet Ring Road, Rajkot – 360004.</p>
-          </div>
-          <div class="footer-address-block">
-            <h4>Branch</h4>
-            <p>Vadodara</p>
-          </div>
-        </div>
-
-        <!-- Col 4 -->
-        <div class="custom-footer-col custom-footer-col-4">
-          <div class="footer-contact-block">
-            <div class="footer-contact-icon">
-              <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-            </div>
-            <div class="footer-contact-details">
-              <h4>Email Address</h4>
-              <a href="mailto:info@engitechexpo.com">info@engitechexpo.com</a>
-            </div>
-          </div>
-          <div class="footer-contact-block">
-            <div class="footer-contact-icon">
-              <svg aria-hidden="true" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
-            </div>
-            <div class="footer-contact-details">
-              <h4>Phone Number</h4>
-              <a href="tel:+919601945255">+91 96019 45255</a>
-              <a href="tel:+919574897793">+91 95748 97793</a>
-            </div>
-          </div>
-          <div class="footer-social-title">Follow Us</div>
-          <div class="footer-social-icons">
-            <a href="https://www.facebook.com/engitechexpo" target="_blank"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#18ACFE"></circle><path d="M21.2137 20.2816L21.8356 16.3301H17.9452V13.767C17.9452 12.6857 18.4877 11.6311 20.2302 11.6311H22V8.26699C22 8.26699 20.3945 8 18.8603 8C15.6548 8 13.5617 9.89294 13.5617 13.3184V16.3301H10V20.2816H13.5617V29.8345C14.2767 29.944 15.0082 30 15.7534 30C16.4986 30 17.2302 29.944 17.9452 29.8345V20.2816H21.2137Z" fill="white"></path></svg></a>
-            <a href="https://www.instagram.com/engitechexpo_/" target="_blank"><svg viewBox="0 0 512 512"><rect width="512" height="512" rx="75" fill="#E1306C"></rect><g fill="none" stroke="#fff" stroke-width="40"><rect width="308" height="308" x="102" y="102" rx="81"></rect><circle cx="256" cy="256" r="72"></circle><circle cx="347" cy="165" r="15" fill="#fff" stroke="none"></circle></g></svg></a>
-            <a href="https://www.youtube.com/@EngitechExpo" target="_blank"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#FF0000"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M35.3005 16.3781C35.6996 16.7772 35.9872 17.2739 36.1346 17.8187C36.9835 21.2357 36.7873 26.6324 36.1511 30.1813C36.0037 30.7261 35.7161 31.2228 35.317 31.6219C34.9179 32.021 34.4212 32.3086 33.8764 32.456C31.8819 33 23.8544 33 23.8544 33C23.8544 33 15.8269 33 13.8324 32.456C13.2876 32.3086 12.7909 32.021 12.3918 31.6219C11.9927 31.2228 11.7051 30.7261 11.5577 30.1813C10.7038 26.7791 10.9379 21.3791 11.5412 17.8352C11.6886 17.2903 11.9762 16.7936 12.3753 16.3945C12.7744 15.9954 13.2711 15.7079 13.8159 15.5604C15.8104 15.0165 23.8379 15 23.8379 15C23.8379 15 31.8654 15 33.8599 15.544C34.4047 15.6914 34.9014 15.979 35.3005 16.3781ZM27.9423 24L21.283 27.8571V20.1428L27.9423 24Z" fill="white"></path></svg></a>
-            <a href="https://www.linkedin.com/company/engitechexpo/" target="_blank"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#0077B5"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M18.7747 14.2839C18.7747 15.529 17.8267 16.5366 16.3442 16.5366C14.9194 16.5366 13.9713 15.529 14.0007 14.2839C13.9713 12.9783 14.9193 12 16.3726 12C17.8267 12 18.7463 12.9783 18.7747 14.2839ZM14.1199 32.8191V18.3162H18.6271V32.8181H14.1199V32.8191Z" fill="white"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M22.2393 22.9446C22.2393 21.1357 22.1797 19.5935 22.1201 18.3182H26.0351L26.2432 20.305H26.3322C26.9254 19.3854 28.4079 17.9927 30.8101 17.9927C33.7752 17.9927 35.9995 19.9502 35.9995 24.219V32.821H31.4922V24.7838C31.4922 22.9144 30.8404 21.6399 29.2093 21.6399C27.9633 21.6399 27.2224 22.4999 26.9263 23.3297C26.8071 23.6268 26.7484 24.0412 26.7484 24.4574V32.821H22.2411V22.9446H22.2393Z" fill="white"></path></svg></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    
-    <!-- Footer Bottom -->
-    <div class="custom-footer-bottom">
-      <span>&#169; <span id="current-year">${new Date().getFullYear()}</span> ENGITECH. Designed &amp; Developed By <a target="_blank" href="https://fuertedevelopers.in/">Fuerte Developers.</a></span>
-    </div>
-  </div>
-</div>
-`;
-
   return (
     <div className="page-transition">
       <div id="pre-load" style={{ display: 'none' }}>
@@ -555,8 +544,7 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
 
         {children}
 
-        <footer itemType="https://schema.org/WPFooter" itemScope id="colophon" role="contentinfo"
-          dangerouslySetInnerHTML={{ __html: footerHtml }} />
+        <Footer pathname={pathname} />
       </div>
 
       <div id="rs-mouse">

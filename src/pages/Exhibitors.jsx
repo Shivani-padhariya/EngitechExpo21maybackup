@@ -1719,12 +1719,12 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-24f1568 e-con-full e-flex e-con e-parent" data-id="24f1568" data-element_type="container" data-e-type="container">
 		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-e7f510f e-con-full e-flex e-con e-child" data-id="e7f510f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-e7f510f e-con-full e-flex e-con e-child" data-id="e7f510f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="max-width: 600px; margin: 0 auto 40px auto; padding: 0 20px;">
 		
 				<div class="elementor-element elementor-element-8a6f4a9 elementor-widget-laptop__width-initial elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-rs-heading" data-id="8a6f4a9" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  ">
+		<div class="prelements-heading style1  " style="margin-top: 30px;">
 			<div class="title-inner">
 				<h3 class="title rs-split-text-disable ">Exhibitor Registration</h3>
 			</div>
@@ -1738,7 +1738,7 @@ Partner 								</div>
 				<div class="elementor-widget-container">
 					
 <div class="wpcf7 js" id="wpcf7-f16-p30998-o1" lang="en-US" dir="ltr">
-<form id="exhibitor-reg-form" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate">
+<form id="exhibitor-reg-form" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" style="padding: 30px 30px;">
 <p><label> Your name<br>
 <span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="name" aria-required="true" type="text" name="your-name"></span> </label>
 </p>

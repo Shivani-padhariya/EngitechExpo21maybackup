@@ -3,53 +3,54 @@ import Layout from '../components/Layout';
 import { formAPI } from '../admin/services/api';
 
 export default function Visitors() {
-  const [formStatus, setFormStatus] = useState('idle');
-  const [formMessage, setFormMessage] = useState('');
+	const [formStatus, setFormStatus] = useState('idle');
+	const [formMessage, setFormMessage] = useState('');
 
-  useEffect(() => {
-    const form = document.getElementById('visitor-reg-form');
-    if (!form) return;
+	useEffect(() => {
+		const form = document.getElementById('visitor-reg-form');
+		if (!form) return;
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const formEl = e.currentTarget;
-      const data = new FormData(formEl);
+		const handleSubmit = async (e) => {
+			e.preventDefault();
+			const formEl = e.currentTarget;
+			const data = new FormData(formEl);
 
-      const name = (data.get('your-name') || '').trim();
-      const email = (data.get('your-email') || '').trim();
-      const contactNumber = (data.get('your-contact-number') || '').trim();
-      const companyName = (data.get('company-name') || '').trim();
-      const message = (data.get('your-message') || '').trim();
+			const name = (data.get('your-name') || '').trim();
+			const email = (data.get('your-email') || '').trim();
+			const contactNumber = (data.get('your-contact-number') || '').trim();
+			const companyName = (data.get('company-name') || '').trim();
+			const message = (data.get('your-message') || '').trim();
 
-      if (!name || !email || !contactNumber || !companyName) {
-        setFormMessage('Please fill all required fields.');
-        setFormStatus('error');
-        return;
-      }
+			if (!name || !email || !contactNumber || !companyName) {
+				setFormMessage('Please fill all required fields.');
+				setFormStatus('error');
+				return;
+			}
 
-      setFormStatus('submitting');
-      setFormMessage('');
+			setFormStatus('submitting');
+			setFormMessage('');
 
-      try {
-        await formAPI.submitVisitor({ name, email, contactNumber, companyName, message });
-        setFormStatus('success');
-        setFormMessage('Registration submitted successfully! We will contact you soon.');
-        formEl.reset();
-      } catch (err) {
-        setFormStatus('error');
-        setFormMessage(err?.response?.data?.message || 'Submission failed. Please try again.');
-      }
-    };
+			try {
+				await formAPI.submitVisitor({ name, email, contactNumber, companyName, message });
+				setFormStatus('success');
+				setFormMessage('Registration submitted successfully! We will contact you soon.');
+				formEl.reset();
+			} catch (err) {
+				setFormStatus('error');
+				setFormMessage(err?.response?.data?.message || 'Submission failed. Please try again.');
+			}
+		};
 
-    form.addEventListener('submit', handleSubmit);
-    return () => form.removeEventListener('submit', handleSubmit);
-  }, []);
-  return (
-    <Layout
-      pageCss={[{ id: 'page-css-visitors', href: '/css/page-visitors.css' }]}
-      bodyClass="page-template-default page page-id-238 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-238"
-    >
-      <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
+		form.addEventListener('submit', handleSubmit);
+		return () => form.removeEventListener('submit', handleSubmit);
+	}, []);
+	return (
+		<Layout
+			pageCss={[{ id: 'page-css-visitors', href: '/css/page-visitors.css' }]}
+			bodyClass="page-template-default page page-id-238 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-238"
+		>
+			<div dangerouslySetInnerHTML={{
+				__html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
 				
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
@@ -186,12 +187,12 @@ and technologies. 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-6b8002f e-con-full e-flex e-con e-parent" data-id="6b8002f" data-element_type="container" data-e-type="container">
 		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-88eb43e e-con-full e-flex e-con e-child" data-id="88eb43e" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-88eb43e e-con-full e-flex e-con e-child" data-id="88eb43e" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="max-width: 600px; margin: 40px auto; padding: 0 20px;">
 		
 				<div class="elementor-element elementor-element-5096837 elementor-widget-laptop__width-initial elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-rs-heading" data-id="5096837" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  ">
+		<div class="prelements-heading style1  " style="margin-top: 30px;">
 			<div class="title-inner">
 				<h3 class="title rs-split-text-disable ">Visitor Registration</h3>
 			</div>
@@ -205,7 +206,7 @@ and technologies. 								</div>
 				<div class="elementor-widget-container">
 					
 <div class="wpcf7 js" id="wpcf7-f16-p31012-o1" lang="en-US" dir="ltr">
-<form id="visitor-reg-form" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate">
+<form id="visitor-reg-form" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" style="padding: 30px 30px;">
 <p><label> Your name<br>
 <span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" autocomplete="name" aria-required="true" type="text" name="your-name"></span> </label>
 </p>
@@ -261,16 +262,16 @@ and technologies. 								</div>
 				</div>
 					</div>
 				</div>` }} />
-      {formMessage && (
-        <div style={{
-          position: 'fixed', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
-          background: formStatus === 'success' ? '#16a34a' : '#dc2626',
-          color: '#fff', padding: '0.75rem 1.5rem', borderRadius: '0.5rem',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.2)', zIndex: 9999, fontSize: '0.95rem'
-        }}>
-          {formMessage}
-        </div>
-      )}
-    </Layout>
-  );
+			{formMessage && (
+				<div style={{
+					position: 'fixed', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
+					background: formStatus === 'success' ? '#16a34a' : '#dc2626',
+					color: '#fff', padding: '0.75rem 1.5rem', borderRadius: '0.5rem',
+					boxShadow: '0 4px 12px rgba(0,0,0,0.2)', zIndex: 9999, fontSize: '0.95rem'
+				}}>
+					{formMessage}
+				</div>
+			)}
+		</Layout>
+	);
 }
