@@ -74,27 +74,50 @@
 
 /* Icons Buttons */
 .adm-icon-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--adm-radius);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition: var(--adm-transition);
-  color: var(--adm-text-muted);
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: var(--adm-radius) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+  transition: var(--adm-transition) !important;
+  color: var(--adm-text-muted) !important;
+  padding: 0 !important;
 }
 
-.adm-icon-btn:hover {
-  background: var(--adm-bg);
-  color: var(--adm-text-main);
+.adm-icon-btn svg {
+  stroke: currentColor !important;
 }
 
-.adm-icon-btn--edit:hover { color: var(--adm-info); background: rgba(59, 130, 246, 0.1); }
-.adm-icon-btn--delete:hover { color: var(--adm-danger); background: rgba(239, 68, 68, 0.1); }
-.adm-icon-btn--view:hover { color: var(--adm-primary); background: rgba(245, 158, 11, 0.1); }
+.adm-icon-btn--edit {
+  color: var(--adm-info) !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+.adm-icon-btn--edit:hover {
+  color: #1d4ed8 !important;
+  background: rgba(59, 130, 246, 0.2) !important;
+}
+
+.adm-icon-btn--delete {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+.adm-icon-btn--delete:hover {
+  color: #b91c1c !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+}
+
+.adm-icon-btn--view {
+  color: var(--adm-primary) !important;
+  background: rgba(245, 158, 11, 0.1) !important;
+}
+.adm-icon-btn--view:hover {
+  color: #b45309 !important;
+  background: rgba(245, 158, 11, 0.2) !important;
+}
 
 /* Badges */
 .adm-badge {

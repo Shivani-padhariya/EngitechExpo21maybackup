@@ -37,7 +37,7 @@ export default function StallBooking() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
+
     const { fullName, businessCategory, interestType, stallSize, city, companyName, email, contactNumber, message } = formData;
 
     if (!fullName || !city || !companyName || !email || !contactNumber) {
@@ -244,7 +244,7 @@ export default function StallBooking() {
       bodyClass="page-template-default page page-id-275 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-275"
     >
       <div className="stall-booking-page-wrapper elementor-31036" style={{ background: "#fff", fontFamily: "'Outfit', sans-serif" }}>
-        
+
         {/* CSS Helper for Responsive Layout */}
         <style>{`
           @media (max-width: 991px) {
@@ -282,7 +282,8 @@ export default function StallBooking() {
         `}</style>
 
         {/* 1. HERO BREADCRUMB BANNER */}
-        <div dangerouslySetInnerHTML={{ __html: `
+        <div dangerouslySetInnerHTML={{
+          __html: `
           <div class="header-breadcamb-fixer">
             <div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
               <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -318,7 +319,7 @@ export default function StallBooking() {
         {/* 2. STALL TYPES SECTION */}
         <section style={{ padding: "85px 0", background: "#f8f9fa" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-            
+
             <div style={{ marginBottom: "50px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "5px" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 17 12" fill="none">
@@ -328,28 +329,28 @@ export default function StallBooking() {
                   TYPES &amp; PRICING
                 </span>
               </div>
-              
+
               <h2 style={{ fontSize: "32px", fontWeight: 800, color: "#111", margin: "0 0 5px 0" }}>
                 Stall Types &amp; Pricing
               </h2>
-              
-              <span style={{ fontSize: "13px", color: "#555", fontWeight: 600 }}>
+
+              <span style={{ fontSize: "17px", color: "#555", fontWeight: 600 }}>
                 Stall Pricing: 7500 Per Sq. Mtr
               </span>
             </div>
 
             {/* Grid Layout of Stalls */}
-            <div 
+            <div
               className="pricing-grid"
-              style={{ 
-                display: "flex", 
+              style={{
+                display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
-                gap: "20px" 
+                gap: "20px"
               }}
             >
               {stallStalls.map((stall, idx) => (
-                <div 
+                <div
                   key={idx}
                   className="stall-card"
                   style={{
@@ -362,11 +363,11 @@ export default function StallBooking() {
                     flexDirection: "column"
                   }}
                 >
-                  <h3 style={{ fontSize: "16px", fontWeight: 800, color: "#fff", margin: "0 0 12px 0" }}>
+                  <h3 style={{ fontSize: "17px", fontWeight: 800, color: "#fff", margin: "0 0 12px 0", fontFamily: "'Poppins', sans-serif" }}>
                     {stall.size}
                   </h3>
 
-                  <p style={{ fontSize: "13px", color: "#fff", lineHeight: "1.6", margin: 0, fontWeight: 400 }}>
+                  <p style={{ fontSize: "17px", color: "#fff", lineHeight: "1.6", margin: 0, fontWeight: 400, fontFamily: "'Poppins', sans-serif" }}>
                     {stall.features.join(" , ")} .
                   </p>
                 </div>
@@ -379,8 +380,8 @@ export default function StallBooking() {
         {/* 3. ADDITIONAL CHARGES SECTION */}
         <section style={{ padding: "85px 0", background: "#f8f9fa" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-            
-            <div 
+
+            <div
               className="pricing-grid"
               style={{
                 display: "grid",
@@ -388,28 +389,43 @@ export default function StallBooking() {
                 gap: "10px"
               }}
             >
-              {participationCharges.map((charge, idx) => (
-                <div 
-                  key={idx}
-                  style={{
-                    background: "#264b62",
-                    padding: "20px 25px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "12px"
-                  }}
-                >
-                  <h4 style={{ fontSize: "15px", fontWeight: 700, color: "#fff", margin: 0 }}>
-                    {charge.title}
-                  </h4>
+              {participationCharges.map((charge, idx) => {
+                let titleMain = charge.title;
+                let titleSub = "";
+                if (charge.title.includes("Compressor")) {
+                  const index = charge.title.indexOf("Compressor") + "Compressor".length;
+                  titleMain = charge.title.substring(0, index);
+                  titleSub = charge.title.substring(index).trim();
+                }
 
-                  <ul style={{ paddingLeft: "18px", margin: 0, color: "#fff", fontSize: "13px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                    {charge.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      background: "#264b62",
+                      padding: "20px 25px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "12px"
+                    }}
+                  >
+                    <h4 style={{ fontSize: "16px", fontWeight: 700, color: "#fff", margin: 0, fontFamily: "'Poppins', sans-serif", lineHeight: "1.4" }}>
+                      {titleMain}
+                      {titleSub && (
+                        <span style={{ display: "block", marginTop: "4px", fontSize: "16px", fontWeight: 800, color: "#fff", fontFamily: "'Poppins', sans-serif" }}>
+                          {titleSub}
+                        </span>
+                      )}
+                    </h4>
+
+                    <ul style={{ paddingLeft: "18px", margin: 0, color: "#fff", fontSize: "17px", display: "flex", flexDirection: "column", gap: "6px", fontFamily: "'Poppins', sans-serif" }}>
+                      {charge.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} style={{ fontSize: "17px", fontFamily: "'Poppins', sans-serif" }}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
 
           </div>
@@ -418,7 +434,7 @@ export default function StallBooking() {
         {/* 4. PRE & DURING EXPO BENEFITS */}
         <section style={{ padding: "60px 0", background: "#f8f9fa" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-            
+
             {/* Pre Expo Benefits */}
             <div style={{ marginBottom: "50px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
@@ -444,7 +460,7 @@ export default function StallBooking() {
                 <span style={{ color: "#f7c600", fontSize: "12px", fontWeight: 700, textTransform: "uppercase" }}>EXPO BENEFITS</span>
               </div>
               <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#111", margin: "0 0 20px 0" }}>During Exhibition Benefits</h2>
-              
+
               <div className="benefits-list-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px" }}>
                 <ul style={{ paddingLeft: "20px", color: "#666", fontSize: "14px", display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
                   <li>Loading and Unloading Facility Will Be Provided Complimentary By Engitech (Hydra &amp; Forklift).</li>
@@ -454,7 +470,7 @@ export default function StallBooking() {
                 <ul style={{ paddingLeft: "20px", color: "#666", fontSize: "14px", display: "flex", flexDirection: "column", gap: "10px", margin: 0 }}>
                   <li>On Site H R Service Agency Available For Temporary Staff At Your Stall.</li>
                   <li>On Site H R Service Agency Available For Temporary Staff At Your Stall.</li>
-                  <li>Timing Is 10:00 AM To 06:00 PM. <br/>(Last Day Of Exhibition 10:00 AM To 04:00 PM).</li>
+                  <li>Timing Is 10:00 AM To 06:00 PM. <br />(Last Day Of Exhibition 10:00 AM To 04:00 PM).</li>
                 </ul>
               </div>
             </div>
@@ -465,7 +481,7 @@ export default function StallBooking() {
         {/* 5. FLOOR PLANS */}
         <section style={{ padding: "85px 0", background: "#fff" }}>
           <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-            
+
             <div style={{ textAlign: "center", marginBottom: "55px" }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "15px" }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
@@ -476,7 +492,7 @@ export default function StallBooking() {
                   Floor Plans
                 </span>
               </div>
-              
+
               <h2 style={{ fontSize: "38px", fontWeight: 800, color: "#172d3e", margin: "0 0 10px 0" }}>
                 Exhibition Floor Plan Layouts
               </h2>
@@ -485,7 +501,7 @@ export default function StallBooking() {
               </p>
             </div>
 
-            <div 
+            <div
               className="floorplan-grid"
               style={{
                 display: "grid",
@@ -496,9 +512,9 @@ export default function StallBooking() {
               {/* Ahmedabad */}
               <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
-                  <img 
-                    src="/images/Screenshot-2026-02-02-at-6.58.59-PM.png" 
-                    alt="Ahmedabad Exhibition 2026 floor plan" 
+                  <img
+                    src="/images/Screenshot-2026-02-02-at-6.58.59-PM.png"
+                    alt="Ahmedabad Exhibition 2026 floor plan"
                     style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
                     onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-6.58.59-PM.png", "AHMEDABAD UPCOMING EXHIBITION - 2026")}
                   />
@@ -514,9 +530,9 @@ export default function StallBooking() {
               {/* Rajkot */}
               <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
-                  <img 
-                    src="/images/Screenshot-2026-02-02-at-7.04.14-PM.png" 
-                    alt="Rajkot Exhibition 2027 floor plan" 
+                  <img
+                    src="/images/Screenshot-2026-02-02-at-7.04.14-PM.png"
+                    alt="Rajkot Exhibition 2027 floor plan"
                     style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
                     onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-7.04.14-PM.png", "RAJKOT UPCOMING EXHIBITION - 2027")}
                   />
@@ -532,9 +548,9 @@ export default function StallBooking() {
               {/* Vadodara */}
               <div className="floor-plan-card" style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ overflow: "hidden", position: "relative", background: "#f8fafc", flexGrow: 1 }}>
-                  <img 
-                    src="/images/Screenshot-2026-02-02-at-7.18.15-PM.png" 
-                    alt="Vadodara Exhibition 2028 floor plan" 
+                  <img
+                    src="/images/Screenshot-2026-02-02-at-7.18.15-PM.png"
+                    alt="Vadodara Exhibition 2028 floor plan"
                     style={{ width: "100%", height: "auto", display: "block", maxHeight: "380px", objectFit: "contain", cursor: "pointer", padding: "10px" }}
                     onClick={() => openLightbox("/images/Screenshot-2026-02-02-at-7.18.15-PM.png", "VADODARA UPCOMING EXHIBITION - 2028")}
                   />
@@ -552,7 +568,7 @@ export default function StallBooking() {
         </section>
 
         {/* 6. BOOKING FORM SECTION */}
-        <section 
+        <section
           id="stall-form-section"
           style={{
             background: "#f9fbfd",
@@ -562,8 +578,8 @@ export default function StallBooking() {
           }}
         >
           <div style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px" }}>
-            
-            <div 
+
+            <div
               style={{
                 background: "#fff",
                 borderTop: "5px solid #f7c600",
@@ -584,7 +600,7 @@ export default function StallBooking() {
                 </span>
               </div>
 
-              <form 
+              <form
                 onSubmit={handleFormSubmit}
                 style={{ display: "flex", flexDirection: "column", gap: "22px" }}
               >
@@ -592,8 +608,8 @@ export default function StallBooking() {
                   <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                     Full Name
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
@@ -617,7 +633,7 @@ export default function StallBooking() {
                   <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                     Business Category
                   </label>
-                  <select 
+                  <select
                     name="businessCategory"
                     value={formData.businessCategory}
                     onChange={handleInputChange}
@@ -652,7 +668,7 @@ export default function StallBooking() {
                     <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                       Are you interested in
                     </label>
-                    <select 
+                    <select
                       name="interestType"
                       value={formData.interestType}
                       onChange={handleInputChange}
@@ -680,7 +696,7 @@ export default function StallBooking() {
                     <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                       Preferred Stall Size?
                     </label>
-                    <select 
+                    <select
                       name="stallSize"
                       value={formData.stallSize}
                       onChange={handleInputChange}
@@ -711,8 +727,8 @@ export default function StallBooking() {
                     <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                       City
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
@@ -736,8 +752,8 @@ export default function StallBooking() {
                     <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                       Company Name
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
@@ -762,8 +778,8 @@ export default function StallBooking() {
                   <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                     Your email
                   </label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
@@ -787,8 +803,8 @@ export default function StallBooking() {
                   <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                     Contact Number
                   </label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="contactNumber"
                     value={formData.contactNumber}
                     onChange={handleInputChange}
@@ -812,7 +828,7 @@ export default function StallBooking() {
                   <label style={{ display: "block", fontSize: "14px", fontWeight: 700, color: "#172d3e", marginBottom: "8px" }}>
                     Your message (optional)
                   </label>
-                  <textarea 
+                  <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
@@ -834,7 +850,7 @@ export default function StallBooking() {
                 </div>
 
                 <div style={{ marginTop: "10px" }}>
-                  <button 
+                  <button
                     type="submit"
                     disabled={formStatus === 'submitting'}
                     style={{
@@ -873,7 +889,7 @@ export default function StallBooking() {
 
         {/* LIGHTBOX COMPONENT */}
         {lightboxImage && (
-          <div 
+          <div
             style={{
               position: "fixed",
               top: 0,
@@ -891,7 +907,7 @@ export default function StallBooking() {
             onClick={closeLightbox}
           >
             {/* Close button */}
-            <button 
+            <button
               style={{
                 position: "absolute",
                 top: "20px",
@@ -913,19 +929,19 @@ export default function StallBooking() {
             </h3>
 
             {/* Image */}
-            <img 
-              src={lightboxImage} 
-              alt="Expanded view" 
-              style={{ 
-                maxWidth: "95%", 
-                maxHeight: "80vh", 
-                borderRadius: "4px", 
+            <img
+              src={lightboxImage}
+              alt="Expanded view"
+              style={{
+                maxWidth: "95%",
+                maxHeight: "80vh",
+                borderRadius: "4px",
                 boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
                 objectFit: "contain"
-              }} 
+              }}
               onClick={(e) => e.stopPropagation()} // Stop closing on image click
             />
-            
+
             <p style={{ color: "#ccc", fontSize: "13px", marginTop: "15px" }}>
               Click anywhere outside to close.
             </p>
