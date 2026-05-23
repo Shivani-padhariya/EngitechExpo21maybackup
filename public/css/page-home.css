@@ -523,4 +523,24 @@
                                                         .hfe-layout-vertical .left-arrow ul .menu-item:hover a:before {
                                                             border-left: 6px solid
                                                         }
+
+/* Homepage counters row alignment fix */
+.elementor-element-f82a1d7.e-con-full.e-flex > .e-con-inner {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.elementor-element-f82a1d7.e-con-full.e-flex > .e-con-inner > .e-con-boxed.e-con {
+    flex: 1 1 260px;
+    max-width: 33.33%;
+    min-width: 220px;
+}
+
+.elementor-element-f82a1d7.e-con-full.e-flex > .e-con-inner .counter-top-area {
+    width: 100%;
+}
+
                                                     

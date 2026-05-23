@@ -31,6 +31,7 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #f00;
+  width: 100%;
 }
 .counter-top-area .rs-counter-list .count-text .count-number .rs-counter {
   font-size: 50px;
