@@ -7,11 +7,10 @@ export default function Exhibitors() {
   const [formMessage, setFormMessage] = useState('');
 
   useEffect(() => {
-    const form = document.getElementById('exhibitor-reg-form');
-    if (!form) return;
-
     const handleSubmit = async (e) => {
+      if (e.target.id !== 'exhibitor-reg-form') return;
       e.preventDefault();
+      const form = e.target;
       const data = new FormData(form);
 
       const fullName = (data.get('your-name') || '').trim();
@@ -42,8 +41,8 @@ export default function Exhibitors() {
       }
     };
 
-    form.addEventListener('submit', handleSubmit);
-    return () => form.removeEventListener('submit', handleSubmit);
+    document.addEventListener('submit', handleSubmit);
+    return () => document.removeEventListener('submit', handleSubmit);
   }, []);
 
   return (
