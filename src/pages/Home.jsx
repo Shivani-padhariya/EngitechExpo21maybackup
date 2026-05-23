@@ -17,11 +17,11 @@ export default function Home() {
 
             // Strip slick classes and styling from the slides to make them clean
             $slides.removeClass('slick-slide slick-active slick-current slick-cloned')
-                   .removeAttr('style')
-                   .removeAttr('data-slick-index')
-                   .removeAttr('aria-hidden')
-                   .removeAttr('tabindex')
-                   .removeAttr('id');
+                .removeAttr('style')
+                .removeAttr('data-slick-index')
+                .removeAttr('aria-hidden')
+                .removeAttr('tabindex')
+                .removeAttr('id');
 
             // Destroy any existing slick instance if running
             try {
@@ -88,11 +88,11 @@ export default function Home() {
                 const $blogSlides = $blogSlider.find('.pre-blog-item:not(.slick-cloned)').clone();
                 if ($blogSlides.length > 0) {
                     $blogSlides.removeClass('slick-slide slick-active slick-current slick-cloned slick-center')
-                               .removeAttr('style')
-                               .removeAttr('data-slick-index')
-                               .removeAttr('aria-hidden')
-                               .removeAttr('tabindex')
-                               .removeAttr('id');
+                        .removeAttr('style')
+                        .removeAttr('data-slick-index')
+                        .removeAttr('aria-hidden')
+                        .removeAttr('tabindex')
+                        .removeAttr('id');
 
                     try {
                         if ($blogSlider.hasClass('slick-initialized')) {
@@ -4568,7 +4568,7 @@ export default function Home() {
                                                 </div>
                                             </div>
 
-                                            // <div class="elementor-element elementor-element-ff9d1a3 elementor-widget elementor-widget-prelements-blog-slider"
+                                            <div class="elementor-element elementor-element-ff9d1a3 elementor-widget elementor-widget-prelements-blog-slider"
                                                 data-id="ff9d1a3" data-element_type="widget" data-e-type="widget"
                                                 data-widget_type="prelements-blog-slider.default">
                                                 <div class="elementor-widget-container">

@@ -65,8 +65,14 @@ export default function BlogDetail() {
   if (loading) {
     return (
       <Layout pageCss={PAGE_CSS} bodyClass={BODY_CLASS}>
-        <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <p>Loading...</p>
+        <div className="premium-preloader-wrapper">
+          <div className="premium-preloader-circle">
+            <img
+              src="/images/engitech-2-1-768x274-1.png"
+              alt="Loading..."
+              className="premium-preloader-logo"
+            />
+          </div>
         </div>
       </Layout>
     );

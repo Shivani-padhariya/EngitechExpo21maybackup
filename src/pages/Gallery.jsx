@@ -1,12 +1,7 @@
 import Layout from '../components/Layout';
 
 export default function Gallery() {
-  return (
-    <Layout
-      pageCss={[{ id: 'page-css-gallery', href: '/css/page-gallery.css' }]}
-      bodyClass="page-template-default page page-id-242 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-242"
-    >
-      <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
+  let rawHtml = `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
 				
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
@@ -345,7 +340,20 @@ export default function Gallery() {
   
   </article>
 <!-- #post-31090 --> 
-			    </div>` }} />
+			    </div>`;
+
+  // Replace WordPress live domain uploads URL prefix with local /images/ directory
+  rawHtml = rawHtml.replace(/https:\/\/engitechexpo\.com\/wp-content\/uploads\/\d{4}\/\d{2}\//g, '/images/');
+
+  // Map non-existent -scaled filename suffixes to the existing -500x500 local images
+  rawHtml = rawHtml.replace(/-scaled\.(jpg|jpeg|png)/g, '-500x500.$1');
+
+  return (
+    <Layout
+      pageCss={[{ id: 'page-css-gallery', href: '/css/page-gallery.css' }]}
+      bodyClass="page-template-default page page-id-242 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-242"
+    >
+      <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
     </Layout>
   );
 }

@@ -90,8 +90,16 @@ export default function Blog() {
                             <div className="row blog_style_defaultlayout">
 
                               {loading && (
-                                <div className="col-12 text-center" style={{ padding: '60px 0' }}>
-                                  <p>Loading blogs...</p>
+                                <div className="col-12">
+                                  <div className="premium-preloader-wrapper">
+                                    <div className="premium-preloader-circle">
+                                      <img
+                                        src="/images/engitech-2-1-768x274-1.png"
+                                        alt="Loading..."
+                                        className="premium-preloader-logo"
+                                      />
+                                    </div>
+                                  </div>
                                 </div>
                               )}
 
