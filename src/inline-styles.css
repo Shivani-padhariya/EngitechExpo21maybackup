@@ -1,4 +1,4 @@
-img:is([sizes=auto i], [sizes^="auto," i]) {
+﻿img:is([sizes=auto i], [sizes^="auto," i]) {
     contain-intrinsic-size: 3000px 1500px
 }
 
@@ -1025,34 +1025,34 @@ body .is-layout-grid {
 
 /* Reduce the height/padding of the header banner */
 .elementor-10514 .elementor-element.elementor-element-41335a8 {
-  --padding-top: 55px !important;
-  --padding-bottom: 55px !important;
-  padding-top: 55px !important;
-  padding-bottom: 55px !important;
-  min-height: auto !important;
+    --padding-top: 150px !important;
+    --padding-bottom: 55px !important;
+    padding-top: 55px !important;
+    padding-bottom: 55px !important;
+    min-height: auto !important;
 }
 
 @media (max-width: 1024px) {
-  .elementor-10514 .elementor-element.elementor-element-41335a8 {
-    --padding-top: 45px !important;
-    --padding-bottom: 45px !important;
-    padding-top: 45px !important;
-    padding-bottom: 45px !important;
-  }
+    .elementor-10514 .elementor-element.elementor-element-41335a8 {
+        --padding-top: 45px !important;
+        --padding-bottom: 45px !important;
+        padding-top: 45px !important;
+        padding-bottom: 45px !important;
+    }
 }
 
 @media (max-width: 767px) {
-  .elementor-10514 .elementor-element.elementor-element-41335a8 {
-    --padding-top: 35px !important;
-    --padding-bottom: 35px !important;
-    padding-top: 35px !important;
-    padding-bottom: 35px !important;
-  }
+    .elementor-10514 .elementor-element.elementor-element-41335a8 {
+        --padding-top: 35px !important;
+        --padding-bottom: 35px !important;
+        padding-top: 35px !important;
+        padding-bottom: 35px !important;
+    }
 }
 
 /* Hide CSS absolute icon arrows for style3 inside this specific widget */
 .elementor-10514 .breadcrumb-area.style3 span::after,
 .elementor-10514 .breadcrumb-area.style3 span span::after {
-  display: none !important;
-  content: none !important;
+    display: none !important;
+    content: none !important;
 }
