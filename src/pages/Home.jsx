@@ -5542,20 +5542,18 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-3f618e1 e-con-full e-flex e-con e-parent"
-                                        data-id="3f618e1" data-element_type="container" data-e-type="container"
-                                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-
+                                    
+<div class="bg-image-banner  mx-5 p-5 rounded-lg">   
                                         <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-441f79f e-flex e-con-boxed e-con e-child"
                                             data-id="441f79f" data-element_type="container" data-e-type="container">
                                             <div class="e-con-inner">
-
+ 
                                                 <div class="elementor-element elementor-element-d0dcbd5 elementor-widget__width-initial elementor-widget-tablet__width-inherit elementor-widget elementor-widget-rs-heading"
                                                     data-id="d0dcbd5" data-element_type="widget" data-e-type="widget"
                                                     data-widget_type="rs-heading.default">
                                                     <div class="elementor-widget-container">
 
-                                                        <div class="prelements-heading style1  ">
+                                               <div class="prelements-heading style1  ">
                                                             <div class="title-inner">
                                                                 <span class="sub-text">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="17"
@@ -5568,15 +5566,18 @@ export default function Home() {
                                                                             fill="#F7C600"></path>
                                                                     </svg> Book Your Place in Engitech Expo Ahmedabad
                                                                 </span>
+                                                                <img src='/yellowstar2.png'></img>
                                                                 <h2 class="title rs-split-text-enable split-in-fade">
                                                                     Secure Your Exhibition Booth
                                                                     Join the Leaders of Industrial Innovation </h2>
                                                             </div>
+
                                                         </div>
+                                                        </div> 
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                       
 
                                         <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5fc2ab9 e-con-full e-flex e-con e-child"
                                             data-id="5fc2ab9" data-element_type="container" data-e-type="container">
@@ -5651,13 +5652,14 @@ export default function Home() {
 
                                     <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f3dd11d e-con-full e-flex e-con e-parent"
                                         data-id="f3dd11d" data-element_type="container" data-e-type="container"
-                                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+                                        style="width: calc(100% - 100px); margin-left: 50px; margin-right: 50px; border-radius: 12px; box-sizing: border-box;">
 
-                                        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7326dd1 e-flex e-con-boxed e-con e-child"
+                                        <div style={{ padding: '10px' }}  class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7326dd1 e-flex e-con-boxed e-con e-child py-0"
                                             data-id="7326dd1" data-element_type="container" data-e-type="container">
-                                            <div class="e-con-inner">
+                                            <div class="e-con-inner ">
 
-                                                <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-bd7d0f8 e-con-full e-flex e-con e-child"
+                                                <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-bd7d0f8 e-con-full e-flex e-con e-child py-1"
                                                     data-id="bd7d0f8" data-element_type="container"
                                                     data-e-type="container">
 
@@ -5666,7 +5668,7 @@ export default function Home() {
                                                         data-e-type="widget" data-widget_type="rs-heading.default">
                                                         <div class="elementor-widget-container">
 
-                                                            <div class="prelements-heading style1  ">
+                                                            <div class="prelements-heading style1  py-0">
                                                                 <div class="title-inner">
                                                                     <span class="sub-text">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -5699,7 +5701,7 @@ export default function Home() {
                                                             data-id="276f1ab" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="image.default">
                                                             <img loading="lazy" decoding="async" width="600"
-                                                                height="431"
+                                                                height="100"
                                                                 src="/images/megaphone-important-announcement-speech-bubble-600nw-2565253093.webp"
                                                                 class="attachment-full size-full wp-image-31133" alt="">
                                                         </div>

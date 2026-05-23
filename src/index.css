@@ -7,6 +7,169 @@ body {
   width: 100%;
 }
 
+footer {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ─── Global Horizontal & Vertical Section Margins ─────────────────────── */
+
+/* Prevent any horizontal overflow on the page */
+#page {
+  overflow-x: hidden;
+}
+
+/* All images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Horizontal: inner content never touches screen edges ── */
+.e-con-boxed > .e-con-inner {
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+/* ── Vertical: baseline section breathing room ── */
+.e-con-boxed.e-parent {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Small tablets (≥576px) */
+@media (min-width: 576px) {
+  .e-con-boxed > .e-con-inner {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .e-con-boxed.e-parent {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+/* Tablets (≥768px) */
+@media (min-width: 768px) {
+  .e-con-boxed > .e-con-inner {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .e-con-boxed.e-parent {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Large tablets / small desktop (≥992px) */
+@media (min-width: 992px) {
+  .e-con-boxed > .e-con-inner {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .e-con-boxed.e-parent {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
+
+/* Desktop (≥1200px) */
+@media (min-width: 1200px) {
+  .e-con-boxed > .e-con-inner {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  .e-con-boxed.e-parent {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* ── Bootstrap .container: ensure consistent edge padding ── */
+.container {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
+
+/* ── Footer inner: matches page horizontal padding ── */
+.footer-inner {
+  padding: 70px 30px 50px 30px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+  .footer-inner {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer-inner {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer-inner {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+/* ── Book Your Place section: background image + dark overlay ── */
+.elementor-element-3f618e1 {
+  background-image: url('/homevideobgimg.png') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.elementor-element-3f618e1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.elementor-element-3f618e1 > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ── Header breadcrumb section: less vertical padding ── */
+.header-breadcamb-fixer .e-con-boxed.e-parent {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ─── Page Transition ───────────────────────────────────────── */
 .page-transition {
   animation: fadeIn 0.25s ease-in-out;
 }

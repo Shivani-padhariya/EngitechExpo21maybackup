@@ -23,13 +23,16 @@ function Footer({ pathname }) {
   };
 
   return (
-    <footer style={{ background: "#ffffff", borderTop: "1px solid " + colors.border, fontFamily: "'Outfit', sans-serif" }}>
+    <footer style={{ background: "#ffffff", borderTop: "1px solid " + colors.border, fontFamily: "'Outfit', sans-serif", margin: 0, width: "100%", boxSizing: "border-box" }}>
       {/* Main Footer Container */}
       <div
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "70px 20px 50px 20px",
+          paddingTop: 70,
+          paddingBottom: 50,
+          paddingLeft: "clamp(30px, 6vw, 100px)",
+          paddingRight: "clamp(30px, 6vw, 100px)",
+          boxSizing: "border-box",
+          width: "100%",
         }}
       >
         <div
@@ -38,6 +41,7 @@ function Footer({ pathname }) {
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 40,
             textAlign: "left",
+            alignItems: "start",
           }}
         >
           {/* Column 1: Brand & Organiser */}
@@ -74,7 +78,7 @@ function Footer({ pathname }) {
           </div>
 
           {/* Column 2: Useful Links */}
-          <div style={{ paddingLeft: 10 }}>
+          <div>
             <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 20, textTransform: "uppercase", letterSpacing: "0.5px" }}>
               Useful Links
             </h3>
@@ -230,7 +234,10 @@ function Footer({ pathname }) {
       <div
         style={{
           borderTop: "1px solid " + colors.border,
-          padding: "24px 20px",
+          paddingTop: 24,
+          paddingBottom: 24,
+          paddingLeft: "clamp(30px, 6vw, 100px)",
+          paddingRight: "clamp(30px, 6vw, 100px)",
           textAlign: "center",
           fontSize: 14,
           color: colors.greyText,
