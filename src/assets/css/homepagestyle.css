@@ -1,0 +1,281 @@
+ .home .entry-content .elementor-element:not(.hero-section):not(.navbar-section) {
+     padding-left: 20px !important;
+     padding-right: 20px !important;
+     box-sizing: border-box;
+ }
+
+ .elementor-30697 .elementor-element-cf2878a {
+     width: 100%;
+     max-width: none;
+ }
+
+ .elementor-30697 .elementor-element-cf2878a .title-inner,
+ .elementor-30697 .elementor-element-cf2878a .title {
+     width: 100%;
+     max-width: 100%;
+ }
+
+ .elementor-30697 .elementor-element-a9ff8ba img {
+     width: 550px !important;    /* Width badhane ke liye */
+    max-width: 5500px !important; /* Max-width ko bhi badhana hoga */
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important; 
+ }
+
+ /* Custom Sponsor Labels Style - High Priority Fix */
+ .custom-sponsor-label { 
+   width: 100% !important; 
+   height: 42px !important; 
+   display: flex !important; 
+   align-items: center !important; 
+   justify-content: center !important; 
+   font-family: 'Montserrat', sans-serif !important; 
+   font-size: 24px !important; 
+   font-weight: 700 !important; 
+   color: #1a2c3d !important; 
+   letter-spacing: 0.8px !important; 
+   margin-bottom: 15px !important; 
+   position: relative !important;
+   background: transparent !important; /* Clear base background */
+   border: none !important;
+   z-index: 1 !important;
+ }
+
+ /* Using pseudo-element to force gradient background */
+ .custom-sponsor-label::before {
+   content: "" !important;
+   position: absolute !important;
+   top: 0 !important;
+   left: 0 !important;
+   right: 0 !important;
+   bottom: 0 !important;
+   background: linear-gradient( 
+     90deg, 
+     #ffffff 0%, 
+     #d1dee8 20%, 
+     #8ba6ba 50%, 
+     #4a6f8a 80%, 
+     #1a2c3d 100% 
+   ) !important; 
+   z-index: -1 !important; /* Push behind text */
+ }
+
+ .custom-sponsor-label p {
+     margin: 0 !important;
+     font-family: 'Montserrat', sans-serif !important; 
+     position: relative !important;
+     z-index: 2 !important;
+ }
+
+ .rs-btn {
+     display: inline-flex !important;
+     align-items: center !important;
+     justify-content: center !important;
+     white-space: nowrap !important;
+     width: auto !important;
+     min-width: 200px !important;
+ }
+
+ .rs-btn span {
+     white-space: nowrap !important;
+ }
+
+ .rs-btn em {
+     display: none !important; /* Hide arrow if still present */
+ }
+
+ /* Specific width reduction for Co Title, Platinum, and Diamond Sponsors */
+ .elementor-element-91574d2, 
+ .elementor-element-a2410fa,
+ .elementor-element-9adedb9 {
+     max-width: 500px !important;
+     margin-left: auto !important;
+     margin-right: auto !important;
+ }
+
+ /* Left Alignment Fix for Counters and Key Highlights */
+ .rs-counter-list {
+     text-align: left !important;
+     display: flex !important;
+     flex-direction: column !important;
+     justify-content: flex-end !important;
+     height: 100% !important;
+     margin: 0 !important;
+     padding: 0 !important;
+ }
+
+ .rs-counter-list .count-text, 
+ .rs-counter-list .count-number, 
+ .rs-counter-list .title {
+     text-align: left !important;
+     display: block !important;
+ }
+
+ .rs-counter-list .count-number {
+     border-bottom: 1px solid #ddd;
+     padding-bottom: 10px;
+     margin-bottom: 10px;
+     width: 100%;
+     min-height: 80px !important; /* Fixed height for number container */
+     display: flex !important;
+     align-items: flex-end !important;
+     margin-top: auto !important; /* Push to bottom of the item */
+ }
+
+ .prelements-heading, 
+ .prelements-heading .title-inner, 
+ .prelements-heading .title, 
+ .prelements-heading .description {
+     text-align: left !important;
+ }
+
+ .prelements-heading .title-inner {
+     display: flex !important;
+     flex-direction: column !important;
+     align-items: flex-start !important;
+ }
+
+ .prelements-heading .sub-text {
+       justify-content: flex-start !important;
+       margin-left: 0 !important;
+       padding-left: 0 !important;
+   }
+
+   /* Center Alignment for Specific Sections (Exhibitor Categories & Blogs) */
+   .elementor-element-1f70eb7 .prelements-heading,
+   .elementor-element-1f70eb7 .title-inner,
+   .elementor-element-1f70eb7 .sub-text,
+   .elementor-element-1f70eb7 .title,
+    .elementor-element-e4ffa18 .prelements-heading,
+    .elementor-element-e4ffa18 .title-inner,
+    .elementor-element-e4ffa18 .sub-text,
+    .elementor-element-e4ffa18 .title,
+    .elementor-element-fd0ca67 .prelements-heading,
+    .elementor-element-fd0ca67 .title-inner,
+    .elementor-element-fd0ca67 .sub-text,
+    .elementor-element-fd0ca67 .title {
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+   /* Left Margin for Counter Section only */
+  .elementor-element-f82a1d7 {
+      margin-left: 20px !important;
+      display: flex !important;
+      gap: 10px !important;
+      justify-content: flex-start !important;
+      align-items: stretch !important;
+  }
+
+  /* Testimonials Section Layout Fix - Matching Image 1 */
+   .elementor-element-97053bd > .e-con-inner {
+       display: flex !important;
+       flex-direction: row !important;
+       flex-wrap: nowrap !important;
+       align-items: flex-start !important;
+       justify-content: space-between !important;
+   }
+
+   .elementor-element-0deebc9 {
+       width: 35% !important; /* Adjusted for better text wrap */
+       flex: 0 0 35% !important;
+       padding-right: 30px !important;
+   }
+
+   .elementor-element-de0b0a3 {
+       width: 65% !important;
+       flex: 0 0 65% !important;
+   }
+
+   .elementor-element-cf2878a .title {
+       font-size: 48px !important;
+       font-weight: 800 !important;
+       line-height: 1.1 !important;
+       text-align: left !important;
+       color: #1a2c3d !important;
+       max-width: 350px !important; /* Forces text to wrap like Image 1 */
+   }
+
+   .elementor-element-ca374bb .testimonial-inner {
+       background: transparent !important;
+       padding: 0 10px !important;
+       box-shadow: none !important;
+       border: none !important;
+   }
+
+   .elementor-element-ca374bb .testimonial-inner .description {
+       font-size: 16px !important;
+       line-height: 1.7 !important;
+       color: #444 !important;
+       margin-bottom: 25px !important;
+       font-family: inherit !important;
+   }
+
+   .elementor-element-ca374bb .testimonial-inner .logo-img {
+       margin-bottom: 25px !important;
+       max-width: 130px !important;
+       height: auto !important;
+   }
+
+   .elementor-element-ca374bb .testimonial-inner .name {
+       font-size: 15px !important;
+       font-weight: 700 !important;
+       margin-bottom: 2px !important;
+       color: #1a2c3d !important;
+       text-transform: uppercase !important;
+   }
+
+   .elementor-element-ca374bb .testimonial-inner .testi-designation {
+       font-size: 14px !important;
+       color: #666 !important;
+   }
+
+   .elementor-element-ca374bb .testimonial-inner .quote_icon {
+        display: block !important;
+        position: absolute !important;
+        bottom: 10px !important;
+        right: 10px !important;
+        opacity: 0.1 !important;
+        transform: rotate(0deg) !important;
+    }
+
+    .elementor-element-ca374bb .testimonial-inner .quote_icon svg {
+         width: 60px !important;
+         height: auto !important;
+     }
+
+     .elementor-element-ca374bb .testimonial-inner {
+         position: relative !important;
+         background: #fdfdfd !important; /* Very light background to make it slightly visible */
+         padding: 30px !important;
+         box-shadow: 0 5px 20px rgba(0,0,0,0.03) !important; /* Very subtle shadow */
+         border: 1px solid #f1f1f1 !important; /* Light border */
+         border-radius: 10px !important;
+         margin-right: 20px !important;
+         min-height: 380px !important;
+         display: flex !important;
+         flex-direction: column !important;
+     }
+
+     /* Megaphone Announcement Image Size Increase and Position */
+      .elementor-element-276f1ab img {
+          width: 140% !important;
+          max-width: 650px !important;
+          height: auto !important;
+          display: block !important;
+          margin-left: -100px !important; /* Moved left to reduce gap */
+      }
+
+      .elementor-element-62857bd {
+          width: 30% !important;
+          flex: 0 0 30% !important;
+      }
+
+      .elementor-element-bd7d0f8 {
+          width: 70% !important;
+          flex: 0 0 70% !important;
+      }

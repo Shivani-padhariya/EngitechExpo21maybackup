@@ -55,7 +55,7 @@
   font-family: Georgia, serif;
   font-size: 24px;
   padding: 8px 24px;
-  margin-bottom: 20px;
+  margin: 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
@@ -70,7 +70,7 @@
   background: rgba(0, 0, 0, 0.65);
   display: inline-block;
   padding: 30px 40px;
-  margin-bottom: 20px;
+  margin: 0;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   text-transform: uppercase;
   line-height: 1.2;
@@ -104,7 +104,8 @@
   font-size: 16px;
   font-weight: 500;
   padding: 10px 20px;
-  margin-bottom: 30px;
+  margin-top: 0;
+  margin-bottom: 20px;
   clear: both;
 }
 

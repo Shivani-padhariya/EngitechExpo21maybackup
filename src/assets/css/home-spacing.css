@@ -1,0 +1,55 @@
+ .home .entry-content .elementor-element:not(.hero-section):not(.navbar-section) {
+     padding-left: 20px !important;
+     padding-right: 20px !important;
+     box-sizing: border-box;
+ }
+
+ .elementor-30697 .elementor-element-cf2878a {
+     width: 100%;
+     max-width: none;
+ }
+
+ .elementor-30697 .elementor-element-cf2878a .title-inner,
+ .elementor-30697 .elementor-element-cf2878a .title {
+     width: 100%;
+     max-width: 100%;
+ }
+
+ .elementor-30697 .elementor-element-a9ff8ba img {
+     width: 100% !important;
+     max-width: 1500px !important;
+     height: auto !important;
+ }
+
+ /* Custom Sponsor Labels Style - Matching Image 1 */
+ .custom-sponsor-label { 
+   width: 100% !important; 
+   height: 62px !important; 
+   border-radius: 0px !important; 
+   display: flex !important; 
+   align-items: center !important; 
+   justify-content: center !important; 
+   font-family: 'Montserrat', sans-serif !important; 
+   font-size: 24px !important; 
+   font-weight: 700 !important; 
+   color: #1a2c3d !important; 
+   letter-spacing: 0.8px !important; 
+   background: linear-gradient( 
+     90deg, 
+     #ffffff 0%, 
+     #d1dee8 20%, 
+     #8ba6ba 50%, 
+     #4a6f8a 80%, 
+     #1a2c3d 100% 
+   ) !important; 
+   box-shadow: none !important; 
+   margin-bottom: 15px !important; 
+   text-shadow: none !important;
+   border: none !important;
+   overflow: hidden !important;
+ }
+
+ .custom-sponsor-label p {
+     margin: 0 !important;
+     font-family: 'Montserrat', sans-serif !important; 
+ }

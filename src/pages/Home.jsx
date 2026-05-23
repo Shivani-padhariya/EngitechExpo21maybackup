@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import Layout from '../components/Layout';
 import HeroSlider from '../components/HeroSlider';
-
-export default function Home() {
+import "../assets/css/homepagestyle.css"; export default function Home() {
     useEffect(() => {
         const timer = setTimeout(() => {
             const $ = window.jQuery;
@@ -143,6 +142,7 @@ export default function Home() {
             pageCss={[{ id: 'page-css-home', href: '/css/page-home.css' }]}
             bodyClass="home page-template-default page page-id-20505 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-20505"
         >
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
             <HeroSlider />
             <div dangerouslySetInnerHTML={{
                 __html: `            <div id="content" class="site-content">
@@ -2438,7 +2438,7 @@ export default function Home() {
                                                         data-e-type="container">
                                                         <div class="e-con-inner">
 
-                                                            <div class="elementor-element elementor-element-b34f99c elementor-widget elementor-widget-rs-heading"
+                                                            <div class="elementor-element elementor-element-b34f99c elementor-widget elementor-widget-rs-heading style="width: 100%; max-width: 700px;"
                                                                 data-id="b34f99c" data-element_type="widget"
                                                                 data-e-type="widget"
                                                                 data-widget_type="rs-heading.default">
@@ -2469,7 +2469,7 @@ export default function Home() {
                                                                                 the engineering sector. <a
                                                                                     href="https://engitechexpo.com/gujarat-manufacturers-industrial-exhibitions-2026/">Discover
                                                                                     new business
-                                                                                    opportunities</a>.<br>The industrial
+                                                                                    opportunities</a>.The industrial
                                                                                 exhibition organized by Engitech covers
                                                                                 industrial fields such as weighing,
                                                                                 welding, cutting, safety, machine tools,
@@ -4277,7 +4277,7 @@ export default function Home() {
                                                     data-id="f3d0fe5" data-element_type="container"
                                                     data-e-type="container">
 
-                                                    <div class="elementor-element elementor-element-91574d2 elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                    <div class="elementor-element elementor-element-91574d2 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                         data-id="91574d2" data-element_type="widget"
                                                         data-e-type="widget" data-widget_type="text-editor.default">
                                                         Co Title Sponsor </div>
@@ -4298,7 +4298,7 @@ export default function Home() {
                                             <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-2fa6f5d e-con-full e-flex e-con e-child"
                                                 data-id="2fa6f5d" data-element_type="container" data-e-type="container">
 
-                                                <div class="elementor-element elementor-element-a2410fa elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                <div class="elementor-element elementor-element-a2410fa elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                     data-id="a2410fa" data-element_type="widget" data-e-type="widget"
                                                     data-widget_type="text-editor.default">
                                                     Platinum Sponsor </div>
@@ -4349,7 +4349,7 @@ export default function Home() {
                                                     data-id="312d344" data-element_type="container"
                                                     data-e-type="container">
 
-                                                    <div class="elementor-element elementor-element-9adedb9 elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                    <div class="elementor-element elementor-element-9adedb9 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                         data-id="9adedb9" data-element_type="widget"
                                                         data-e-type="widget" data-widget_type="text-editor.default">
                                                         Diamond Sponsor </div>
@@ -4378,7 +4378,7 @@ export default function Home() {
                                                         data-id="e7d1c32" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-4caf152 elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                        <div class="elementor-element elementor-element-4caf152 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                             data-id="4caf152" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="text-editor.default">
                                                             <p>Air Partner</p>
@@ -4401,7 +4401,7 @@ export default function Home() {
                                                         data-id="b5c8b20" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-c2278ea elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                        <div class="elementor-element elementor-element-c2278ea elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                             data-id="c2278ea" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="text-editor.default">
                                                             Branding Partner </div>
@@ -4423,7 +4423,7 @@ export default function Home() {
                                                         data-id="ec33cf8" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-9a1f7cd elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                        <div class="elementor-element elementor-element-9a1f7cd elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                             data-id="9a1f7cd" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="text-editor.default">
                                                             <p>Digital Media Partner</p>
@@ -4451,7 +4451,7 @@ export default function Home() {
                                                         data-id="f680c25" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-399ed80 elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                        <div class="elementor-element elementor-element-399ed80 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                             data-id="399ed80" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="text-editor.default">
                                                             Media Partner </div>
@@ -4501,7 +4501,7 @@ export default function Home() {
                                                         data-id="61034a4" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-e6fbd48 elementor-widget__width-initial elementor-widget elementor-widget-text-editor"
+                                                        <div class="elementor-element elementor-element-e6fbd48 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label"
                                                             data-id="e6fbd48" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="text-editor.default">
                                                             CCTV Partner </div>
@@ -5404,7 +5404,7 @@ export default function Home() {
                                                                         </svg> Testimonials </span>
                                                                     <h2
                                                                         class="title rs-split-text-enable split-in-fade">
-                                                                        What people saying about Engitech</h2>
+                                                                        What People Saying About Engitech</h2>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -5592,24 +5592,7 @@ export default function Home() {
                                                         <div class="rs-button style2">
                                                             <a class="rs-btn"
                                                                 href="https://engitechexpo.com/wp-content/uploads/2026/02/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-1.pdf"=_blank="">
-                                                                <span>Download Brochure
-                                                                    <em>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="18" height="12" viewBox="0 0 18 12"
-                                                                            fill="none">
-                                                                            <path fill-rule="evenodd"
-                                                                                clip-rule="evenodd"
-                                                                                d="M0 6C0 5.66249 0.273604 5.38889 0.611111 5.38889L15.0246 5.38889L11.179 1.54323C10.9403 1.30458 10.9403 0.917645 11.179 0.678991C11.4176 0.440337 11.8046 0.440337 12.0432 0.678991L16.9321 5.56788C17.1708 5.80653 17.1708 6.19347 16.9321 6.43212L12.0432 11.321C11.8046 11.5597 11.4176 11.5597 11.179 11.321C10.9403 11.0824 10.9403 10.6954 11.179 10.4568L15.0246 6.61111L0.611111 6.61111C0.273604 6.61111 0 6.33751 0 6Z"
-                                                                                fill="white"></path>
-                                                                        </svg> <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="18" height="12" viewBox="0 0 18 12"
-                                                                            fill="none">
-                                                                            <path fill-rule="evenodd"
-                                                                                clip-rule="evenodd"
-                                                                                d="M0 6C0 5.66249 0.273604 5.38889 0.611111 5.38889L15.0246 5.38889L11.179 1.54323C10.9403 1.30458 10.9403 0.917645 11.179 0.678991C11.4176 0.440337 11.8046 0.440337 12.0432 0.678991L16.9321 5.56788C17.1708 5.80653 17.1708 6.19347 16.9321 6.43212L12.0432 11.321C11.8046 11.5597 11.4176 11.5597 11.179 11.321C10.9403 11.0824 10.9403 10.6954 11.179 10.4568L15.0246 6.61111L0.611111 6.61111C0.273604 6.61111 0 6.33751 0 6Z"
-                                                                                fill="white"></path>
-                                                                        </svg> </em>
-                                                                </span>
+                                                                <span style={{ whiteSpace: 'nowrap', display: 'inline-block' }}>Download Brochure</span>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -5700,8 +5683,8 @@ export default function Home() {
                                                         <div class="elementor-element elementor-element-276f1ab elementor-widget elementor-widget-image"
                                                             data-id="276f1ab" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="image.default">
-                                                            <img loading="lazy" decoding="async" width="600"
-                                                                height="100"
+                                                            <img loading="lazy" decoding="async" width="800"
+                                                                height="700"
                                                                 src="/images/megaphone-important-announcement-speech-bubble-600nw-2565253093.webp"
                                                                 class="attachment-full size-full wp-image-31133" alt="">
                                                         </div>

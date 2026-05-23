@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { blogAPI } from '../admin/services/api';
+import '../assets/css/blogstyle.css';
 
 const breadcrumbHtml = `
 \t<div class="header-breadcamb-fixer">\t\t<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
@@ -116,7 +117,7 @@ export default function Blog() {
                               )}
 
                               {!loading && !error && blogs.map(blog => (
-                                <div key={blog._id} className="pre-blog-item col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: '30px' }}>
+                                <div key={blog._id} className="pre-blog-item col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: '40px' }}>
                                   <div className="blog-item">
                                     <div className="image-part">
                                       <a href={`/blog/${blog.slug}`}>
@@ -124,45 +125,43 @@ export default function Blog() {
                                           <img
                                             src={blog.featuredImage.url}
                                             alt={blog.title}
-                                            style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+                                            style={{ width: '100%', height: '240px', objectFit: 'cover' }}
                                           />
                                         ) : (
                                           <img
                                             src="/images/engitech-2-1-768x274-1.png"
                                             alt={blog.title}
-                                            style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+                                            style={{ width: '100%', height: '240px', objectFit: 'cover' }}
                                           />
                                         )}
                                       </a>
                                     </div>
                                     <div className="blog-content">
                                       {blog.category && (
-                                        <div className="blog-meta" style={{ marginBottom: '8px' }}>
-                                          <span className="blog-category" style={{ color: '#F7C600', fontWeight: '600', fontSize: '13px', textTransform: 'uppercase' }}>
-                                            {blog.category}
-                                          </span>
-                                        </div>
+                                        <span className="blog-category">
+                                          {blog.category}
+                                        </span>
                                       )}
-                                      <h3 className="blog-title" style={{ marginBottom: '10px', fontSize: '18px', fontWeight: '700', lineHeight: '1.4' }}>
-                                        <a href={`/blog/${blog.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                                      <h3 className="blog-title">
+                                        <a href={`/blog/${blog.slug}`}>
                                           {blog.title}
                                         </a>
                                       </h3>
                                       {blog.shortDescription && (
-                                        <p className="blog-desc" style={{ marginBottom: '15px', fontSize: '14px', lineHeight: '1.6', color: '#666' }}>
+                                        <p className="blog-desc">
                                           {blog.shortDescription.length > 120
                                             ? blog.shortDescription.substring(0, 120) + '...'
                                             : blog.shortDescription}
                                         </p>
                                       )}
-                                      <div className="blog-bottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '15px' }}>
+                                      <div className="blog-bottom">
                                         {blog.publishDate && (
-                                          <span className="blog-date" style={{ fontSize: '13px', color: '#999' }}>
+                                          <span className="blog-date">
                                             {formatDate(blog.publishDate)}
                                           </span>
                                         )}
-                                        <a href={`/blog/${blog.slug}`} className="rs-btn rs-btn-sm" style={{ fontSize: '13px', fontWeight: '600', color: '#F7C600', textDecoration: 'none' }}>
-                                          Read More &rarr;
+                                        <a href={`/blog/${blog.slug}`} className="read-more-link">
+                                          Read More <span>&rarr;</span>
                                         </a>
                                       </div>
                                     </div>
