@@ -4,7 +4,10 @@ import { blogAPI } from '../admin/services/api';
 import Layout from '../components/Layout';
 import MDEditor from '@uiw/react-md-editor';
 
-const PAGE_CSS = [{ id: 'page-css-blog', href: '/css/page-blog.css' }];
+const PAGE_CSS = [
+  { id: 'page-css-blog', href: '/css/page-blog.css' },
+  { id: 'page-css-post-10514', href: '/css/post-10514.css' }
+];
 const BODY_CLASS = 'single-post wp-custom-logo elementor-default elementor-kit-23';
 
 export default function BlogDetail() {
@@ -27,23 +30,27 @@ export default function BlogDetail() {
 
   const breadcrumbHtml = `
 <div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
-  <div class="default no-position show_shadow rs-sticky-default elementor-element e-flex e-con-boxed e-con e-parent e-lazyloaded" data-element_type="container">
+  <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="background-image: url('/blogimg/blogtitle.png') !important;">
     <div class="e-con-inner">
-      <div class="default no-position show_shadow rs-sticky-default elementor-element e-flex e-con-boxed e-con e-child" data-element_type="container">
+      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5e42932 e-flex e-con-boxed e-con e-child" data-id="5e42932" data-element_type="container" data-e-type="container">
         <div class="e-con-inner">
-          <div class="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child" data-element_type="container">
-            <div class="elementor-element elementor-widget elementor-widget-page-title" data-element_type="widget" data-widget_type="page-title.default">
+          <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5052d52 e-con-full e-flex e-con e-child" data-id="5052d52" data-element_type="container" data-e-type="container">
+            <div class="elementor-element elementor-element-76b8911 elementor-widget elementor-widget-page-title" data-id="76b8911" data-element_type="widget" data-e-type="widget" data-widget_type="page-title.default">
               <div class="elementor-widget-container">
                 <div class="hfe-page-title hfe-page-title-wrapper elementor-widget-heading">
                   <h1 class="elementor-heading-title elementor-size">${blog?.title || 'Blog'}</h1>
                 </div>
               </div>
             </div>
-            <div class="elementor-element elementor-widget elementor-widget-rs-breadcrumb" data-element_type="widget" data-widget_type="rs-breadcrumb.default">
+            <div class="elementor-element elementor-element-9425f56 elementor-widget elementor-widget-rs-breadcrumb" data-id="9425f56" data-element_type="widget" data-e-type="widget" data-widget_type="rs-breadcrumb.default">
               <div class="elementor-widget-container">
                 <div class="breadcrumb-area style3">
                   <div class="breadcrumbs-inner">
-                    <span><a href="/" class="home">Engitech Expo</a></span> &gt; <span><a href="/blog">Blog</a></span> &gt; <span class="current-item">${blog?.title || 'Post'}</span>
+                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/" class="home"><span property="name">Engitech Expo</span></a><meta property="position" content="1"></span>
+                    <span class="separator" style="margin: 0 8px; color: rgba(255, 255, 255, 0.6);">&gt;</span>
+                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/blog"><span property="name">Blog</span></a><meta property="position" content="2"></span>
+                    <span class="separator" style="margin: 0 8px; color: rgba(255, 255, 255, 0.6);">&gt;</span>
+                    <span property="itemListElement" typeof="ListItem"><span property="name" class="post post-page current-item">${blog?.title || 'Post'}</span><meta property="position" content="3"></span>
                   </div>
                 </div>
               </div>
