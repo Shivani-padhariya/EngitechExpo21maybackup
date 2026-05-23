@@ -2,13 +2,14 @@ import Layout from '../components/Layout';
 import HeroSlider from '../components/HeroSlider';
 
 export default function Home() {
-  return (
-    <Layout
-      pageCss={[{ id: 'page-css-home', href: '/css/page-home.css' }]}
-      bodyClass="home page-template-default page page-id-20505 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-20505"
-    >
-      <HeroSlider />
-      <div dangerouslySetInnerHTML={{ __html: `            <div id="content" class="site-content">
+    return (
+        <Layout
+            pageCss={[{ id: 'page-css-home', href: '/css/page-home.css' }]}
+            bodyClass="home page-template-default page page-id-20505 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-20505"
+        >
+            <HeroSlider />
+            <div dangerouslySetInnerHTML={{
+                __html: `            <div id="content" class="site-content">
                 <div class="row padding-">
                     <div class="col-lg-12 ">
 
@@ -4431,7 +4432,7 @@ export default function Home() {
                                                 </div>
                                             </div>
 
-                                            <div class="elementor-element elementor-element-ff9d1a3 elementor-widget elementor-widget-prelements-blog-slider"
+                                            // <div class="elementor-element elementor-element-ff9d1a3 elementor-widget elementor-widget-prelements-blog-slider"
                                                 data-id="ff9d1a3" data-element_type="widget" data-e-type="widget"
                                                 data-widget_type="prelements-blog-slider.default">
                                                 <div class="elementor-widget-container">
@@ -5579,6 +5580,6 @@ export default function Home() {
                         </article>
                         <!-- #post-30697 -->
                     </div>` }} />
-    </Layout>
-  );
+        </Layout>
+    );
 }

@@ -1,4 +1,4 @@
-﻿
+
         img:is([sizes=auto i], [sizes^="auto," i]) {
             contain-intrinsic-size: 3000px 1500px
         }
@@ -933,4 +933,9 @@
 .elementor-15257 .elementor-element-7c0bf1b *,
 .elementor-15257 .elementor-element-2d35545 * {
   color: #ffffff !important;
+}
+
+/* ---- Navbar Top Yellow Line ---- */
+#rs-header {
+  border-top: 5px solid #f7c600 !important;
 }
