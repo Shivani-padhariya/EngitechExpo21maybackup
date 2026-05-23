@@ -1143,14 +1143,14 @@ Partner 								</div>
 <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 5580px; transform: translate3d(-1116px, 0px, 0px);"><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="650" height="425" src="/images/Top-Industrial-Engineering-Trade-Shows-in-Gujarat-2026.png" class="attachment-full size-full wp-post-image" alt="Top Industrial &amp; Engineering Trade Shows in Gujarat 2026">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1">
                     Top Industrial &amp; Engineering Trade Shows in Gujarat 2026</a>
                 </h3>
                        
@@ -1167,7 +1167,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 48  min read</li>
-                    <li><a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1175,14 +1175,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="712" height="471" src="/images/Ahmedabad-Is-Becoming-a-Hub-for-Industrial.png" class="attachment-full size-full wp-post-image" alt="Ahmedabad Is Becoming a Hub for Industrial">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1">
                     Why Ahmedabad Is Becoming a Hub for Industrial Trade Shows</a>
                 </h3>
                        
@@ -1199,7 +1199,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  0  min read</li>
-                    <li><a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1207,14 +1207,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="512" height="341" src="/images/unnamed.png" class="attachment-full size-full wp-post-image" alt="Infographic showing industrial exhibition planning checklist including pre-event tasks, booth setup, marketing materials, event execution, and post-event follow-up for business success at Engitech Expo.">                </a>
                                 <a href="https://engitechexpo.com/expo-2026/" class="rs-cate" tabindex="-1">
                         Expo 2026                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1">
                     Ultimate Industrial Exhibition Checklist for Exhibitors 2026</a>
                 </h3>
                        
@@ -1231,7 +1231,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 41  min read</li>
-                    <li><a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1239,14 +1239,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 342px;" tabindex="0">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" class="rs--thum" tabindex="0">
+                            <a href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" class="rs--thum" tabindex="0">
                     <img loading="lazy" decoding="async" width="723" height="445" src="/images/Laser-Cutting-Machine-Expo-India-.png" class="attachment-full size-full wp-post-image" alt="Laser Cutting Machine Expo India 2026: Trends &amp; Opportunities">                </a>
                                 <a href="https://engitechexpo.com/expo-2026/" class="rs-cate" tabindex="0">
                         Expo 2026                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" tabindex="0">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" tabindex="0">
                     Laser Cutting Machine Expo India 2026: Trends &amp; Opportunities</a>
                 </h3>
                        
@@ -1263,7 +1263,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  17  min read</li>
-                    <li><a href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1271,14 +1271,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 342px;" tabindex="0">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" class="rs--thum" tabindex="0">
+                            <a href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" class="rs--thum" tabindex="0">
                     <img loading="lazy" decoding="async" width="665" height="425" src="/images/Local-vs-International-Exhibitions.png" class="attachment-full size-full wp-post-image" alt="Local vs International Exhibitions">                </a>
                                 <a href="https://engitechexpo.com/uncategorized/" class="rs-cate" tabindex="0">
                         Uncategorized                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" tabindex="0">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" tabindex="0">
                     Local vs International Exhibitions: What’s Best for Indian Businesses</a>
                 </h3>
                        
@@ -1295,7 +1295,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  16  min read</li>
-                    <li><a href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1303,14 +1303,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 342px;" tabindex="0">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" class="rs--thum" tabindex="0">
+                            <a href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" class="rs--thum" tabindex="0">
                     <img loading="lazy" decoding="async" width="641" height="425" src="/images/Role-of-Industrial-Exhibitions.png" class="attachment-full size-full wp-post-image" alt="Role of Industrial Exhibitions">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="0">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" tabindex="0">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" tabindex="0">
                     Role of Industrial Exhibitions in India’s Manufacturing Sector</a>
                 </h3>
                        
@@ -1327,7 +1327,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 49  min read</li>
-                    <li><a href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" tabindex="0"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1335,14 +1335,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide" data-slick-index="3" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="650" height="425" src="/images/Top-Industrial-Engineering-Trade-Shows-in-Gujarat-2026.png" class="attachment-full size-full wp-post-image" alt="Top Industrial &amp; Engineering Trade Shows in Gujarat 2026">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1">
                     Top Industrial &amp; Engineering Trade Shows in Gujarat 2026</a>
                 </h3>
                        
@@ -1359,7 +1359,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 48  min read</li>
-                    <li><a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1367,14 +1367,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide" data-slick-index="4" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="712" height="471" src="/images/Ahmedabad-Is-Becoming-a-Hub-for-Industrial.png" class="attachment-full size-full wp-post-image" alt="Ahmedabad Is Becoming a Hub for Industrial">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1">
                     Why Ahmedabad Is Becoming a Hub for Industrial Trade Shows</a>
                 </h3>
                        
@@ -1391,7 +1391,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  0  min read</li>
-                    <li><a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1399,14 +1399,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide" data-slick-index="5" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="512" height="341" src="/images/unnamed.png" class="attachment-full size-full wp-post-image" alt="Infographic showing industrial exhibition planning checklist including pre-event tasks, booth setup, marketing materials, event execution, and post-event follow-up for business success at Engitech Expo.">                </a>
                                 <a href="https://engitechexpo.com/expo-2026/" class="rs-cate" tabindex="-1">
                         Expo 2026                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1">
                     Ultimate Industrial Exhibition Checklist for Exhibitors 2026</a>
                 </h3>
                        
@@ -1423,7 +1423,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 41  min read</li>
-                    <li><a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1431,14 +1431,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="723" height="445" src="/images/Laser-Cutting-Machine-Expo-India-.png" class="attachment-full size-full wp-post-image" alt="Laser Cutting Machine Expo India 2026: Trends &amp; Opportunities">                </a>
                                 <a href="https://engitechexpo.com/expo-2026/" class="rs-cate" tabindex="-1">
                         Expo 2026                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" tabindex="-1">
                     Laser Cutting Machine Expo India 2026: Trends &amp; Opportunities</a>
                 </h3>
                        
@@ -1455,7 +1455,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  17  min read</li>
-                    <li><a href="https://engitechexpo.com/laser-cutting-machine-expo-india-2026-trends-opportunities/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/laser-cutting-machine-expo-india-2026-trends-opportunities" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1463,14 +1463,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="665" height="425" src="/images/Local-vs-International-Exhibitions.png" class="attachment-full size-full wp-post-image" alt="Local vs International Exhibitions">                </a>
                                 <a href="https://engitechexpo.com/uncategorized/" class="rs-cate" tabindex="-1">
                         Uncategorized                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" tabindex="-1">
                     Local vs International Exhibitions: What’s Best for Indian Businesses</a>
                 </h3>
                        
@@ -1487,7 +1487,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  16  min read</li>
-                    <li><a href="https://engitechexpo.com/local-vs-international-exhibitions-whats-best-for-indian-businesses/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/local-vs-international-exhibitions-whats-best-for-indian-businesses" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1495,14 +1495,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="641" height="425" src="/images/Role-of-Industrial-Exhibitions.png" class="attachment-full size-full wp-post-image" alt="Role of Industrial Exhibitions">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" tabindex="-1">
                     Role of Industrial Exhibitions in India’s Manufacturing Sector</a>
                 </h3>
                        
@@ -1519,7 +1519,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 49  min read</li>
-                    <li><a href="https://engitechexpo.com/role-of-industrial-exhibitions-in-indias-manufacturing-sector/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/role-of-industrial-exhibitions-in-indias-manufacturing-sector" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1527,14 +1527,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="650" height="425" src="/images/Top-Industrial-Engineering-Trade-Shows-in-Gujarat-2026.png" class="attachment-full size-full wp-post-image" alt="Top Industrial &amp; Engineering Trade Shows in Gujarat 2026">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1">
                     Top Industrial &amp; Engineering Trade Shows in Gujarat 2026</a>
                 </h3>
                        
@@ -1551,7 +1551,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 48  min read</li>
-                    <li><a href="https://engitechexpo.com/top-industrial-engineering-trade-shows-in-gujarat-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/top-industrial-engineering-trade-shows-in-gujarat-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1559,14 +1559,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="712" height="471" src="/images/Ahmedabad-Is-Becoming-a-Hub-for-Industrial.png" class="attachment-full size-full wp-post-image" alt="Ahmedabad Is Becoming a Hub for Industrial">                </a>
                                 <a href="https://engitechexpo.com/industry/" class="rs-cate" tabindex="-1">
                         Industry                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1">
                     Why Ahmedabad Is Becoming a Hub for Industrial Trade Shows</a>
                 </h3>
                        
@@ -1583,7 +1583,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li>  0  min read</li>
-                    <li><a href="https://engitechexpo.com/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/why-ahmedabad-is-becoming-a-hub-for-industrial-trade-shows" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
@@ -1591,14 +1591,14 @@ Partner 								</div>
 </div><div class="pre-blog-item slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 342px;" tabindex="-1">
     <div class="blog-inner-wrap">
         <div class="pre-image-wrap">
-                            <a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" class="rs--thum" tabindex="-1">
+                            <a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" class="rs--thum" tabindex="-1">
                     <img loading="lazy" decoding="async" width="512" height="341" src="/images/unnamed.png" class="attachment-full size-full wp-post-image" alt="Infographic showing industrial exhibition planning checklist including pre-event tasks, booth setup, marketing materials, event execution, and post-event follow-up for business success at Engitech Expo.">                </a>
                                 <a href="https://engitechexpo.com/expo-2026/" class="rs-cate" tabindex="-1">
                         Expo 2026                    </a>
                         </div>  
 
         <div class="pre-blog-content">                 
-                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1">
+                            <h3 class="pre-post-title"><a class="pre-pointer-events" href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1">
                     Ultimate Industrial Exhibition Checklist for Exhibitors 2026</a>
                 </h3>
                        
@@ -1615,7 +1615,7 @@ Partner 								</div>
             
                             <ul class="blog-btn-part">                
                     <li> 41  min read</li>
-                    <li><a href="https://engitechexpo.com/ultimate-industrial-exhibition-checklist-for-exhibitors-2026/" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
+                    <li><a href="/blog/ultimate-industrial-exhibition-checklist-for-exhibitors-2026" tabindex="-1"> <i class="ri-arrow-right-line"></i> </a></li>
                 </ul> 
             
         </div>
