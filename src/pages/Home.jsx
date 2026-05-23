@@ -1,7 +1,91 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 import HeroSlider from '../components/HeroSlider';
 
 export default function Home() {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            const $ = window.jQuery;
+            if (!$) return;
+
+            const $slider = $('#rsaddon-slick-slider-25326');
+            if ($slider.length === 0) return;
+
+            // Extract unique slides (ignoring cloned ones)
+            const $slides = $slider.find('.grid-item:not(.slick-cloned)').clone();
+            if ($slides.length === 0) return;
+
+            // Strip slick classes and styling from the slides to make them clean
+            $slides.removeClass('slick-slide slick-active slick-current slick-cloned')
+                   .removeAttr('style')
+                   .removeAttr('data-slick-index')
+                   .removeAttr('aria-hidden')
+                   .removeAttr('tabindex')
+                   .removeAttr('id');
+
+            // Destroy any existing slick instance if running
+            try {
+                if ($slider.hasClass('slick-initialized')) {
+                    $slider.slick('unslick');
+                }
+            } catch (e) {
+                console.warn('Unslick failed:', e);
+            }
+
+            // Empty the slider container completely
+            $slider.empty();
+
+            // Append the clean slides back into the container
+            $slider.append($slides);
+
+            // Remove slick classes from the slider container itself
+            $slider.removeClass('slick-initialized slick-slider slick-dotted');
+
+            // Initialize slick slider cleanly!
+            if ($.fn.slick) {
+                $slider.slick({
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                    infinite: true,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    dots: false,
+                    prevArrow: `<button class="slick-prev slick-arrow" aria-label="Previous" type="button">Previous</button>`,
+                    nextArrow: `<button class="slick-next slick-arrow" aria-label="Next" type="button">Next</button>`,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 3,
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2,
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                            }
+                        }
+                    ]
+                });
+            }
+        }, 800); // Wait for DOM to completely mount
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <Layout
             pageCss={[{ id: 'page-css-home', href: '/css/page-home.css' }]}
