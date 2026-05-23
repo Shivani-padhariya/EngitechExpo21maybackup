@@ -1,6 +1,67 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
 export default function About() {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const $ = window.jQuery;
+      if (!$) return;
+
+      const $blogSlider = $('.prelements-addon-slider.blog_style_defaultlayout');
+      if ($blogSlider.length > 0) {
+        const $blogSlides = $blogSlider.find('.pre-blog-item:not(.slick-cloned)').clone();
+        if ($blogSlides.length > 0) {
+          $blogSlides.removeClass('slick-slide slick-active slick-current slick-cloned slick-center')
+                     .removeAttr('style')
+                     .removeAttr('data-slick-index')
+                     .removeAttr('aria-hidden')
+                     .removeAttr('tabindex')
+                     .removeAttr('id');
+
+          try {
+            if ($blogSlider.hasClass('slick-initialized')) {
+              $blogSlider.slick('unslick');
+            }
+          } catch (e) {
+            console.warn('Blog Unslick failed:', e);
+          }
+
+          $blogSlider.empty();
+          $blogSlider.append($blogSlides);
+          $blogSlider.removeClass('slick-initialized slick-slider slick-dotted');
+
+          if ($.fn.slick) {
+            $blogSlider.slick({
+              autoplay: true,
+              autoplaySpeed: 3000,
+              infinite: true,
+              slidesToShow: 3, // 3 Columns in one row!
+              slidesToScroll: 1,
+              arrows: false,
+              dots: true,
+              responsive: [
+                {
+                  breakpoint: 992,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+              ]
+            });
+          }
+        }
+      }
+    }, 800); // Wait for DOM to completely mount
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Layout
       pageCss={[{ id: 'page-css-about', href: '/css/page-about.css' }]}
