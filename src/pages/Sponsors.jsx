@@ -6,6 +6,93 @@ export default function Sponsors() {
       pageCss={[{ id: 'page-css-sponsors', href: '/css/page-sponsors.css' }]}
       bodyClass="page-template-default page page-id-241 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-241"
     >
+      <style>{`
+        .elementor-element-5998176 .title-inner,
+        .elementor-element-4a6fc35 .title-inner,
+        .elementor-element-5998176 .prelements-heading,
+        .elementor-element-4a6fc35 .prelements-heading {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            width: 100% !important;
+            justify-content: center !important;
+        }
+        .elementor-element-5998176 .title,
+        .elementor-element-4a6fc35 .title {
+            text-align: center !important;
+            width: 100% !important;
+            display: block !important;
+        }
+        .elementor-element-5998176 .sub-text,
+        .elementor-element-4a6fc35 .sub-text {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        /* Custom Sponsor Labels Style */
+        .custom-sponsor-label { 
+          width: 100% !important; 
+          height: 42px !important; 
+          display: flex !important; 
+          align-items: center !important; 
+          justify-content: center !important; 
+          font-family: 'Montserrat', sans-serif !important; 
+          font-size: 24px !important; 
+          font-weight: 700 !important; 
+          color: #1a2c3d !important; 
+          letter-spacing: 0.8px !important; 
+          margin-bottom: 15px !important; 
+          position: relative !important;
+          background: transparent !important; 
+          border: none !important;
+          z-index: 1 !important;
+        }
+
+        .custom-sponsor-label::before {
+          content: "" !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          background: linear-gradient( 
+            90deg, 
+            #ffffff 0%, 
+            #d1dee8 20%, 
+            #8ba6ba 50%, 
+            #4a6f8a 80%, 
+            #1a2c3d 100% 
+          ) !important; 
+          z-index: -1 !important; 
+        }
+
+        .custom-sponsor-label p {
+            margin: 0 !important;
+            font-family: 'Montserrat', sans-serif !important; 
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        /* Reduced width for specific labels */
+        .elementor-element-0cf4956, 
+        .elementor-element-1aa9765,
+        .elementor-element-05f297b,
+        .elementor-element-b1504b2,
+        .elementor-element-10b3b60,
+        .elementor-element-a0c1c9e,
+        .elementor-element-f5e8d1a,
+        .elementor-element-6dcbbbd,
+        .elementor-element-537fd9e,
+        .elementor-element-e34ce62 {
+            max-width: 600px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+      `}</style>
       <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
 				
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -58,11 +145,11 @@ export default function Sponsors() {
 				<div class="elementor-element elementor-element-5998176 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading" data-id="5998176" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  ">
+		<div class="prelements-heading style1 text-center">
 			<div class="title-inner">
-									<span class="sub-text">
+									<span class="sub-text text-center">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Ahmedabad					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Ahmedabad Sponsors list 2026</h2>
+				<h2 class="title rs-split-text-enable split-in-fade text-center">Ahmedabad Sponsors list 2026</h2>
 			</div>
 					</div>
 				</div>
@@ -75,7 +162,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-c3259c6 e-con-full e-flex e-con e-child" data-id="c3259c6" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-0cf4956 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="0cf4956" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-0cf4956 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="0cf4956" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Co Title Sponsor 								</div>
 		
 				<div class="elementor-element elementor-element-6a98ab2 elementor-widget elementor-widget-image" data-id="6a98ab2" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -87,7 +174,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-6a17a59 e-con-full e-flex e-con e-child" data-id="6a17a59" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-05f297b elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="05f297b" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-05f297b elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="05f297b" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Platinum Sponsor 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-91fdc7e e-grid e-con-full e-con e-child" data-id="91fdc7e" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -111,7 +198,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-6b982ed e-con-full e-flex e-con e-child" data-id="6b982ed" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-10b3b60 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="10b3b60" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-10b3b60 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="10b3b60" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Diamond Sponsor 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-d3fc87b e-grid e-con-full e-con e-child" data-id="d3fc87b" data-element_type="container" data-e-type="container">
@@ -125,7 +212,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-751393a e-con-full e-flex e-con e-child" data-id="751393a" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-176e8c8 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="176e8c8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-176e8c8 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="176e8c8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									<p>Air Partner</p>								</div>
 		
 				<div class="elementor-element elementor-element-c985c45 elementor-widget elementor-widget-image" data-id="c985c45" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -136,7 +223,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-513d2cc e-con-full e-flex e-con e-child" data-id="513d2cc" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-38a79c4 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="38a79c4" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-38a79c4 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="38a79c4" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									 Branding Partner								</div>
 		
 				<div class="elementor-element elementor-element-2da1b69 elementor-widget elementor-widget-image" data-id="2da1b69" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -147,7 +234,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-c98ac67 e-con-full e-flex e-con e-child" data-id="c98ac67" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-0bba908 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="0bba908" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-0bba908 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="0bba908" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									<p>Digital Media Partner</p>								</div>
 		
 				<div class="elementor-element elementor-element-cf83dd2 elementor-widget elementor-widget-image" data-id="cf83dd2" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -161,7 +248,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0437d9d e-con-full e-flex e-con e-child" data-id="0437d9d" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-f5e8d1a elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="f5e8d1a" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-f5e8d1a elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="f5e8d1a" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Media Partner  								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-df32f02 e-con-full e-flex e-con e-child" data-id="df32f02" data-element_type="container" data-e-type="container">
@@ -184,7 +271,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f2ad082 e-con-full e-flex e-con e-child" data-id="f2ad082" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-686c4f3 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="686c4f3" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-686c4f3 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="686c4f3" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									CCTV Partner								</div>
 		
 				<div class="elementor-element elementor-element-d257492 elementor-widget elementor-widget-image" data-id="d257492" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -207,11 +294,11 @@ export default function Sponsors() {
 				<div class="elementor-element elementor-element-4a6fc35 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading" data-id="4a6fc35" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  ">
+		<div class="prelements-heading style1 text-center">
 			<div class="title-inner">
-									<span class="sub-text">
+									<span class="sub-text text-center">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Rajkot					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Rajkot Sponsors list 2025</h2>
+				<h2 class="title rs-split-text-enable split-in-fade text-center">Rajkot Sponsors list 2025</h2>
 			</div>
 					</div>
 				</div>
@@ -223,7 +310,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-57e79b4 e-con-full e-flex e-con e-child" data-id="57e79b4" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-2091956 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="2091956" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-2091956 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="2091956" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Title Sponsor 								</div>
 		
 				<div class="elementor-element elementor-element-643e36b elementor-widget elementor-widget-image" data-id="643e36b" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -234,7 +321,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-b846f0f e-con-full e-flex e-con e-child" data-id="b846f0f" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-1aa9765 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="1aa9765" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-1aa9765 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="1aa9765" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Co Title Sponsor 								</div>
 		
 				<div class="elementor-element elementor-element-3a57fba elementor-widget elementor-widget-image" data-id="3a57fba" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -249,7 +336,7 @@ export default function Sponsors() {
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-29d5f91 e-flex e-con-boxed e-con e-parent" data-id="29d5f91" data-element_type="container" data-e-type="container">
 					<div class="e-con-inner">
 		
-				<div class="elementor-element elementor-element-b1504b2 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="b1504b2" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-b1504b2 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="b1504b2" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Platinum Sponsor 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-3369afa e-grid e-con-full e-con e-child" data-id="3369afa" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -275,7 +362,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7ddb97f e-con-full e-flex e-con e-child" data-id="7ddb97f" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-a0c1c9e elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="a0c1c9e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-a0c1c9e elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="a0c1c9e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Diamond Sponsor 								</div>
 				</div>
 		
@@ -302,7 +389,7 @@ export default function Sponsors() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-d7c5034 e-con-full e-flex e-con e-child" data-id="d7c5034" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-6d4a48a elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="6d4a48a" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-6d4a48a elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="6d4a48a" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Branding Partner 								</div>
 		
 				<div class="elementor-element elementor-element-6183c6b elementor-widget elementor-widget-image" data-id="6183c6b" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -314,7 +401,7 @@ export default function Sponsors() {
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-65659d1 e-flex e-con-boxed e-con e-child" data-id="65659d1" data-element_type="container" data-e-type="container">
 					<div class="e-con-inner">
 		
-				<div class="elementor-element elementor-element-dd06d3c elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="dd06d3c" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-dd06d3c elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="dd06d3c" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Tooling
 Partner 								</div>
 		
@@ -328,7 +415,7 @@ Partner 								</div>
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41df79c e-flex e-con-boxed e-con e-child" data-id="41df79c" data-element_type="container" data-e-type="container">
 					<div class="e-con-inner">
 		
-				<div class="elementor-element elementor-element-b63cd8e elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="b63cd8e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-b63cd8e elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="b63cd8e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Air Partner 								</div>
 		
 				<div class="elementor-element elementor-element-d375a43 elementor-widget elementor-widget-image" data-id="d375a43" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -340,7 +427,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-b7fab13 e-con-full e-flex e-con e-child" data-id="b7fab13" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-94a9f15 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="94a9f15" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-94a9f15 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="94a9f15" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Digital Media Partner 								</div>
 		
 				<div class="elementor-element elementor-element-57ca6ef elementor-widget elementor-widget-image" data-id="57ca6ef" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -354,7 +441,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-9466e79 e-con-full e-flex e-con e-child" data-id="9466e79" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-6dcbbbd elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="6dcbbbd" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-6dcbbbd elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="6dcbbbd" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Media Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-8509a6a e-con-full e-grid e-con e-child" data-id="8509a6a" data-element_type="container" data-e-type="container">
@@ -376,7 +463,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a17fb29 e-con-full e-flex e-con e-child" data-id="a17fb29" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-3fe8975 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="3fe8975" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-3fe8975 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="3fe8975" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									CCTV Partner 								</div>
 		
 				<div class="elementor-element elementor-element-6dd3b56 elementor-widget elementor-widget-image" data-id="6dd3b56" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -387,7 +474,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-30dce5c e-con-full e-flex e-con e-child" data-id="30dce5c" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-7d9ab05 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="7d9ab05" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-7d9ab05 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="7d9ab05" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Video Partner 								</div>
 		
 				<div class="elementor-element elementor-element-52c5d00 elementor-widget elementor-widget-image" data-id="52c5d00" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -396,7 +483,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-799efa3 e-con-full e-flex e-con e-child" data-id="799efa3" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-2eaee28 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="2eaee28" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-2eaee28 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="2eaee28" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Radio Partner 								</div>
 		
 				<div class="elementor-element elementor-element-6a4b834 elementor-widget elementor-widget-image" data-id="6a4b834" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -407,7 +494,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-291905d e-con-full e-flex e-con e-child" data-id="291905d" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-72c7858 elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="72c7858" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-72c7858 elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="72c7858" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Food Partner								</div>
 		
 				<div class="elementor-element elementor-element-de91e2e elementor-widget elementor-widget-image" data-id="de91e2e" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -419,7 +506,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f2f93d1 e-con-full e-flex e-con e-child" data-id="f2f93d1" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-1e9fd6e elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="1e9fd6e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-1e9fd6e elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="1e9fd6e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Supported By 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0f19c1c e-con-full e-grid e-con e-child" data-id="0f19c1c" data-element_type="container" data-e-type="container">
@@ -438,7 +525,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-57ee665 e-con-full e-flex e-con e-child" data-id="57ee665" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-eccd46f elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="eccd46f" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-eccd46f elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="eccd46f" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Cooling Partner 								</div>
 		
 				<div class="elementor-element elementor-element-a3281e1 elementor-widget elementor-widget-image" data-id="a3281e1" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
@@ -450,7 +537,7 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-e34ce62 e-con-full e-flex e-con e-child" data-id="e34ce62" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-537fd9e elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="537fd9e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-element elementor-element-537fd9e elementor-widget__width-initial elementor-widget elementor-widget-text-editor custom-sponsor-label" data-id="537fd9e" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									Supported&nbsp; Association 								</div>
 		
 				<div class="elementor-element elementor-element-838edda elementor-widget elementor-widget-rs-logo" data-id="838edda" data-element_type="widget" data-e-type="widget" data-widget_type="rs-logo.default">
