@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import '../assets/css/footerstyle.css';
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -15,88 +16,44 @@ const NAV_LINKS = [
 ];
 
 function Footer({ pathname }) {
-  const colors = {
-    yellow: "#f7c600",
-    darkBlue: "#284d66",
-    greyText: "#4a5568",
-    border: "#eaeaea",
-  };
-
   return (
-    <footer style={{ background: "#ffffff", borderTop: "1px solid " + colors.border, fontFamily: "'Outfit', sans-serif", margin: 0, width: "100%", boxSizing: "border-box" }}>
-      {/* Main Footer Container */}
-      <div
-        style={{
-          paddingTop: 70,
-          paddingBottom: 50,
-          paddingLeft: "clamp(30px, 6vw, 100px)",
-          paddingRight: "clamp(30px, 6vw, 100px)",
-          boxSizing: "border-box",
-          width: "100%",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 40,
-            textAlign: "left",
-            alignItems: "start",
-          }}
-        >
+    <footer>
+      <div className="footer-container">
+        <div className="footer-grid">
           {/* Column 1: Brand & Organiser */}
-          <div>
+          <div className="footer-column">
             <img
               src="/images/engitech-2-1-768x274-1.png"
               alt="Engitech Expo"
-              style={{ height: 48, objectFit: "contain", marginBottom: 16, display: "block" }}
+              className="footer-brand-img"
             />
-            <p style={{ fontSize: 14, lineHeight: "1.7", color: colors.greyText, marginBottom: 24 }}>
+            <p className="footer-brand-text">
               Engitech Expo is a leading industrial exhibition where businesses explore cutting-edge technologies and global partnerships.
             </p>
             
-            {/* Organised By Brand graphics */}
-            <div style={{ marginTop: 20 }}>
-              <div
-                style={{
-                  fontSize: 16,
-                  fontWeight: "bold",
-                  fontFamily: "Georgia, serif",
-                  color: "#d99726",
-                  marginBottom: 10,
-                  fontStyle: "italic",
-                }}
-              >
+            <div className="organiser-container">
+              <div className="organiser-title">
                 Organised By
               </div>
               <img
                 src="/images/Shree-Communication-Logo-600x325-1.png"
                 alt="Shree Communication"
-                style={{ height: 56, objectFit: "contain", display: "block" }}
+                className="organiser-img"
               />
             </div>
           </div>
 
           {/* Column 2: Useful Links */}
-          <div>
-            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 20, textTransform: "uppercase", letterSpacing: "0.5px" }}>
-              Useful Links
-            </h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div className="footer-column">
+            <h3>Useful Links</h3>
+            <div className="footer-links">
               {NAV_LINKS.map((l) => {
                 const active = pathname === l.href;
                 return (
                   <Link
                     key={l.label}
                     to={l.href}
-                    className="nav-link-item"
-                    style={{
-                      color: active ? colors.yellow : colors.greyText,
-                      fontSize: 14,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      transition: "color 0.2s",
-                    }}
+                    className={`footer-link-item ${active ? 'active' : ''}`}
                   >
                     {l.label}
                   </Link>
@@ -105,67 +62,56 @@ function Footer({ pathname }) {
             </div>
           </div>
 
-          {/* Column 3: Corporate Office Address structure */}
-          <div>
-            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 20, textTransform: "uppercase", letterSpacing: "0.5px" }}>
-              Corporate Office
-            </h3>
-            <p style={{ color: colors.greyText, fontSize: 14, lineHeight: "1.6", marginBottom: 20 }}>
+          {/* Column 3: Corporate Office */}
+          <div className="footer-column">
+            <h3>Corporate Office</h3>
+            <p className="footer-info-text">
               301, 3rd Floor, Krishna Complex, Nr. H.P. Petrol Pump, Wonder Point, CTM, Ahmedabad-26
             </p>
             
-            <h3 style={{ color: colors.darkBlue, fontSize: 15, fontWeight: 700, marginBottom: 10, textTransform: "uppercase" }}>
+            <h3 className="footer-subheading">
               Head Office
             </h3>
-            <p style={{ color: colors.greyText, fontSize: 14, lineHeight: "1.6", marginBottom: 20 }}>
+            <p className="footer-info-text">
               408, RK Empire, Near Mavdi Circle, 150 Feet Ring Road, Rajkot – 360004.
             </p>
 
-            <h3 style={{ color: colors.darkBlue, fontSize: 15, fontWeight: 700, marginBottom: 8, textTransform: "uppercase" }}>
+            <h3 className="footer-subheading branch">
               Branch
             </h3>
-            <p style={{ color: colors.greyText, fontSize: 14 }}>
+            <p className="footer-info-text mb-0">
               Vadodara
             </p>
           </div>
 
-          {/* Column 4: Email / Phone & Social Badges */}
-          <div>
-            {/* Email Address */}
-            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.5px" }}>
-              Email Address
-            </h3>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
-              <span style={{ fontSize: 14 }}>✉</span>
-              <a href="mailto:info@engitechexpo.com" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+          {/* Column 4: Email / Phone & Social */}
+          <div className="footer-column">
+            <h3>Email Address</h3>
+            <div className="footer-contact-item">
+              <span className="footer-icon-size">✉</span>
+              <a href="mailto:info@engitechexpo.com" className="footer-contact-link">
                 info@engitechexpo.com
               </a>
             </div>
 
-            {/* Phone Number */}
-            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.5px" }}>
-              Phone Number
-            </h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 28 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 14 }}>📞</span>
-                <a href="tel:+919601945255" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+            <h3>Phone Number</h3>
+            <div className="footer-contact-group">
+              <div className="footer-contact-item mb-0">
+                <span className="footer-icon-size">📞</span>
+                <a href="tel:+919601945255" className="footer-contact-link">
                   +91 96019 45255
                 </a>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 14 }}>📞</span>
-                <a href="tel:+919574897793" style={{ color: colors.greyText, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
+              <div className="footer-contact-item mb-0">
+                <span className="footer-icon-size">📞</span>
+                <a href="tel:+919574897793" className="footer-contact-link">
                   +91 95748 97793
                 </a>
               </div>
             </div>
 
-            {/* Follow Us Social pills */}
-            <h3 style={{ color: colors.darkBlue, fontSize: 16, fontWeight: 700, marginBottom: 14, textTransform: "uppercase", letterSpacing: "0.5px" }}>
-              Follow Us
-            </h3>
-            <div style={{ display: "flex", gap: 10 }}>
+            <h3>Follow Us</h3>
+            <div className="footer-social-list">
               {[
                 {
                   href: "https://www.facebook.com/engitechexpo",
@@ -209,18 +155,8 @@ function Footer({ pathname }) {
                   href={soc.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    width: 36,
-                    height: 36,
-                    background: soc.color,
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "transform 0.2s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  className="footer-social-icon"
+                  style={{ '--social-bg': soc.color }}
                 >
                   {soc.svg}
                 </a>
@@ -230,26 +166,13 @@ function Footer({ pathname }) {
         </div>
       </div>
 
-      {/* Attribution Bar */}
-      <div
-        style={{
-          borderTop: "1px solid " + colors.border,
-          paddingTop: 24,
-          paddingBottom: 24,
-          paddingLeft: "clamp(30px, 6vw, 100px)",
-          paddingRight: "clamp(30px, 6vw, 100px)",
-          textAlign: "center",
-          fontSize: 14,
-          color: colors.greyText,
-          fontWeight: 600,
-        }}
-      >
+      <div className="footer-attribution">
         © 2026 ENGITECH. Designed & Developed By{" "}
         <a
           href="https://fuertedevelopers.in/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#d99726", fontWeight: "bold", textDecoration: "none" }}
+          className="footer-attribution-link"
         >
           Fuerte Developers.
         </a>

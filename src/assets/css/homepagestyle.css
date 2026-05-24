@@ -279,3 +279,183 @@
           width: 70% !important;
           flex: 0 0 70% !important;
       }
+
+      /* Decrease gap between Expo Glimps (3 videos) */
+      .elementor-element-b93674f {
+          gap: 2px !important; /* Adjust this value to decrease/increase gap */
+      }
+
+      /* Mobile Responsiveness for All Home Page Sections */
+      @media (max-width: 767px) {
+          /* Navbar fix: Hide desktop header and show mobile header correctly */
+          #rs-header .elementor-element-4d7d6b1,
+          header .elementor-element-4d7d6b1 {
+              display: none !important;
+              visibility: hidden !important;
+              height: 0 !important;
+              overflow: hidden !important;
+          }
+          #rs-header .elementor-element-377eaa9,
+          header .elementor-element-377eaa9 {
+              display: flex !important;
+              visibility: visible !important;
+          }
+
+          /* Image Responsiveness Fix for L2436 */
+          .elementor-30697 .elementor-element-a9ff8ba img {
+              width: 100% !important;
+              max-width: 100% !important;
+              height: auto !important;
+              margin: 0 auto !important;
+          }
+
+          /* General Container Fixes */
+          .elementor-element, .e-con, .e-con-inner, .e-con-full, .e-grid {
+              flex-direction: column !important;
+              display: flex !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding-left: 10px !important;
+              padding-right: 10px !important;
+              gap: 15px !important;
+              height: auto !important;
+          }
+
+          /* Reset Grid to Column */
+          .e-grid {
+              grid-template-columns: 1fr !important;
+              display: flex !important;
+              flex-direction: column !important;
+          }
+
+          /* Counter Section Fix (Image 2) */
+          .elementor-element-f82a1d7 {
+              margin-left: 0 !important;
+              padding-left: 10px !important;
+              padding-right: 10px !important;
+              display: flex !important;
+              flex-direction: column !important;
+              gap: 20px !important;
+          }
+
+          .elementor-element-f82a1d7 .e-con-child {
+              width: 100% !important;
+              margin-bottom: 10px !important;
+          }
+
+          .rs-counter-list .count-number {
+              min-height: 60px !important;
+              font-size: 32px !important;
+          }
+
+          /* Highlights Section (Image 3) - Reduce Margin */
+          .elementor-element-fd99f31 {
+              margin: 0 !important;
+              padding: 0 !important;
+          }
+          .elementor-element-fd99f31 > .e-con-inner {
+              flex-direction: column !important;
+              padding: 10px !important;
+          }
+
+          .elementor-element-0fcb520, .elementor-element-f527b3c {
+              width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+          }
+
+          /* Exhibition Category (Image 4) - Remove Yellow Arrows */
+          .uni-25326 .slick-arrow {
+              display: none !important;
+          }
+
+          /* Why Attend Section (Image 5) - Reduce Margin */
+          .elementor-element-7f3e08a {
+              margin: 0 !important;
+              padding: 0 !important;
+          }
+          .elementor-element-7f3e08a > .e-con-inner {
+              flex-direction: column-reverse !important; /* Image after text on mobile */
+              padding: 10px !important;
+          }
+
+          .elementor-element-ca82785, .elementor-element-a427b33 {
+              width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+          }
+
+          /* Testimonials Section */
+          .elementor-element-97053bd > .e-con-inner {
+              flex-direction: column !important;
+          }
+
+          .elementor-element-0deebc9, .elementor-element-de0b0a3 {
+              width: 100% !important;
+              flex: 0 0 100% !important;
+              padding-right: 0 !important;
+          }
+
+          .elementor-element-cf2878a .title {
+              font-size: 28px !important; /* Smaller title for mobile */
+              max-width: 100% !important;
+          }
+
+          .elementor-element-ca374bb .testimonial-inner {
+              margin-right: 0 !important;
+              min-height: auto !important;
+              padding: 20px !important;
+          }
+
+          /* Megaphone Section */
+          .elementor-element-276f1ab img {
+              width: 100% !important;
+              margin-left: 0 !important;
+          }
+
+          .elementor-element-62857bd, .elementor-element-bd7d0f8 {
+              width: 100% !important;
+              flex: 0 0 100% !important;
+          }
+
+          /* Sponsor Labels */
+          .custom-sponsor-label {
+              font-size: 18px !important;
+              height: auto !important;
+              padding: 10px !important;
+              max-width: 100% !important;
+          }
+
+          /* Blog & Categories Alignment */
+          .elementor-element-1f70eb7 .prelements-heading,
+          .elementor-element-e4ffa18 .prelements-heading,
+          .elementor-element-fd0ca67 .prelements-heading {
+              text-align: center !important;
+          }
+
+          /* Special Banner Section Override (Secure Your Booth) */
+          .elementor-element-f3dd11d {
+              width: 100% !important;
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              border-radius: 0 !important;
+              padding: 15px 5px !important;
+          }
+
+          .elementor-element-7326dd1 {
+              padding: 5px 0 !important;
+          }
+
+          .bg-image-banner {
+              margin: 5px !important;
+              padding: 15px !important;
+          }
+
+          /* Image sizing on mobile */
+          img {
+              max-width: 100% !important;
+              height: auto !important;
+          }
+      }

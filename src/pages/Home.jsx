@@ -46,7 +46,7 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                     autoplay: true,
                     autoplaySpeed: 2000,
                     infinite: true,
-                    slidesToShow: 5,
+                    slidesToShow: 4,
                     slidesToScroll: 1,
                     arrows: true,
                     dots: false,
@@ -68,13 +68,21 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                         {
                             breakpoint: 768,
                             settings: {
-                                slidesToShow: 2,
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                centerMode: false,
+                                autoplay: true,
+                                autoplaySpeed: 2000,
                             }
                         },
                         {
                             breakpoint: 480,
                             settings: {
                                 slidesToShow: 1,
+                                slidesToScroll: 1,
+                                centerMode: false,
+                                autoplay: true,
+                                autoplaySpeed: 2000,
                             }
                         }
                     ]
@@ -5566,7 +5574,6 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                                             fill="#F7C600"></path>
                                                                     </svg> Book Your Place in Engitech Expo Ahmedabad
                                                                 </span>
-                                                                <img src='/yellowstar2.png'></img>
                                                                 <h2 class="title rs-split-text-enable split-in-fade">
                                                                     Secure Your Exhibition Booth
                                                                     Join the Leaders of Industrial Innovation </h2>

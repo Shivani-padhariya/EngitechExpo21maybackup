@@ -84,3 +84,33 @@ font-display:swap;
 .elementor-30998 .rs-addon-services.style2 .services-inner.box:hover .services-title .title a {
   color: inherit !important;
 }
+
+@media (max-width: 767px) {
+  .elementor-element-9c5a7ef {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .elementor-element-9c5a7ef > .elementor-element {
+    flex-shrink: 0 !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Adjust margins for numerical data */
+  .elementor-widget-rs-counter {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .elementor-widget-rs-counter .count-text,
+  .elementor-widget-rs-counter .count-number,
+  .elementor-widget-rs-counter .title {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
