@@ -4,6 +4,104 @@
      box-sizing: border-box;
  }
 
+ /* Mobile View Padding Fix for Home Page */
+ @media (max-width: 767px) {
+     /* Increased specificity to override global 20px padding */
+     .home .entry-content .elementor-element:not(.hero-section),
+     .home .entry-content .elementor-element:not(.hero-section):not(.navbar-section),
+     .home .elementor-element-377eaa9 /* Mobile Header Row */ {
+         padding-left: 2px !important;
+         padding-right: 2px !important;
+         margin-left: 0 !important;
+         margin-right: 0 !important;
+     }
+
+     /* Reset inner container paddings which often cause white space */
+     .home .e-con-inner,
+     .home .elementor-widget-container,
+     .home .elementor-column-gap-default > .elementor-column > .elementor-element-populated {
+         padding-left: 2px !important;
+         padding-right: 2px !important;
+     }
+
+     /* Force full width on main content */
+     .home .site-content .row,
+     .home .site-content .container {
+         padding-left: 0 !important;
+         padding-right: 0 !important;
+         margin-left: 0 !important;
+         margin-right: 0 !important;
+         max-width: 100% !important;
+         width: 100% !important;
+     }
+
+     /* Fix specific inline margins found in Home.jsx */
+     .home .elementor-element-f82a1d7, 
+     .home .elementor-element-f3dd11d {
+         margin-left: 0 !important;
+         margin-right: 0 !important;
+         width: 100% !important;
+     }
+
+     /* Global reset for any element that might be pushing the screen */
+     .home .elementor-section,
+     .home .elementor-container,
+     .home .elementor-column,
+     .home .elementor-widget-wrap {
+         padding-left: 2px !important;
+         padding-right: 2px !important;
+         margin-left: 0 !important;
+         margin-right: 0 !important;
+     }
+
+     /* Navbar Logo and Menu button side-by-side fix */
+     .elementor-element-7390859 {
+         display: flex !important;
+         flex-direction: row !important;
+         flex-wrap: nowrap !important;
+         justify-content: space-between !important;
+         align-items: flex-start !important; /* Top alignment */
+         width: 100% !important;
+         padding: 5px !important;
+     }
+
+     .elementor-element-2cadd42 {
+         flex: 0 0 auto !important;
+         max-width: 120px !important; /* Logo size aur kam kiya */
+         width: 120px !important;
+         margin: 0 !important;
+     }
+
+     .elementor-element-2cadd42 img {
+         width: 100% !important;
+         height: auto !important;
+         max-height: 50px !important; /* Height restrict ki */
+         display: block !important;
+         object-fit: contain !important;
+     }
+
+     .elementor-element-85ff95f {
+         flex: 0 0 auto !important;
+         margin-top: 5px !important; /* Top se thoda gap */
+         margin-left: auto !important;
+         display: flex !important;
+         justify-content: flex-end !important;
+     }
+
+     .elementor-element-85ff95f .rs-offcanvas-area {
+         margin: 0 !important;
+         padding: 0 !important;
+     }
+ }
+
+
+
+
+
+
+
+
+
  .elementor-30697 .elementor-element-cf2878a {
      width: 100%;
      max-width: none;
@@ -198,6 +296,20 @@
     flex-direction: column !important;
     justify-content: flex-end !important;
 }
+
+/* Hide "Explore Exhibition Categories" heading, sub-text and its categories list in mobile view */
+@media (max-width: 767px) {
+    .elementor-element-b8145f8 .title,    /* Main Heading */
+    .elementor-element-b8145f8 .sub-text, /* Sub Heading (EXPO CATEGORIES) */
+    .elementor-element-2300953,            /* Slider container */
+    .elementor-element-b38a37d             /* Slider widget */ {
+        display: none !important;
+    }
+}
+
+
+
+
 
 .rs-counter-list {
     text-align: left !important;
@@ -406,6 +518,13 @@
 
       /* Mobile Responsiveness for All Home Page Sections */
       @media (max-width: 767px) {
+          /* ===== PREVENT HORIZONTAL OVERFLOW ===== */
+          .home .entry-content,
+          .elementor.elementor-30697 {
+              overflow-x: hidden !important;
+              max-width: 100% !important;
+          }
+
           /* Navbar fix: Hide desktop header and show mobile header correctly */
           #rs-header .elementor-element-4d7d6b1,
           header .elementor-element-4d7d6b1 {
@@ -420,6 +539,37 @@
               visibility: visible !important;
           }
 
+          /* Specific fix for Mobile Navbar row alignment */
+          header .elementor-element-377eaa9 .elementor-element-7390859 {
+              flex-direction: row !important;
+              flex-wrap: nowrap !important;
+              justify-content: space-between !important;
+              align-items: center !important;
+              padding: 5px 15px !important;
+              width: 100% !important;
+              display: flex !important;
+          }
+
+          header .elementor-element-377eaa9 .elementor-element-2cadd42 {
+              width: auto !important;
+              max-width: 180px !important;
+          }
+
+          header .elementor-element-377eaa9 .elementor-element-85ff95f {
+              width: auto !important;
+              margin-left: auto !important;
+          }
+
+          header .elementor-element-377eaa9 .elementor-element-85ff95f .elementor-widget-container {
+              width: auto !important;
+              display: block !important;
+          }
+
+          header .elementor-element-377eaa9 .elementor-element-2cadd42 img {
+              max-height: 50px !important;
+              width: auto !important;
+          }
+
           /* Image Responsiveness Fix for L2436 */
           .elementor-30697 .elementor-element-a9ff8ba img {
               width: 100% !important;
@@ -428,18 +578,26 @@
               margin: 0 auto !important;
           }
 
-          /* General Container Fixes */
-          .elementor-element, .e-con, .e-con-inner, .e-con-full, .e-grid {
+          /* General Container Fixes - Containers only (not widgets) */
+          .e-con, .e-con-inner, .e-con-full {
               flex-direction: column !important;
               display: flex !important;
               width: 100% !important;
               max-width: 100% !important;
               margin-left: 0 !important;
               margin-right: 0 !important;
-              padding-left: 10px !important;
-              padding-right: 10px !important;
-              gap: 15px !important;
               height: auto !important;
+              box-sizing: border-box !important;
+          }
+
+          /* Elementor widget elements: full width, no forced display change */
+          .elementor-element {
+              width: 100% !important;
+              max-width: 100% !important;
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              height: auto !important;
+              box-sizing: border-box !important;
           }
 
           /* Reset Grid to Column */
@@ -447,6 +605,7 @@
               grid-template-columns: 1fr !important;
               display: flex !important;
               flex-direction: column !important;
+              gap: 10px !important;
           }
 
           /* ===== COUNTER SECTION MOBILE FIX ===== */
@@ -593,5 +752,55 @@
           img {
               max-width: 100% !important;
               height: auto !important;
+          }
+
+          /* ===== IFRAME / VIDEO RESPONSIVE FIX ===== */
+          /* YouTube iframes have width="640" HTML attr — override to fit mobile */
+          /* Classic padding-bottom technique: works on all browsers including old Safari iOS */
+          .elementor-wrapper.elementor-open-inline {
+              position: relative !important;
+              display: block !important;
+              width: 100% !important;
+              height: 0 !important;
+              padding-bottom: 56.25% !important; /* 16:9 ratio */
+              overflow: hidden !important;
+          }
+
+          iframe.elementor-video {
+              position: absolute !important;
+              top: 0 !important;
+              left: 0 !important;
+              width: 100% !important;
+              height: 100% !important;
+              display: block !important;
+          }
+
+          /* ===== SLICK SLIDER OVERFLOW SAFETY ===== */
+          .slick-list {
+              overflow: hidden !important;
+              max-width: 100% !important;
+          }
+
+          .rsaddon-unique-slider,
+          .prelements-addon-slider {
+              overflow: hidden !important;
+              max-width: 100% !important;
+          }
+
+          /* ===== VIDEO GRID SECTION (3 videos) ===== */
+          .elementor-element-b93674f {
+              display: flex !important;
+              flex-direction: column !important;
+              gap: 15px !important;
+          }
+
+          .elementor-element-b93674f .elementor-element {
+              width: 100% !important;
+          }
+
+          /* ===== FIX WIDGET CONTAINER OVERFLOW ===== */
+          .elementor-widget-container {
+              overflow: hidden !important;
+              max-width: 100% !important;
           }
       }

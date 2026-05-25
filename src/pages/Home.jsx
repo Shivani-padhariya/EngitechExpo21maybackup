@@ -2545,7 +2545,7 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
 
                                                             <div class="prelements-heading style1  ">
                                                                 <div class="title-inner">
-                                                                    <span class="sub-text">
+                                                                    <span class="sub-text elementor-hidden-mobile">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                                             width="17" height="12" viewBox="0 0 17 12"
                                                                             fill="none">
@@ -2558,7 +2558,7 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                                                 fill="#F7C600"></path>
                                                                         </svg> Expo Categories </span>
                                                                     <h2
-                                                                        class="title rs-split-text-enable split-in-fade">
+                                                                        class="title rs-split-text-enable split-in-fade elementor-hidden-mobile">
                                                                         Explore Exhibition Categories
                                                                     </h2>
                                                                 </div>
