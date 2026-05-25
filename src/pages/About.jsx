@@ -215,17 +215,14 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f1af132 e-con-full e-flex e-con e-child" data-id="f1af132" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-f17982e elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="f17982e" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
+				<div class="elementor-element elementor-element-f17982e elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="f17982e" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default" style="width:100%">
 				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<div style={{ textAlign: 'center' }}>
-<span class="sub-text">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						About Engitech Expo					</span>
-				<h2 class="title rs-split-text-disable ">        Empowering Industry Through Innovation
 
-</h2></div>
+		<div class="prelements-heading style1  " style="width:100%;text-align:center !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+			<div class="title-inner" style="text-align:center !important;align-items:center !important;width:100% !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+									<span class="sub-text" style="display:block !important;text-align:center !important;width:100% !important;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						About Engitech Expo					</span>
+				<h2 class="title rs-split-text-disable " style="text-align:center !important;width:100% !important;display:block !important;margin-left:auto !important;margin-right:auto !important;">Empowering Industry Through Innovation</h2>
 			</div>
 					</div>
 				</div>
@@ -1119,14 +1116,14 @@ Partner 								</div>
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-ffe6f76 e-con-full e-flex e-con e-child" data-id="ffe6f76" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-afa49db elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading" data-id="afa49db" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
+				<div class="elementor-element elementor-element-afa49db elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading" data-id="afa49db" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default" style="width:100%">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  ">
-<div class="title-inner" style={{ textAlign: 'center' }}>
-									<span class="sub-text">
+		<div class="prelements-heading style1  " style="width:100% !important;text-align:center !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+<div class="title-inner" style="text-align:center !important;align-items:center !important;width:100% !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+									<span class="sub-text" style="display:block !important;text-align:center !important;width:100% !important;">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Blog					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Blogs</h2>
+				<h2 class="title rs-split-text-enable split-in-fade" style="text-align:center !important;width:100% !important;display:block !important;margin-left:auto !important;margin-right:auto !important;">Blogs</h2>
 			</div>
 					</div>
 				</div>

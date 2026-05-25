@@ -54,15 +54,14 @@ export default function Gallery() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-3438b82 e-con-full e-flex e-con e-child" data-id="3438b82" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-7002ed3 elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="7002ed3" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
+				<div class="elementor-element elementor-element-7002ed3 elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="7002ed3" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default" style="width:100%">
 				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
+
+		<div class="prelements-heading style1  " style="width:100% !important;text-align:center !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+			<div class="title-inner" style="text-align:center !important;align-items:center !important;width:100% !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+									<span class="sub-text" style="display:block !important;text-align:center !important;width:100% !important;">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Photo Gallery					</span>
-				<h2 class="title rs-split-text-disable ">Our Previous Expo Glimpse
-</h2>
+				<h2 class="title rs-split-text-disable " style="text-align:center !important;width:100% !important;display:block !important;margin-left:auto !important;margin-right:auto !important;">Our Previous Expo Glimpse</h2>
 			</div>
 					</div>
 				</div>
@@ -295,14 +294,14 @@ export default function Gallery() {
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-8686e6a e-con-full e-flex e-con e-child" data-id="8686e6a" data-element_type="container" data-e-type="container">
 		
-				<div class="elementor-element elementor-element-d9a414d elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="d9a414d" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
+				<div class="elementor-element elementor-element-d9a414d elementor-widget__width-initial elementor-widget elementor-widget-rs-heading" data-id="d9a414d" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default" style="width:100%">
 				<div class="elementor-widget-container">
-					
-		<div class="prelements-heading style1  ">
-			<div class="title-inner">
-									<span class="sub-text">
+
+		<div class="prelements-heading style1  " style="width:100% !important;text-align:center !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+			<div class="title-inner" style="text-align:center !important;align-items:center !important;width:100% !important;display:flex !important;justify-content:center !important;flex-direction:column !important;align-items:center !important;">
+									<span class="sub-text" style="display:block !important;text-align:center !important;width:100% !important;">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Video Gallery					</span>
-				<h2 class="title rs-split-text-disable ">Video Gallery</h2>
+				<h2 class="title rs-split-text-disable " style="text-align:center !important;width:100% !important;display:block !important;margin-left:auto !important;margin-right:auto !important;">Video Gallery</h2>
 			</div>
 					</div>
 				</div>
