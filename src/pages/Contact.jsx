@@ -197,6 +197,72 @@ const customStyles = `
   width: 100%;
   height: 100%;
 }
+.wpcf7-submit {
+  background-color: #ffb600 !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+  border: none !important;
+  padding: 10px 30px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+  text-transform: capitalize !important;
+}
+
+.wpcf7-submit:hover {
+  background-color: #e6a400 !important;
+}
+
+.wpcf7-form label {
+  color: #444 !important;
+  font-weight: 500 !important;
+}
+
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form textarea {
+  background-color: #f9f9f9 !important;
+  border: 1px solid #eee !important;
+  padding: 10px 15px !important;
+  width: 100% !important;
+  margin-top: 5px !important;
+}
+
+.wpcf7-form input[type="text"]:focus,
+.wpcf7-form input[type="email"]:focus,
+.wpcf7-form textarea:focus {
+  border-color: #ffb600 !important;
+  background-color: #fff !important;
+  outline: none !important;
+}
+
+.prelements-heading.style1 {
+   text-align: center !important;
+   display: block !important;
+   width: 100% !important;
+   margin: 0 auto !important;
+ }
+ 
+ .prelements-heading.style1 .title-inner,
+ .prelements-heading.style1 .title,
+ .prelements-heading.style1 .description {
+   width: 100% !important;
+   display: block !important;
+   text-align: center !important;
+   margin: 0 auto !important;
+   padding: 0 !important;
+ }
+
+ .prelements-heading.style1 .title {
+   margin-bottom: 5px !important;
+ }
+
+.prelements-heading.style1 .description p {
+  margin: 0 !important;
+  color: #888 !important;
+  font-size: 14px !important;
+  text-align: center !important;
+}
+
 @media (max-width: 991px) {
   .custom-office-card {
     width: 48%;
@@ -340,15 +406,17 @@ export default function Contact() {
           <div className="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a12073c e-con-full e-flex e-con e-child" data-id="a12073c" data-element_type="container" data-e-type="container">
             <div
               className="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child"
-              style={{ maxWidth: '600px', margin: '0 auto 40px auto', padding: '0 20px' }}
+              style={{ maxWidth: '600px', margin: '40px auto', padding: '0 20px' }}
             >
-              <div style={{ width: '100%', borderTop: '3px solid #ffb600', backgroundColor: '#fff' }}>
-                <div className="elementor-widget-container">
-                  <div className="prelements-heading style1" style={{ marginTop: '30px' }}>
+              <div style={{ width: '100%', borderTop: '3px solid #ffb600', backgroundColor: '#fff', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
+                <div className="elementor-widget-container" style={{ textAlign: 'center' }}>
+                  <div className="prelements-heading style1" style={{ marginTop: '60px', textAlign: 'center' }}>
                     <div className="title-inner">
-                      <h3 className="title rs-split-text-disable text-align-center">Get in Touch</h3>
+                      <h3 className="title rs-split-text-disable">Get in Touch</h3>
                     </div>
-                    {/* <div className="description">Get in Touch</div> */}
+                    <div className="description">
+                      {/* <p>Get in Touch</p> */}
+                    </div>
                   </div>
                 </div>
 

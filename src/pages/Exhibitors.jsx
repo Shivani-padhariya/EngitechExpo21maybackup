@@ -1796,11 +1796,11 @@ Partner 								</div>
 				<div class="elementor-element elementor-element-8a6f4a9 elementor-widget-laptop__width-initial elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-rs-heading" data-id="8a6f4a9" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  " style="margin-top: 30px;">
-			<div class="title-inner">
-				<h3 class="title rs-split-text-disable ">Exhibitor Registration</h3>
+		<div class="prelements-heading style1  " style="margin-top: 30px; text-align: center !important; display: block !important; width: 100% !important;">
+			<div class="title-inner" style="width: 100% !important; display: block !important; text-align: center !important;">
+				<h3 class="title rs-split-text-disable " style="text-align: center !important; display: block !important; width: 100% !important; margin: 0 auto !important;">Exhibitor Registration</h3>
 			</div>
-							<div class="description">
+							<div class="description" style="text-align: center !important; width: 100% !important; display: block !important; margin: 0 auto !important;">
 					Exhibitor Registration				</div>
 					</div>
 				</div>

@@ -53,44 +53,63 @@
          margin-left: 0 !important;
          margin-right: 0 !important;
      }
+ }
 
-     /* Navbar Logo and Menu button side-by-side fix */
-     .elementor-element-7390859 {
+ /* New React Native Mobile Header Styling - GLOBAL (Hidden on Desktop) */
+ .mobile-header-react {
+     display: none !important;
+ }
+
+ @media (max-width: 991px) {
+     .mobile-header-react {
+         display: block !important;
+         background: #fff !important;
+         width: 100% !important;
+         padding: 10px 15px !important;
+         box-sizing: border-box !important;
+         border-bottom: 1px solid #f1f1f1 !important;
+         position: relative !important;
+         z-index: 999 !important;
+     }
+
+     .mobile-nav-container {
          display: flex !important;
          flex-direction: row !important;
-         flex-wrap: nowrap !important;
          justify-content: space-between !important;
-         align-items: flex-start !important; /* Top alignment */
+         align-items: center !important;
          width: 100% !important;
-         padding: 5px !important;
      }
 
-     .elementor-element-2cadd42 {
+     .mobile-logo {
          flex: 0 0 auto !important;
-         max-width: 120px !important; /* Logo size aur kam kiya */
-         width: 120px !important;
-         margin: 0 !important;
      }
 
-     .elementor-element-2cadd42 img {
-         width: 100% !important;
-         height: auto !important;
-         max-height: 50px !important; /* Height restrict ki */
+     .mobile-logo img {
+         max-height: 50px !important;
+         width: auto !important;
          display: block !important;
-         object-fit: contain !important;
      }
 
-     .elementor-element-85ff95f {
+     .mobile-menu-btn {
          flex: 0 0 auto !important;
-         margin-top: 5px !important; /* Top se thoda gap */
-         margin-left: auto !important;
-         display: flex !important;
-         justify-content: flex-end !important;
      }
 
-     .elementor-element-85ff95f .rs-offcanvas-area {
+     .mobile-menu-btn ul {
+         list-style: none !important;
          margin: 0 !important;
          padding: 0 !important;
+     }
+
+     .mobile-menu-btn .nav-expander {
+         display: flex !important;
+         align-items: center !important;
+         justify-content: center !important;
+         cursor: pointer !important;
+     }
+     
+     /* Hide old elementor mobile header row only on mobile to avoid duplication */
+     .elementor-element-377eaa9 {
+         display: none !important;
      }
  }
 

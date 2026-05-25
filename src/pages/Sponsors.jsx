@@ -1,6 +1,83 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
 export default function Sponsors() {
+  useEffect(() => {
+    let checkCount = 0;
+    const initSlider = () => {
+      const $ = window.jQuery;
+      if (!$ || !$.fn.slick) {
+        if (checkCount < 10) {
+          checkCount++;
+          setTimeout(initSlider, 500);
+        }
+        return;
+      }
+
+      const $container = $('.elementor-element-838edda .elementor-widget-container');
+      if ($container.length > 0) {
+        // PREVENTION: If already initialized correctly, don't do it again
+        if ($container.hasClass('slider-initialized')) return;
+
+        // Find all unique logos (looking for logo-img divs)
+        const $logos = $container.find('.logo-img:not(.slick-cloned)').clone();
+        
+        if ($logos.length > 0) {
+          // Clean the container completely
+          $container.empty();
+          
+          // Add clean logos directly to the container (matching Exhibitors logic)
+          $logos.each(function() {
+            const logoHtml = $(this).html();
+            const $item = $('<div class="slider-logo-item"></div>').append(logoHtml);
+            $container.append($item);
+          });
+
+          // Initialize slick on the container itself
+          $container.slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            speed: 500,
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            draggable: true,
+            variableWidth: false,
+            adaptiveHeight: false,
+            responsive: [
+              {
+                breakpoint: 1200,
+                settings: { slidesToShow: 5 }
+              },
+              {
+                breakpoint: 1024,
+                settings: { slidesToShow: 4 }
+              },
+              {
+                breakpoint: 768,
+                settings: { slidesToShow: 3 }
+              },
+              {
+                breakpoint: 480,
+                settings: { slidesToShow: 2 }
+              }
+            ]
+          });
+
+          // Mark as initialized
+          $container.addClass('slider-initialized');
+        }
+      }
+    };
+
+    const timer = setTimeout(initSlider, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Layout
       pageCss={[{ id: 'page-css-sponsors', href: '/css/page-sponsors.css' }]}
@@ -87,16 +164,110 @@ export default function Sponsors() {
         .elementor-element-a0c1c9e,
         .elementor-element-f5e8d1a,
         .elementor-element-6dcbbbd,
-        .elementor-element-537fd9e,
-        .elementor-element-e34ce62 {
+        .elementor-element-537fd9e {
             max-width: 600px !important;
             margin-left: auto !important;
             margin-right: auto !important;
         }
+
+        /* Clean Slider Styling */
+         .slider-logo-item {
+                padding: 10px !important;
+                display: inline-block !important;
+                vertical-align: middle !important;
+                width: 20% !important; /* Fallback for 5 items */
+                height: 250px !important; 
+                background: #fff !important;
+                text-align: center !important;
+            }
+            .slider-logo-item img {
+                max-height: 200px !important; 
+                width: auto !important;
+                max-width: 95% !important;
+                display: inline-block !important;
+                margin: 0 auto !important;
+                object-fit: contain !important;
+                transition: transform 0.3s ease !important;
+            }
+            .slider-logo-item:hover img {
+                transform: scale(1.05) !important;
+            }
+            
+            /* Target the container directly since we initialize slick on it */
+            .elementor-element-838edda .elementor-widget-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                white-space: nowrap !important; /* Force horizontal if not slicked */
+                overflow: hidden !important;
+            }
+            
+            .elementor-element-838edda .elementor-widget-container.slick-initialized {
+                white-space: normal !important;
+            }
+
+            .elementor-element-838edda .slick-track {
+                display: flex !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+            }
+            /* Make the parent container full width */
+            .elementor-element-838edda {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .elementor-element-e34ce62 {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            /* Arrows styling with visible icons */
+            .custom-slick-slider .slick-arrow {
+                position: absolute !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                z-index: 100 !important;
+                background: #fff !important;
+                border: 1px solid #ddd !important;
+                border-radius: 50% !important;
+                width: 50px !important;
+                height: 50px !important;
+                cursor: pointer !important;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 0 !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .custom-slick-slider .slick-prev { left: 10px !important; }
+            .custom-slick-slider .slick-next { right: 10px !important; }
+            
+            .custom-slick-slider .slick-prev::before {
+                content: "←" !important;
+                font-size: 28px !important;
+                color: #000 !important;
+                display: block !important;
+                font-family: serif !important;
+            }
+            .custom-slick-slider .slick-next::before {
+                content: "→" !important;
+                font-size: 28px !important;
+                color: #000 !important;
+                display: block !important;
+                font-family: serif !important;
+            }
+            .custom-slick-slider .slick-arrow:hover {
+                background: #ffb600 !important;
+                border-color: #ffb600 !important;
+            }
+            .custom-slick-slider .slick-arrow:hover::before {
+                color: #fff !important;
+            }
       `}</style>
       <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
 				
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
 		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-5e42932 e-flex e-con-boxed e-con e-child" data-id="5e42932" data-element_type="container" data-e-type="container">
@@ -555,196 +726,68 @@ Partner 								</div>
 				<div class="elementor-widget-container">
 					
         <div class="rsaddon-unique-slider rsaddons-logo-showcase ">
-    <div id="rsaddon-slick-slider-216578" class="rs-addon-slider-216578 rs-addon-slider rsl_logo_style1 slick-initialized slick-slider"><button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="">Previous</button>
-                    <div class="slick-list draggable" style="padding: 0px 15px;"><div class="slick-track" style="opacity: 1; width: 4482px; transform: translate3d(-1494px, 0px, 0px);"><div class="grid-item slick-slide slick-cloned" data-slick-index="-6" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+    <div id="rsaddon-slick-slider-216578" class="rs-addon-slider-216578 rs-addon-slider rsl_logo_style1">
+                    <div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://rajkotchamber.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
+                    <div class="logo-img">
+                                                    <a href="https://rajkotchamber.com/" target="_blank" rel="noopener">
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/rcci.png" title="" alt=""></a>
 
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="-5" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+            </div><div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.reaindia.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
+                    <div class="logo-img">
+                                                    <a href="https://www.reaindia.com/" target="_blank" rel="noopener">
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/rajkot-engineering-assocciation.png" title="" alt=""></a>
 
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="-4" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+            </div><div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://gidclodhika.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
+                    <div class="logo-img">
+                                                    <a href="https://gidclodhika.com/" target="_blank" rel="noopener">
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/glia.png" title="" alt=""></a>
 
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="-3" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+            </div><div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://ajigidc.delighterp.in/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
+                    <div class="logo-img">
+                                                    <a href="https://ajigidc.delighterp.in/" target="_blank" rel="noopener">
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/agia.png" title="" alt=""></a>
 
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="-2" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+            </div><div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.sviarajkot.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
+                    <div class="logo-img">
+                                                    <a href="https://www.sviarajkot.com/" target="_blank" rel="noopener">
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/svia.png" title="" alt=""></a>
 
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
+            </div><div class="grid-item">
                 <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a tabindex="-1">
+                    <div class="logo-img">
+                                                    <a>
                                                                 <img decoding="async" class="mains-logos rs-grid-img " src="/images/hia.png" title="" alt="">
                             </a>
                                             </div>
                                                             <span class="left-bottom-shape"></span>
                 </div>
 
-            </div><div class="grid-item slick-slide slick-active" data-slick-index="0" aria-hidden="false" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://rajkotchamber.com/" =_blank="" target="_blank" rel="noopener" tabindex="0">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/rcci.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.reaindia.com/" =_blank="" target="_blank" rel="noopener" tabindex="0">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/rajkot-engineering-assocciation.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-current slick-active slick-center" data-slick-index="2" aria-hidden="false" style="width: 249px;" tabindex="0">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://gidclodhika.com/" =_blank="" target="_blank" rel="noopener" tabindex="0">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/glia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 249px;" tabindex="0">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://ajigidc.delighterp.in/" =_blank="" target="_blank" rel="noopener" tabindex="0">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/agia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 249px;" tabindex="0">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.sviarajkot.com/" =_blank="" target="_blank" rel="noopener" tabindex="0">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/svia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide" data-slick-index="5" aria-hidden="true" style="width: 249px;" tabindex="0">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/hia.png" title="" alt="">
-                            </a>
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="6" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://rajkotchamber.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/rcci.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="7" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.reaindia.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/rajkot-engineering-assocciation.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="8" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://gidclodhika.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/glia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="9" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://ajigidc.delighterp.in/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/agia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="10" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a href="https://www.sviarajkot.com/" =_blank="" target="_blank" rel="noopener" tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/svia.png" title="" alt=""></a>
-
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div><div class="grid-item slick-slide slick-cloned" data-slick-index="11" id="" aria-hidden="true" style="width: 249px;" tabindex="-1">
-                <div class="rs-grid-figure">
-                    <div class="logo-img ddddd">
-                                                    <a tabindex="-1">
-                                                                <img decoding="async" class="mains-logos rs-grid-img " src="/images/hia.png" title="" alt="">
-                            </a>
-                                            </div>
-                                                            <span class="left-bottom-shape"></span>
-                </div>
-
-            </div></div></div>
-                    
-                    
-                    
-                    
-                    
-        
-    <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button></div>
-    <div class="rsaddon-slider-conf wpsisac-hide" data-conf="{&quot;slidesToShow&quot;:&quot;5&quot;,&quot;autoplaySpeed&quot;:&quot;1000&quot;,&quot;interval&quot;:&quot;1000&quot;,&quot;slidesToScroll&quot;:&quot;1&quot;,&quot;slider_autoplay&quot;:&quot;true&quot;,&quot;pauseOnHover&quot;:&quot;false&quot;,&quot;sliderDots&quot;:&quot;false&quot;,&quot;sliderNav&quot;:&quot;true&quot;,&quot;infinite&quot;:&quot;true&quot;,&quot;centerMode&quot;:&quot;true&quot;,&quot;col_lg&quot;:&quot;5&quot;,&quot;col_md&quot;:&quot;5&quot;,&quot;col_sm&quot;:&quot;3&quot;,&quot;col_xs&quot;:&quot;2&quot;}"></div>
+            </div></div>
 </div>
             
         				</div>
@@ -852,7 +895,6 @@ Standard Booth
 				<div class="elementor-element elementor-element-dcffd26 elementor-widget elementor-widget-text-editor" data-id="dcffd26" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 									<ul class="rs-pricing-table-features-list left "><li class="elementor-repeater-item-53f9fea ">INR 8,500 (Per Sq. M.)</li><li class="elementor-repeater-item-53f9fea ">$ 150 (Per Sq. M.)</li></ul>								</div>
 				</div>
-		
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-723ab37 e-con-full e-flex e-con e-child" data-id="723ab37" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		
 				<div class="elementor-element elementor-element-198d508 elementor-widget elementor-widget-image-box" data-id="198d508" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">

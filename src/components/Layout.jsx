@@ -416,72 +416,50 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
   </nav>
 </nav>`;
 
-  const headerHtml = `
-<div class="header-inner">
-  <div data-elementor-type="wp-post" data-elementor-id="20407" class="elementor elementor-20407">
-    <header class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a40512c e-con-full e-flex e-con e-parent e-lazyloaded" data-id="a40512c" data-element_type="container" data-e-type="container">
-      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-4d7d6b1 e-con-full rs-full-responsive rs--mobile-hides rs--mobile-hides-header2 elementor-hidden-mobile e-flex e-con e-child" data-id="4d7d6b1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-916cfd1 e-con-full e-flex e-con e-child" data-id="916cfd1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-          <div class="elementor-element elementor-element-56b81d1 elementor-widget elementor-widget-image" data-id="56b81d1" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-            <a href="/"><img fetchpriority="high" width="640" height="228" src="/images/engitech-2-1-768x274-1.png" class="attachment-large size-large wp-image-29638" alt="Engitech Expo"></a>
-          </div>
-        </div>
-        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0a0cb0b e-con-full e-flex e-con e-child" data-id="0a0cb0b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-          <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-21bb47d e-con-full e-flex e-con e-child" data-id="21bb47d" data-element_type="container" data-e-type="container">
-            <div class="elementor-element elementor-element-dfc4242 elementor-hidden-tablet elementor-hidden-mobile hfe-nav-menu__breakpoint-none elementor-widget-laptop__width-inherit hfe-nav-menu__align-left hfe-submenu-icon-arrow hfe-submenu-animation-none hfe-link-redirect-child elementor-widget elementor-widget-navigation-menu" data-id="dfc4242" data-element_type="widget" data-e-type="widget" data-widget_type="navigation-menu.default">
-              <div class="elementor-widget-container">
-                <div class="hfe-nav-menu hfe-layout-horizontal normal hfe-nav-menu-layout mega_columns3 horizontal hfe-pointer__none" data-layout="horizontal">
-                  <div class="hfe-nav-menu__toggle elementor-clickable" aria-haspopup="true" aria-expanded="false">
-                    <div class="hfe-nav-menu-icon"></div>
-                  </div>
-                  <nav class="hfe-nav-menu__layout-horizontal hfe-nav-menu__submenu-arrow no-separator border-tops no-circle arrow rs-icon-dis" data-toggle-icon="" data-close-icon="" data-full-width="">
-                    <ul id="menu-1-dfc4242" class="hfe-nav-menu">${desktopMenu}</ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-65ff9aa e-con-full e-flex e-con e-child" data-id="65ff9aa" data-element_type="container" data-e-type="container">
-            <div class="elementor-element elementor-element-2bf8d67 elementor-widget elementor-widget-rs-button" data-id="2bf8d67" data-element_type="widget" data-e-type="widget" data-widget_type="rs-button.default">
-              <div class="elementor-widget-container">
-                <div class="rs-button style1">
-                  <a class="rs-btn" href="/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-12-1.pdf" target="_blank">
-                    <span>Download Brochure <em><svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 5.66249 0.273604 5.38889 0.611111 5.38889L15.0246 5.38889L11.179 1.54323C10.9403 1.30458 10.9403 0.917645 11.179 0.678991C11.4176 0.440337 11.8046 0.440337 12.0432 0.678991L16.9321 5.56788C17.1708 5.80653 17.1708 6.19347 16.9321 6.43212L12.0432 11.321C11.8046 11.5597 11.4176 11.5597 11.179 11.321C10.9403 11.0824 10.9403 10.6954 11.179 10.4568L15.0246 6.61111L0.611111 6.61111C0.273604 6.61111 0 6.33751 0 6Z" fill="white"></path></svg></em></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="elementor-element elementor-element-e6809d7 elementor-hidden-desktop elementor-hidden-laptop elementor-widget elementor-widget-rsoffcanvas" data-id="e6809d7" data-element_type="widget" data-e-type="widget" data-widget_type="rsoffcanvas.default">
-              <div class="elementor-widget-container">
-                <div class="rs-offcanvas-area">
-                  <ul><li class="nav-link pr-20"><a class="nav-expander"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><path d="M8.55566 11H1.55566C1.29045 11 1.03609 11.1054 0.848557 11.2929C0.661021 11.4804 0.555664 11.7348 0.555664 12V19C0.555664 19.2652 0.661021 19.5196 0.848557 19.7071C1.03609 19.8946 1.29045 20 1.55566 20H8.55566C8.82088 20 9.07523 19.8946 9.26277 19.7071C9.45031 19.5196 9.55566 19.2652 9.55566 19V12C9.55566 11.7348 9.45031 11.4804 9.26277 11.2929C9.07523 11.1054 8.82088 11 8.55566 11ZM7.55566 18H2.55566V13H7.55566V18ZM19.5557 0H12.5557C12.2904 0 12.0361 0.105357 11.8486 0.292893C11.661 0.48043 11.5557 0.734784 11.5557 1V8C11.5557 8.26522 11.661 8.51957 11.8486 8.70711C12.0361 8.89464 12.2904 9 12.5557 9H19.5557C19.8209 9 20.0752 8.89464 20.2628 8.70711C20.4503 8.51957 20.5557 8.26522 20.5557 8V1C20.5557 0.734784 20.4503 0.48043 20.2628 0.292893C20.0752 0.105357 19.8209 0 19.5557 0ZM18.5557 7H13.5557V2H18.5557V7ZM19.5557 11H12.5557C12.2904 11 12.0361 11.1054 11.8486 11.2929C11.661 11.4804 11.5557 11.7348 11.5557 12V19C11.5557 19.2652 11.661 19.5196 11.8486 19.7071C12.0361 19.8946 12.2904 20 12.5557 20H19.5557C19.8209 20 20.0752 19.8946 20.2628 19.7071C20.4503 19.5196 20.5557 19.2652 20.5557 19V12C20.5557 11.7348 20.4503 11.4804 20.2628 11.2929C20.0752 11.1054 19.8209 11 19.5557 11ZM18.5557 18H13.5557V13H18.5557V18ZM8.55566 0H1.55566C1.29045 0 1.03609 0.105357 0.848557 0.292893C0.661021 0.48043 0.555664 0.734784 0.555664 1V8C0.555664 8.26522 0.661021 8.51957 0.848557 8.70711C1.03609 8.89464 1.29045 9 1.55566 9H8.55566C8.82088 9 9.07523 8.89464 9.26277 8.70711C9.45031 8.51957 9.55566 8.26522 9.55566 8V1C9.55566 0.734784 9.45031 0.48043 9.26277 0.292893C9.07523 0.105357 8.82088 0 8.55566 0ZM7.55566 7H2.55566V2H7.55566V7Z" fill="#616161"></path></svg></a></li></ul>
-                </div>
-              </div>
-            </div>
-          </div>
+  const headerInnerHtml = `
+<div data-elementor-type="wp-post" data-elementor-id="20407" class="elementor elementor-20407">
+  <header class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a40512c e-con-full e-flex e-con e-parent e-lazyloaded" data-id="a40512c" data-element_type="container" data-e-type="container">
+    <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-4d7d6b1 e-con-full rs-full-responsive rs--mobile-hides rs--mobile-hides-header2 elementor-hidden-mobile e-flex e-con e-child" data-id="4d7d6b1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-916cfd1 e-con-full e-flex e-con e-child" data-id="916cfd1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-element elementor-element-56b81d1 elementor-widget elementor-widget-image" data-id="56b81d1" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+          <a href="/"><img fetchpriority="high" width="640" height="228" src="/images/engitech-2-1-768x274-1.png" class="attachment-large size-large wp-image-29638" alt="Engitech Expo"></a>
         </div>
       </div>
-      <!-- Mobile header row -->
-      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-377eaa9 e-con-full rs-full-responsive rs--mobile-hides rs--mobile-hides-header2 elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet e-flex e-con e-child" data-id="377eaa9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7390859 e-con-full e-flex e-con e-child" data-id="7390859" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-          <div class="elementor-element elementor-element-2cadd42 elementor-widget elementor-widget-image" data-id="2cadd42" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-            <a href="/"><img fetchpriority="high" width="640" height="228" src="/images/engitech-2-1-768x274-1.png" class="attachment-large size-large wp-image-29638" alt="Engitech Expo"></a>
+      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0a0cb0b e-con-full e-flex e-con e-child" data-id="0a0cb0b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-21bb47d e-con-full e-flex e-con e-child" data-id="21bb47d" data-element_type="container" data-e-type="container">
+          <div class="elementor-element elementor-element-dfc4242 elementor-hidden-tablet elementor-hidden-mobile hfe-nav-menu__breakpoint-none elementor-widget-laptop__width-inherit hfe-nav-menu__align-left hfe-submenu-icon-arrow hfe-submenu-animation-none hfe-link-redirect-child elementor-widget elementor-widget-navigation-menu" data-id="dfc4242" data-element_type="widget" data-e-type="widget" data-widget_type="navigation-menu.default">
+            <div class="elementor-widget-container">
+              <div class="hfe-nav-menu hfe-layout-horizontal normal hfe-nav-menu-layout mega_columns3 horizontal hfe-pointer__none" data-layout="horizontal">
+                <div class="hfe-nav-menu__toggle elementor-clickable" aria-haspopup="true" aria-expanded="false">
+                  <div class="hfe-nav-menu-icon"></div>
+                </div>
+                <nav class="hfe-nav-menu__layout-horizontal hfe-nav-menu__submenu-arrow no-separator border-tops no-circle arrow rs-icon-dis" data-toggle-icon="" data-close-icon="" data-full-width="">
+                  <ul id="menu-1-dfc4242" class="hfe-nav-menu">${desktopMenu}</ul>
+                </nav>
+              </div>
+            </div>
           </div>
-          <div class="elementor-element elementor-element-85ff95f elementor-hidden-desktop elementor-hidden-laptop elementor-widget elementor-widget-rsoffcanvas" data-id="85ff95f" data-element_type="widget" data-e-type="widget" data-widget_type="rsoffcanvas.default">
+        </div>
+        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-65ff9aa e-con-full e-flex e-con e-child" data-id="65ff9aa" data-element_type="container" data-e-type="container">
+          <div class="elementor-element elementor-element-2bf8d67 elementor-widget elementor-widget-rs-button" data-id="2bf8d67" data-element_type="widget" data-e-type="widget" data-widget_type="rs-button.default">
+            <div class="elementor-widget-container">
+              <div class="rs-button style1">
+                <a class="rs-btn" href="/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-12-1.pdf" target="_blank">
+                  <span>Download Brochure <em><svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 5.66249 0.273604 5.38889 0.611111 5.38889L15.0246 5.38889L11.179 1.54323C10.9403 1.30458 10.9403 0.917645 11.179 0.678991C11.4176 0.440337 11.8046 0.440337 12.0432 0.678991L16.9321 5.56788C17.1708 5.80653 17.1708 6.19347 16.9321 6.43212L12.0432 11.321C11.8046 11.5597 11.4176 11.5597 11.179 11.321C10.9403 11.0824 10.9403 10.6954 11.179 10.4568L15.0246 6.61111L0.611111 6.61111C0.273604 6.61111 0 6.33751 0 6Z" fill="white"></path></svg></em></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="elementor-element elementor-element-e6809d7 elementor-hidden-desktop elementor-hidden-laptop elementor-widget elementor-widget-rsoffcanvas" data-id="e6809d7" data-element_type="widget" data-e-type="widget" data-widget_type="rsoffcanvas.default">
             <div class="elementor-widget-container">
               <div class="rs-offcanvas-area">
                 <ul><li class="nav-link pr-20"><a class="nav-expander"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><path d="M8.55566 11H1.55566C1.29045 11 1.03609 11.1054 0.848557 11.2929C0.661021 11.4804 0.555664 11.7348 0.555664 12V19C0.555664 19.2652 0.661021 19.5196 0.848557 19.7071C1.03609 19.8946 1.29045 20 1.55566 20H8.55566C8.82088 20 9.07523 19.8946 9.26277 19.7071C9.45031 19.5196 9.55566 19.2652 9.55566 19V12C9.55566 11.7348 9.45031 11.4804 9.26277 11.2929C9.07523 11.1054 8.82088 11 8.55566 11ZM7.55566 18H2.55566V13H7.55566V18ZM19.5557 0H12.5557C12.2904 0 12.0361 0.105357 11.8486 0.292893C11.661 0.48043 11.5557 0.734784 11.5557 1V8C11.5557 8.26522 11.661 8.51957 11.8486 8.70711C12.0361 8.89464 12.2904 9 12.5557 9H19.5557C19.8209 9 20.0752 8.89464 20.2628 8.70711C20.4503 8.51957 20.5557 8.26522 20.5557 8V1C20.5557 0.734784 20.4503 0.48043 20.2628 0.292893C20.0752 0.105357 19.8209 0 19.5557 0ZM18.5557 7H13.5557V2H18.5557V7ZM19.5557 11H12.5557C12.2904 11 12.0361 11.1054 11.8486 11.2929C11.661 11.4804 11.5557 11.7348 11.5557 12V19C11.5557 19.2652 11.661 19.5196 11.8486 19.7071C12.0361 19.8946 12.2904 20 12.5557 20H19.5557C19.8209 20 20.0752 19.8946 20.2628 19.7071C20.4503 19.5196 20.5557 19.2652 20.5557 19V12C20.5557 11.7348 20.4503 11.4804 20.2628 11.2929C20.0752 11.1054 19.8209 11 19.5557 11ZM18.5557 18H13.5557V13H18.5557V18ZM8.55566 0H1.55566C1.29045 0 1.03609 0.105357 0.848557 0.292893C0.661021 0.48043 0.555664 0.734784 0.555664 1V8C0.555664 8.26522 0.661021 8.51957 0.848557 8.70711C1.03609 8.89464 1.29045 9 1.55566 9H8.55566C8.82088 9 9.07523 8.89464 9.26277 8.70711C9.45031 8.51957 9.55566 8.26522 9.55566 8V1C9.55566 0.734784 9.45031 0.48043 9.26277 0.292893C9.07523 0.105357 8.82088 0 8.55566 0ZM7.55566 7H2.55566V2H7.55566V7Z" fill="#616161"></path></svg></a></li></ul>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </header>
-  </div>
-</div>
-<div id="rs-theme-toggle" class="rs_ld_btn" style="opacity: 0; display: none;">
-  <span class="d-block-light"><i class="ri-sun-line"></i></span>
-  <span class="d-block-dark"><i class="ri-moon-line"></i></span>
+    </div>
+  </header>
 </div>`;
 
   return (
@@ -499,7 +477,35 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
       <div className="rs-offcanvas-area" dangerouslySetInnerHTML={{ __html: offcanvasHtml }} />
 
       <div id="page" className="hfeed site">
-        <header id="rs-header" className="single-header" dangerouslySetInnerHTML={{ __html: headerHtml }} />
+        <header id="rs-header" className="single-header">
+          <div className="header-inner">
+            <div dangerouslySetInnerHTML={{ __html: headerInnerHtml }} />
+            
+            {/* Native React Mobile Header - For perfect control */}
+            <div className="mobile-header-react elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet">
+              <div className="mobile-nav-container">
+                <div className="mobile-logo">
+                  <Link to="/">
+                    <img src="/images/engitech-2-1-768x274-1.png" alt="Engitech Expo" />
+                  </Link>
+                </div>
+                <div className="mobile-menu-btn">
+                  <div className="rs-offcanvas-area">
+                    <ul>
+                      <li className="nav-link">
+                        <a className="nav-expander">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 21 20" fill="none">
+                            <path d="M8.55566 11H1.55566C1.29045 11 1.03609 11.1054 0.848557 11.2929C0.661021 11.4804 0.555664 11.7348 0.555664 12V19C0.555664 19.2652 0.661021 19.5196 0.848557 19.7071C1.03609 19.8946 1.29045 20 1.55566 20H8.55566C8.82088 20 9.07523 19.8946 9.26277 19.7071C9.45031 19.5196 9.55566 19.2652 9.55566 19V12C9.55566 11.7348 9.45031 11.4804 9.26277 11.2929C9.07523 11.1054 8.82088 11 8.55566 11ZM7.55566 18H2.55566V13H7.55566V18ZM19.5557 0H12.5557C12.2904 0 12.0361 0.105357 11.8486 0.292893C11.661 0.48043 11.5557 0.734784 11.5557 1V8C11.5557 8.26522 11.661 8.51957 11.8486 8.70711C12.0361 8.89464 12.2904 9 12.5557 9H19.5557C19.8209 9 20.0752 8.89464 20.2628 8.70711C20.4503 8.51957 20.5557 8.26522 20.5557 8V1C20.5557 0.734784 20.4503 0.48043 20.2628 0.292893C20.0752 0.105357 19.8209 0 19.5557 0ZM18.5557 7H13.5557V2H18.5557V7ZM19.5557 11H12.5557C12.2904 11 12.0361 11.1054 11.8486 11.2929C11.661 11.4804 11.5557 11.7348 11.5557 12V19C11.5557 19.2652 11.661 19.5196 11.8486 19.7071C12.0361 19.8946 12.2904 20 12.5557 20H19.5557C19.8209 20 20.0752 19.8946 20.2628 19.7071C20.4503 19.5196 20.5557 19.2652 20.5557 19V12C20.5557 11.7348 20.4503 11.4804 20.2628 11.2929C20.0752 11.1054 19.8209 11 19.5557 11ZM18.5557 18H13.5557V13H18.5557V18ZM8.55566 0H1.55566C1.29045 0 1.03609 0.105357 0.848557 0.292893C0.661021 0.48043 0.555664 0.734784 0.555664 1V8C0.555664 8.26522 0.661021 8.51957 0.848557 8.70711C1.03609 8.89464 1.29045 9 1.55566 9H8.55566C8.82088 9 9.07523 8.89464 9.26277 8.70711C9.45031 8.51957 9.55566 8.26522 9.55566 8V1C9.55566 0.734784 9.45031 0.48043 9.26277 0.292893C9.07523 0.105357 8.82088 0 8.55566 0ZM7.55566 7H2.55566V2H7.55566V7Z" fill="#616161"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
 
         {children}
 

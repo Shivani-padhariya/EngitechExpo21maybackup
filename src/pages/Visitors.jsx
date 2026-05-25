@@ -192,12 +192,12 @@ and technologies. 								</div>
 				<div class="elementor-element elementor-element-5096837 elementor-widget-laptop__width-initial elementor-widget__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-rs-heading" data-id="5096837" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
 					
-		<div class="prelements-heading style1  " style="margin-top: 30px;">
-			<div class="title-inner">
-				<h3 class="title rs-split-text-disable ">Visitor Registration</h3>
+		<div class="prelements-heading style1  " style="margin-top: 30px; text-align: center !important; display: block !important; width: 100% !important;">
+			<div class="title-inner" style="width: 100% !important; display: block !important; text-align: center !important;">
+				<h3 class="title rs-split-text-disable " style="text-align: center !important; display: block !important; width: 100% !important; margin: 0 auto !important;">Visitor Registration</h3>
 			</div>
-							<div class="description">
-					<p>Visitor Registration</p>				</div>
+							<div class="description" style="text-align: center !important; width: 100% !important; display: block !important; margin: 0 auto !important;">
+					<p style="text-align: center !important; margin: 0 auto !important;">Visitor Registration</p>				</div>
 					</div>
 				</div>
 				</div>
