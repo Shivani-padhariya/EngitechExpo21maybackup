@@ -47,7 +47,7 @@ export default function Exhibitors() {
 
   return (
     <Layout
-      pageCss={[{ id: 'page-css-exhibitors', href: '/css/page-exhibitors.css' }]}
+      pageCss={[{ id: 'page-css-exhibitors', href: '/assets/css/exibitorsstyle.css' }]}
       bodyClass="page-template-default page page-id-240 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-240"
     >
       <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
@@ -162,7 +162,7 @@ export default function Exhibitors() {
 			<div class="title-inner">
 									<span class="sub-text">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						exhibitors					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Ahmedabad Expo Exhibitors</h2>
+				<h2 class="title rs-split-text-enable split-in-fade text-center">Ahmedabad Expo Exhibitors</h2>
 			</div>
 					</div>
 				</div>

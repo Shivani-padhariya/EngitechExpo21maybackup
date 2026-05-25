@@ -18,19 +18,6 @@
     padding: 0 !important;
   }
 
-  /* Adjust margins for numerical data */
-  .elementor-widget-rs-counter {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .elementor-widget-rs-counter .count-text,
-  .elementor-widget-rs-counter .count-number,
-  .elementor-widget-rs-counter .title {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
   /* Remove all hover effects on Industry Segments */
   .elementor-30998 .rs-addon-services.style2 .services-inner:hover,
   .elementor-30998 .rs-addon-services.style2 .services-inner.box:hover {

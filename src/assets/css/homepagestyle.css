@@ -1,4 +1,4 @@
- .home .entry-content .elementor-element:not(.hero-section):not(.navbar-section) {
+.home .entry-content .elementor-element:not(.hero-section):not(.navbar-section) {
      padding-left: 20px !important;
      padding-right: 20px !important;
      box-sizing: border-box;
@@ -94,7 +94,25 @@
      margin-right: auto !important;
  }
 
- /* Left Alignment Fix for Counters and Key Highlights */
+ /* ===== COUNTER SECTION ALIGNMENT FIX ===== */
+ .elementor-element-f82a1d7 {
+     margin-left: 20px !important;
+     display: flex !important;
+     flex-direction: row !important;
+     gap: 10px !important;
+     justify-content: flex-start !important;
+     align-items: stretch !important;
+ }
+
+ .elementor-element-f82a1d7 > .e-con-child,
+ .elementor-element-f82a1d7 > .elementor-column {
+     flex: 1 1 0 !important;
+     width: auto !important;
+     display: flex !important;
+     flex-direction: column !important;
+     justify-content: flex-end !important;
+ }
+
  .rs-counter-list {
      text-align: left !important;
      display: flex !important;
@@ -105,23 +123,23 @@
      padding: 0 !important;
  }
 
- .rs-counter-list .count-text, 
- .rs-counter-list .count-number, 
+ .rs-counter-list .count-text,
  .rs-counter-list .title {
      text-align: left !important;
      display: block !important;
  }
 
  .rs-counter-list .count-number {
-     border-bottom: 1px solid #ddd;
-     padding-bottom: 10px;
-     margin-bottom: 10px;
-     width: 100%;
-     min-height: 80px !important; /* Fixed height for number container */
+     border-bottom: 1px solid #ddd !important;
+     padding-bottom: 10px !important;
+     margin-bottom: 10px !important;
+     width: 100% !important;
+     min-height: 80px !important;
      display: flex !important;
      align-items: flex-end !important;
-     margin-top: auto !important; /* Push to bottom of the item */
+     margin-top: 0 !important; /* FIXED: was 'auto' which caused misalignment */
  }
+ /* ===== COUNTER SECTION END ===== */
 
  .prelements-heading, 
  .prelements-heading .title-inner, 
@@ -161,16 +179,114 @@
         margin-left: auto !important;
         margin-right: auto !important;
     }
+/* ===== COUNTER SECTION ALIGNMENT FIX ===== */
+.elementor-element-f82a1d7 {
+    margin-left: 20px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+}
 
-   /* Left Margin for Counter Section only */
-  .elementor-element-f82a1d7 {
-      margin-left: 20px !important;
-      display: flex !important;
-      gap: 10px !important;
-      justify-content: flex-start !important;
-      align-items: stretch !important;
-  }
+.elementor-element-f82a1d7 > .e-con-child,
+.elementor-element-f82a1d7 > .elementor-column {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+}
 
+.rs-counter-list {
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.rs-counter-list .count-text,
+.rs-counter-list .title {
+    text-align: left !important;
+    display: block !important;
+}
+
+.rs-counter-list .count-number {
+    border-bottom: 1px solid #ddd !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 10px !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    margin-top: 0 !important;
+}
+
+/* ↓ YE NAYA CODE YAHAN ADD KARO ↓ */
+
+/* Counter numbers wrap hone se rokna */
+.elementor-element-f82a1d7 .rs-counter-list .count-number {
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+}
+
+/* Responsive font size */
+.elementor-element-f82a1d7 .rs-counter-list .count-number span,
+.elementor-element-f82a1d7 .count-text .count-number {
+    font-size: clamp(36px, 4vw, 60px) !important;
+}
+
+/* Sabhi columns bottom se align */
+.elementor-element-f82a1d7 > .e-con-inner {
+    align-items: flex-end !important;
+}
+
+/* Sabhi 3 counter columns ko same height aur bottom align */
+.elementor-element-f82a1d7 > .e-con-child,
+.elementor-element-f82a1d7 > .elementor-column {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-self: flex-end !important;  /* ← yeh add karo */
+}
+
+/* Number + line dono ko fixed bottom position pe rakho */
+.elementor-element-f82a1d7 .rs-counter-list {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    height: auto !important;          /* ← 100% se auto karo */
+    min-height: unset !important;
+}
+
+/* Number ka min-height hata do - yahi misalignment ka reason hai */
+.elementor-element-f82a1d7 .rs-counter-list .count-number {
+    min-height: unset !important;
+    height: 120px !important;   /* same fixed height */
+    
+    display: flex !important;
+    align-items: flex-end !important;   /* sab bottom pe align honge */
+    
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 10px !important;
+
+    border-bottom: 1px solid #ddd !important;
+
+    white-space: nowrap !important;
+}
+/* 800+ wale pehle counter ko neeche align karna */
+.elementor-element-f82a1d7 > .e-con-child:first-child,
+.elementor-element-f82a1d7 > .elementor-column:first-child {
+    justify-content: flex-end !important;
+    padding-top: 40px !important;  /* ← yeh adjust karo 30px/40px/50px try karo */
+}
+
+/* ===== COUNTER SECTION END ===== */
   /* Testimonials Section Layout Fix - Matching Image 1 */
    .elementor-element-97053bd > .e-con-inner {
        display: flex !important;
@@ -330,7 +446,7 @@
               flex-direction: column !important;
           }
 
-          /* Counter Section Fix (Image 2) */
+          /* ===== COUNTER SECTION MOBILE FIX ===== */
           .elementor-element-f82a1d7 {
               margin-left: 0 !important;
               padding-left: 10px !important;
@@ -338,17 +454,34 @@
               display: flex !important;
               flex-direction: column !important;
               gap: 20px !important;
+              align-items: flex-start !important;
           }
 
-          .elementor-element-f82a1d7 .e-con-child {
+          .elementor-element-f82a1d7 > .e-con-child,
+          .elementor-element-f82a1d7 > .elementor-column {
               width: 100% !important;
-              margin-bottom: 10px !important;
+              flex: 0 0 100% !important;
+              justify-content: flex-start !important;
+          }
+
+          .elementor-widget-rs-counter {
+              margin: 0 !important;
+              padding: 0 !important;
+          }
+
+          .elementor-widget-rs-counter .count-text,
+          .elementor-widget-rs-counter .count-number,
+          .elementor-widget-rs-counter .title {
+              margin: 0 !important;
+              padding: 0 !important;
           }
 
           .rs-counter-list .count-number {
               min-height: 60px !important;
               font-size: 32px !important;
+              align-items: center !important;
           }
+          /* ===== COUNTER SECTION MOBILE END ===== */
 
           /* Highlights Section (Image 3) - Reduce Margin */
           .elementor-element-fd99f31 {
