@@ -619,6 +619,19 @@
               margin: 0 !important;
               padding: 0 !important;
           }
+
+          /* Hide specific team section on About page mobile */
+          .elementor-element-482abaf {
+              display: none !important;
+          }
+
+          /* Hide Ahmedabad and Rajkot sponsor sections on About page mobile */
+          .elementor-page-236 .elementor-element-3488293,
+          .elementor-page-236 .elementor-element-0af28bc,
+          .elementor-page-236 .elementor-element-b32ec09,
+          .elementor-page-236 .elementor-element-a2cba8a {
+              display: none !important;
+          }
           .elementor-element-fd99f31 > .e-con-inner {
               flex-direction: column !important;
               padding: 10px !important;

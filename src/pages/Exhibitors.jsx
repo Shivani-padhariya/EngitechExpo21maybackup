@@ -7,6 +7,79 @@ export default function Exhibitors() {
   const [formMessage, setFormMessage] = useState('');
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      const $ = window.jQuery;
+      if (!$) return;
+
+      const initializeSlider = (selector, slidesToShow = 5) => {
+        const $container = $(selector);
+        if ($container.length === 0) return;
+
+        const $wrapper = $container.find('.swiper-wrapper');
+        if ($wrapper.length === 0) return;
+
+        // Extract unique slides
+        const $slides = $wrapper.find('.swiper-slide:not(.swiper-slide-duplicate)').clone();
+        if ($slides.length === 0) return;
+
+        // Clean slides
+        $slides.removeClass('swiper-slide swiper-slide-active swiper-slide-next swiper-slide-prev swiper-slide-duplicate')
+          .removeAttr('style')
+          .removeAttr('role')
+          .removeAttr('aria-label')
+          .removeAttr('data-swiper-slide-index');
+
+        // Wrap images in a div if needed for slick
+        $slides.each(function () {
+          const $img = $(this).find('img');
+          $(this).empty().append($img);
+          $(this).addClass('slick-slide-item');
+        });
+
+        // Clear and rebuild
+        $container.empty().append($slides);
+        $container.removeClass('swiper swiper-initialized swiper-horizontal swiper-pointer-events');
+
+        if ($.fn.slick) {
+          $container.slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            speed: 500,
+            infinite: true,
+            slidesToShow: slidesToShow,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: { slidesToShow: 4 }
+              },
+              {
+                breakpoint: 768,
+                settings: { slidesToShow: 3 }
+              },
+              {
+                breakpoint: 480,
+                settings: { slidesToShow: 2 }
+              }
+            ]
+          });
+        }
+      };
+
+      // Initialize both exhibitors sliders
+      initializeSlider('.elementor-element-db8c22e .elementor-image-carousel-wrapper', 5); // Ahmedabad Expo Exhibitors
+      initializeSlider('.elementor-element-4705983 .elementor-image-carousel-wrapper', 5); // Previous Expo Exhibitors
+
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleSubmit = async (e) => {
       if (e.target.id !== 'exhibitor-reg-form') return;
       e.preventDefault();
