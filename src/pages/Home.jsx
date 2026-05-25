@@ -4248,12 +4248,12 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                         data-id="236c10d" data-element_type="container"
                                                         data-e-type="container">
 
-                                                        <div class="elementor-element elementor-element-fd0ca67 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading"
+                                                        <div class="elementor-element elementor-element-fd0ca67 elementor-widget__width-initial elementor-widget-laptop__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-rs-heading "
                                                             data-id="fd0ca67" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="rs-heading.default">
                                                             <div class="elementor-widget-container">
 
-                                                                <div class="prelements-heading style1  ">
+                                                                <div class="prelements-heading style1 w-200">
                                                                     <div class="title-inner">
                                                                         <span class="sub-text">
                                                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -4268,8 +4268,15 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                                                     fill="#F7C600"></path>
                                                                             </svg> Ahmedabad </span>
                                                                         <h2
-                                                                            class="title rs-split-text-enable split-in-fade">
-                                                                            Ahmedabad Sponsors list 2026</h2>
+                                                                            class="title rs-split-text-enable split-in-fade"
+                                                                            style="white-space: nowrap;">
+                                                                            Ahmedabad 
+                                                                            </h2>
+                                                                            <h2
+                                                                            class="title rs-split-text-enable split-in-fade"
+                                                                            style="white-space: nowrap;">
+                                                                            
+                                                                            Sponsors list 2026</h2>
                                                                     </div>
                                                                 </div>
                                                             </div>

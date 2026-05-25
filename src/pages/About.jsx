@@ -2,72 +2,73 @@ import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
 export default function About() {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const $ = window.jQuery;
-      if (!$) return;
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			const $ = window.jQuery;
+			if (!$) return;
 
-      const $blogSlider = $('.prelements-addon-slider.blog_style_defaultlayout');
-      if ($blogSlider.length > 0) {
-        const $blogSlides = $blogSlider.find('.pre-blog-item:not(.slick-cloned)').clone();
-        if ($blogSlides.length > 0) {
-          $blogSlides.removeClass('slick-slide slick-active slick-current slick-cloned slick-center')
-                     .removeAttr('style')
-                     .removeAttr('data-slick-index')
-                     .removeAttr('aria-hidden')
-                     .removeAttr('tabindex')
-                     .removeAttr('id');
+			const $blogSlider = $('.prelements-addon-slider.blog_style_defaultlayout');
+			if ($blogSlider.length > 0) {
+				const $blogSlides = $blogSlider.find('.pre-blog-item:not(.slick-cloned)').clone();
+				if ($blogSlides.length > 0) {
+					$blogSlides.removeClass('slick-slide slick-active slick-current slick-cloned slick-center')
+						.removeAttr('style')
+						.removeAttr('data-slick-index')
+						.removeAttr('aria-hidden')
+						.removeAttr('tabindex')
+						.removeAttr('id');
 
-          try {
-            if ($blogSlider.hasClass('slick-initialized')) {
-              $blogSlider.slick('unslick');
-            }
-          } catch (e) {
-            console.warn('Blog Unslick failed:', e);
-          }
+					try {
+						if ($blogSlider.hasClass('slick-initialized')) {
+							$blogSlider.slick('unslick');
+						}
+					} catch (e) {
+						console.warn('Blog Unslick failed:', e);
+					}
 
-          $blogSlider.empty();
-          $blogSlider.append($blogSlides);
-          $blogSlider.removeClass('slick-initialized slick-slider slick-dotted');
+					$blogSlider.empty();
+					$blogSlider.append($blogSlides);
+					$blogSlider.removeClass('slick-initialized slick-slider slick-dotted');
 
-          if ($.fn.slick) {
-            $blogSlider.slick({
-              autoplay: true,
-              autoplaySpeed: 3000,
-              infinite: true,
-              slidesToShow: 3, // 3 Columns in one row!
-              slidesToScroll: 1,
-              arrows: false,
-              dots: true,
-              responsive: [
-                {
-                  breakpoint: 992,
-                  settings: {
-                    slidesToShow: 2,
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 1,
-                  }
-                }
-              ]
-            });
-          }
-        }
-      }
-    }, 800); // Wait for DOM to completely mount
+					if ($.fn.slick) {
+						$blogSlider.slick({
+							autoplay: true,
+							autoplaySpeed: 3000,
+							infinite: true,
+							slidesToShow: 3, // 3 Columns in one row!
+							slidesToScroll: 1,
+							arrows: false,
+							dots: true,
+							responsive: [
+								{
+									breakpoint: 992,
+									settings: {
+										slidesToShow: 2,
+									}
+								},
+								{
+									breakpoint: 768,
+									settings: {
+										slidesToShow: 1,
+									}
+								}
+							]
+						});
+					}
+				}
+			}
+		}, 800); // Wait for DOM to completely mount
 
-    return () => clearTimeout(timer);
-  }, []);
+		return () => clearTimeout(timer);
+	}, []);
 
-  return (
-    <Layout
-      pageCss={[{ id: 'page-css-about', href: '/css/page-about.css' }]}
-      bodyClass="page-template-default page page-id-236 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-236"
-    >
-      <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
+	return (
+		<Layout
+			pageCss={[{ id: 'page-css-about', href: '/css/page-about.css' }]}
+			bodyClass="page-template-default page page-id-236 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-236"
+		>
+			<div dangerouslySetInnerHTML={{
+				__html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">
 				
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-41335a8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="41335a8" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
@@ -304,7 +305,7 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0f0255e e-flex e-con-boxed e-con e-child" data-id="0f0255e" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
 		
-		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-b29f01f e-con-full e-flex e-con e-child" data-id="b29f01f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-b29f01f e-con-full e-flex e-con e-chil" data-id="b29f01f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		
 				<div class="elementor-element elementor-element-9be952b elementor-widget elementor-widget-rs-heading" data-id="9be952b" data-element_type="widget" data-e-type="widget" data-widget_type="rs-heading.default">
 				<div class="elementor-widget-container">
@@ -516,7 +517,7 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 			<div class="title-inner">
 									<span class="sub-text">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Ahmedabad					</span>
-				<h2 class="title rs-split-text-enable split-in-fade">Ahmedabad Sponsors list 2026</h2>
+				<h2 class="title rs-split-text-enable split-in-fade" style="white-space: nowrap;">Ahmedabad Sponsors list 2026</h2>
 			</div>
 					</div>
 				</div>
@@ -1653,6 +1654,6 @@ Partner 								</div>
   </article>
 <!-- #post-30984 --> 
 			    </div>` }} />
-    </Layout>
-  );
+		</Layout>
+	);
 }

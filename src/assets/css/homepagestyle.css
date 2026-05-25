@@ -539,37 +539,6 @@
               visibility: visible !important;
           }
 
-          /* Specific fix for Mobile Navbar row alignment */
-          header .elementor-element-377eaa9 .elementor-element-7390859 {
-              flex-direction: row !important;
-              flex-wrap: nowrap !important;
-              justify-content: space-between !important;
-              align-items: center !important;
-              padding: 5px 15px !important;
-              width: 100% !important;
-              display: flex !important;
-          }
-
-          header .elementor-element-377eaa9 .elementor-element-2cadd42 {
-              width: auto !important;
-              max-width: 180px !important;
-          }
-
-          header .elementor-element-377eaa9 .elementor-element-85ff95f {
-              width: auto !important;
-              margin-left: auto !important;
-          }
-
-          header .elementor-element-377eaa9 .elementor-element-85ff95f .elementor-widget-container {
-              width: auto !important;
-              display: block !important;
-          }
-
-          header .elementor-element-377eaa9 .elementor-element-2cadd42 img {
-              max-height: 50px !important;
-              width: auto !important;
-          }
-
           /* Image Responsiveness Fix for L2436 */
           .elementor-30697 .elementor-element-a9ff8ba img {
               width: 100% !important;
