@@ -186,18 +186,18 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
 
                                                 <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-2e3e7a0 e-flex e-con-boxed e-con e-child"
                                                     data-id="2e3e7a0" data-element_type="container"
-                                                    data-e-type="container">
-                                                    <div class="e-con-inner">
+                                                    data-e-type="container" style="padding-top: 5px;">
+                                                    <div class="e-con-inner" style="padding-top: 5px;">
 
-                                                        <div class="elementor-element elementor-element-6a17dc5 elementor-widget elementor-widget-rs-counter"
+                                                        <div class="elementor-element elementor-element-6a17dc5 elementor-widget elementor-widget-rs-counter " style="padding-top: 0px;"
                                                             data-id="6a17dc5" data-element_type="widget"
                                                             data-e-type="widget" data-widget_type="rs-counter.default">
                                                             <div class="elementor-widget-container">
                                                                 <div class="counter-top-area">
                                                                     <div class="rs-counter-list">
                                                                         <div class="count-text">
-                                                                            <div class="count-number">
-                                                                                <span class="suffix"> </span> <span
+                                                                            <div class="count-number " >
+                                                                                 <span
                                                                                     class="rs-counter odometer odometer-auto-theme"
                                                                                     data-count="800">
                                                                                     <div class="odometer-inside"><span
@@ -5599,7 +5599,7 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                         <div class="rs-button style2">
                                                             <a class="rs-btn"
                                                                 href="https://engitechexpo.com/wp-content/uploads/2026/02/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-1.pdf"=_blank="">
-                                                                <span style={{ whiteSpace: 'nowrap', display: 'inline-block' }}>Download Brochure</span>
+                                                                <span style="white-space: nowrap; display: inline-block;">Download Brochure</span>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -5643,9 +5643,9 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                     <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-f3dd11d e-con-full e-flex e-con e-parent"
                                         data-id="f3dd11d" data-element_type="container" data-e-type="container"
                                         data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
-                                        style="width: calc(100% - 100px); margin-left: 50px; margin-right: 50px; border-radius: 12px; box-sizing: border-box;">
+                                        style="width: calc(100% - 100px); margin-left: 50px; margin-right: 50px; border-radius: 12px; padding-top:5px; padding-bottom:5px; box-sizing: border-box;">
 
-                                        <div style={{ padding: '10px' }}  class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7326dd1 e-flex e-con-boxed e-con e-child py-0"
+                                        <div style="padding: 10px;"  class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-7326dd1 e-flex e-con-boxed e-con e-child py-0"
                                             data-id="7326dd1" data-element_type="container" data-e-type="container">
                                             <div class="e-con-inner ">
 
@@ -5672,10 +5672,10 @@ import "../assets/css/homepagestyle.css"; export default function Home() {
                                                                                 d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z"
                                                                                 fill="#F7C600"></path>
                                                                         </svg> Latest Announcements </span>
-                                                                    <h2
+                                                                    <h4
                                                                         class="title rs-split-text-enable split-in-fade">
                                                                         Upcoming 3rd Edition in Rajkot,
-                                                                        19–22 December, 2027</h2>
+                                                                        19–22 December, 2027</h4>
                                                                 </div>
                                                             </div>
                                                         </div>

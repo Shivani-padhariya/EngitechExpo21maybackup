@@ -41,3 +41,29 @@
     transition: none !important;
   }
 }
+
+/* Remove hover effects from all category boxes inside elementor-element-9c5a7ef */
+.elementor-element-9c5a7ef .elementor-element:hover,
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner:hover,
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner.box:hover {
+    background-color: #264D67 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    border-radius: 20px !important;
+    transition: none !important;
+}
+
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner,
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner.box {
+    transition: none !important;
+}
+
+
+.elementor-element-9c5a7ef .services-title .title,
+.elementor-element-9c5a7ef .services-title .title a,
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner:hover .services-title .title,
+.elementor-element-9c5a7ef .rs-addon-services.style2 .services-inner:hover .services-title .title a {
+    color: #ffffff !important;
+}
+

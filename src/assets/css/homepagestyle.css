@@ -178,6 +178,7 @@
         justify-content: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        
     }
 /* ===== COUNTER SECTION ALIGNMENT FIX ===== */
 .elementor-element-f82a1d7 {
@@ -392,6 +393,8 @@
       }
 
       .elementor-element-bd7d0f8 {
+            min-height: 40px !important; /* Adjust to your desired height */
+
           width: 70% !important;
           flex: 0 0 70% !important;
       }
