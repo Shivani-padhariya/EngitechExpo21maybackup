@@ -58,8 +58,23 @@
  /* New React Native Mobile Header Styling - GLOBAL (Hidden on Desktop) */
  .mobile-header-react {
      display: none !important;
- }
+         padding: 5px 10px !important; /* 10px 15px tha, ab kam kar diya */
 
+ }
+/* Header ke right side ka extra gap kam karo */
+.elementor-element-a40512c .e-con-full {
+    padding-right: 0px !important;
+}
+
+/* Ya header inner ka padding */
+.header-inner {
+    padding-right: 0px !important;
+}
+
+/* Elementor container ka right padding */
+.elementor-element-a40512c {
+    padding-right: 0px !important;
+}
  @media (max-width: 767px) {
      .mobile-header-react {
          display: block !important;
