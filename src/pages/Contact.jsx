@@ -272,6 +272,14 @@ const customStyles = `
   .custom-office-card {
     width: 100%;
   }
+  .contact-form-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .contact-form-wrapper .wpcf7-form {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
 }
 `;
 
@@ -405,7 +413,7 @@ export default function Contact() {
           {/* Form column */}
           <div className="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a12073c e-con-full e-flex e-con e-child" data-id="a12073c" data-element_type="container" data-e-type="container">
             <div
-              className="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child"
+              className="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child contact-form-wrapper"
               style={{ maxWidth: '600px', margin: '40px auto', padding: '0 20px' }}
             >
               <div style={{ width: '100%', borderTop: '3px solid #ffb600', backgroundColor: '#fff', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>

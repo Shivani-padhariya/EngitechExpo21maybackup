@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { formAPI } from '../admin/services/api';
+import '../assets/css/visitorsstyle.css';
 
 export default function Visitors() {
 	const [formStatus, setFormStatus] = useState('idle');
@@ -46,7 +47,6 @@ export default function Visitors() {
 	}, []);
 	return (
 		<Layout
-			pageCss={[{ id: 'page-css-visitors', href: '/css/page-visitors.css' }]}
 			bodyClass="page-template-default page page-id-238 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-238"
 		>
 			<div dangerouslySetInnerHTML={{

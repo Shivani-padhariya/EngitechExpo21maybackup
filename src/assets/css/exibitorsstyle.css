@@ -3,6 +3,14 @@
 }
 
 @media (max-width: 767px) {
+  /* Hide "Pass sharing to their visitor" section in mobile */
+  .elementor-element-4bc5fc2,
+  .elementor-element-89d01d8,
+  .elementor-element-b9b5e8e,
+  .elementor-element-5947039 {
+    display: none !important;
+  }
+
   .elementor-element-9c5a7ef {
     display: flex !important;
     overflow-x: auto !important;

@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
+import '../assets/css/sponsorsstyle.css';
 
 export default function Sponsors() {
   return (
     <Layout
-      pageCss={[{ id: 'page-css-sponsors', href: '/css/page-sponsors.css' }]}
       bodyClass="page-template-default page page-id-241 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-241"
     >
       <style>{`

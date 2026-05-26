@@ -1,0 +1,8 @@
+@media (max-width: 767px) {
+  /* Hide "Partner Benefits" section in mobile */
+  .elementor-element-2657c10,
+  .elementor-element-6f12915,
+  .elementor-element-cb0d358 {
+    display: none !important;
+  }
+}

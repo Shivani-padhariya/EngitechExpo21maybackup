@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { formAPI } from '../admin/services/api';
+import '../assets/css/exibitorsstyle.css';
 
 export default function Exhibitors() {
   const [formStatus, setFormStatus] = useState('idle'); // idle | submitting | success | error
@@ -120,7 +121,6 @@ export default function Exhibitors() {
 
   return (
     <Layout
-      pageCss={[{ id: 'page-css-exhibitors', href: '/assets/css/exibitorsstyle.css' }]}
       bodyClass="page-template-default page page-id-240 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-240"
     >
       <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">

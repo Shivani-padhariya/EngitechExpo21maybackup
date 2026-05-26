@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
+import '../assets/css/faqsstyle.css';
 
 export default function FAQs() {
   return (
     <Layout
-      pageCss={[{ id: 'page-css-faqs', href: '/css/page-faqs.css' }]}
       bodyClass="page-template-default page page-id-278 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-278"
     >
       <div dangerouslySetInnerHTML={{ __html: `	<div class="header-breadcamb-fixer">		<div data-elementor-type="wp-post" data-elementor-id="10514" class="elementor elementor-10514">

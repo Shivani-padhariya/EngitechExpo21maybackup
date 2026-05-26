@@ -1,0 +1,9 @@
+@media (max-width: 767px) {
+  /* Hide "Payment FAQs" section in mobile */
+  .elementor-element-e7c6d7c,
+  .elementor-element-a100254,
+  .elementor-element-e8703ea,
+  .elementor-element-a81ab14 {
+    display: none !important;
+  }
+}

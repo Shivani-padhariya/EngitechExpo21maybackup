@@ -1,0 +1,9 @@
+@media (max-width: 767px) {
+  /* Hide "Entry Pass Details" section in mobile */
+  .elementor-element-d2ddd16,
+  .elementor-element-2064025,
+  .elementor-element-d31a430,
+  .elementor-element-6a84cb6 {
+    display: none !important;
+  }
+}
