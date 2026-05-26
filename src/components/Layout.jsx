@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import '../assets/css/footerstyle.css';
 
@@ -15,6 +15,377 @@ const NAV_LINKS = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const NAVBAR_CSS = `
+  :root {
+    --nt-navy:       #1a3a5c;
+    --nt-navy-light: #1e4570;
+    --nt-gold:       #ffc107;
+    --nt-gold-hover: #ffd54f;
+    --nt-gold-muted: rgba(255,193,7,0.12);
+    --nt-text:       #1f2d3d;
+    --nt-muted:      #6b7a8d;
+    --nt-border:     rgba(0,0,0,0.07);
+    --nt-bg:         #ffffff;
+    --nt-radius:     6px;
+    --nt-font:       'Segoe UI', system-ui, -apple-system, sans-serif;
+    --nt-h:          72px;
+    --nt-shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+    --nt-shadow-md:  0 4px 20px rgba(0,0,0,0.10);
+  }
+
+  .nt-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--nt-bg);
+    border-top: 3px solid var(--nt-gold);
+    border-bottom: 1px solid var(--nt-border);
+    box-shadow: var(--nt-shadow-sm);
+    transition: box-shadow 0.3s ease;
+  }
+  .nt-header--scrolled { box-shadow: var(--nt-shadow-md); }
+
+  .nt-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: var(--nt-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .nt-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    outline: none;
+  }
+  .nt-logo:focus-visible { outline: 2px solid var(--nt-gold); outline-offset: 2px; }
+  .nt-logo img {
+    height: 48px !important;
+    max-height: 48px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  .nt-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .nt-nav__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 0;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  .nt-nav__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 11px;
+    font-family: var(--nt-font);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--nt-text);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: var(--nt-radius);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nt-nav__link:hover { color: var(--nt-navy); background: rgba(26,58,92,0.05); }
+  .nt-nav__link:focus-visible { outline: 2px solid var(--nt-gold); outline-offset: 1px; }
+  .nt-nav__link.is-active { color: var(--nt-gold); font-weight: 600; }
+  .nt-nav__underline {
+    position: absolute;
+    bottom: 4px;
+    left: 11px;
+    right: 11px;
+    height: 2px;
+    background: var(--nt-gold);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .nt-nav__link:hover .nt-nav__underline,
+  .nt-nav__link.is-active .nt-nav__underline { transform: scaleX(1); }
+
+  .nt-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+  .nt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--nt-font);
+    font-size: 13.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--nt-radius);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .nt-btn--cta {
+    background: var(--nt-gold);
+    color: var(--nt-navy);
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px rgba(255,193,7,0.35);
+  }
+  .nt-btn--cta:hover {
+    background: var(--nt-gold-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(255,193,7,0.45);
+    color: var(--nt-navy);
+  }
+  .nt-btn--cta:active { transform: translateY(0); box-shadow: none; }
+  .nt-btn--cta:focus-visible { outline: 2px solid var(--nt-navy); outline-offset: 2px; }
+  .nt-btn--cta svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .nt-btn--full { width: 100%; justify-content: center; padding: 13px 20px; font-size: 15px; }
+
+  .nt-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--nt-border);
+    border-radius: var(--nt-radius);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+  }
+  .nt-hamburger:hover { background: rgba(26,58,92,0.06); }
+  .nt-hamburger:focus-visible { outline: 2px solid var(--nt-gold); outline-offset: 2px; }
+  .nt-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--nt-navy);
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+    transform-origin: center;
+  }
+  .nt-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nt-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nt-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nt-drawer {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: calc(var(--nt-h) + 3px);
+    left: 0;
+    right: 0;
+    background: var(--nt-bg);
+    padding: 12px 20px 24px;
+    gap: 4px;
+    z-index: 999;
+    box-shadow: var(--nt-shadow-md);
+    border-top: 1px solid var(--nt-border);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+  }
+  .nt-drawer.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nt-drawer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 16px;
+    padding: 0;
+  }
+  .nt-drawer__link {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    font-family: var(--nt-font);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--nt-text);
+    text-decoration: none;
+    border-radius: var(--nt-radius);
+    border-left: 3px solid transparent;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nt-drawer__link:hover { background: rgba(26,58,92,0.05); color: var(--nt-navy); }
+  .nt-drawer__link.is-active {
+    background: var(--nt-gold-muted);
+    color: var(--nt-gold);
+    border-left-color: var(--nt-gold);
+    font-weight: 600;
+  }
+
+  .nt-backdrop {
+    position: fixed;
+    inset: 0;
+    top: calc(var(--nt-h) + 3px);
+    background: rgba(15,25,40,0.4);
+    backdrop-filter: blur(3px);
+    z-index: 998;
+    cursor: pointer;
+    animation: nt-fade 0.2s ease;
+  }
+  @keyframes nt-fade { from { opacity: 0; } to { opacity: 1; } }
+
+  @media (max-width: 1200px) {
+    .nt-inner { padding: 0 24px; gap: 14px; }
+    .nt-nav__link { font-size: 13px; padding: 8px 9px; }
+  }
+  @media (max-width: 1024px) {
+    .nt-nav { display: none; }
+    .nt-btn--cta:not(.nt-btn--full) { display: none; }
+    .nt-hamburger { display: flex; }
+    .nt-drawer { display: flex; }
+  }
+  @media (max-width: 767px) {
+    .nt-inner { padding: 0 16px !important; }
+    .nt-logo img {
+      height: 34px !important;
+      max-height: 34px !important;
+      width: auto !important;
+      max-width: 140px !important;
+    }
+  }
+`;
+
+function navIsActive(href, pathname) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(href + '/');
+}
+
+const DownloadIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+       strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+);
+
+function Navbar({ pathname }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const id = 'nt-styles';
+    if (!document.getElementById(id)) {
+      const tag = document.createElement('style');
+      tag.id = id;
+      tag.textContent = NAVBAR_CSS;
+      document.head.appendChild(tag);
+    }
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  return (
+    <>
+      <header className={`nt-header${scrolled ? ' nt-header--scrolled' : ''}`}>
+        <div className="nt-inner">
+
+          <Link to="/" className="nt-logo">
+            <img src="/images/engitech-2-1-768x274-1.png" alt="Engitech Expo" />
+          </Link>
+
+          <nav className="nt-nav" aria-label="Main navigation">
+            <ul className="nt-nav__list">
+              {NAV_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    to={l.href}
+                    className={`nt-nav__link${navIsActive(l.href, pathname) ? ' is-active' : ''}`}
+                  >
+                    {l.label}
+                    <span className="nt-nav__underline" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="nt-actions">
+            <a
+              href="/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-12-1.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nt-btn nt-btn--cta"
+            >
+              <DownloadIcon />
+              <span>Download Brochure</span>
+            </a>
+            <button
+              className={`nt-hamburger${menuOpen ? ' is-open' : ''}`}
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      <div className={`nt-drawer${menuOpen ? ' is-open' : ''}`} aria-hidden={!menuOpen}>
+        <ul className="nt-drawer__list">
+          {NAV_LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                to={l.href}
+                className={`nt-drawer__link${navIsActive(l.href, pathname) ? ' is-active' : ''}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-12-1.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nt-btn nt-btn--cta nt-btn--full"
+        >
+          <DownloadIcon />
+          <span>Download Brochure</span>
+        </a>
+      </div>
+
+      {menuOpen && (
+        <div className="nt-backdrop" onClick={() => setMenuOpen(false)} aria-hidden="true" />
+      )}
+    </>
+  );
+}
+
 function Footer({ pathname }) {
   return (
     <footer>
@@ -30,7 +401,7 @@ function Footer({ pathname }) {
             <p className="footer-brand-text">
               Engitech Expo is a leading industrial exhibition where businesses explore cutting-edge technologies and global partnerships.
             </p>
-            
+
             <div className="organiser-container">
               <div className="organiser-title">
                 Organised By
@@ -68,7 +439,7 @@ function Footer({ pathname }) {
             <p className="footer-info-text">
               301, 3rd Floor, Krishna Complex, Nr. H.P. Petrol Pump, Wonder Point, CTM, Ahmedabad-26
             </p>
-            
+
             <h3 className="footer-subheading">
               Head Office
             </h3>
@@ -181,54 +552,6 @@ function Footer({ pathname }) {
   );
 }
 
-const NAV_ITEMS = [
-  { path: '/', label: 'Home', id: '31226' },
-  { path: '/about', label: 'About us', id: '31015' },
-  { path: '/exhibitors', label: 'Exhibitors', id: '31017' },
-  { path: '/visitors', label: 'Visitors', id: '31018' },
-  { path: '/stall-booking', label: 'Stall Booking', id: '31064' },
-  { path: '/sponsors-partners', label: 'Sponsors &amp; Partners', id: '31088' },
-  { path: '/media-gallery', label: 'Media &amp; Gallery', id: '31095' },
-  { path: '/faqs', label: 'FAQs', id: '31096' },
-  { path: '/blog', label: 'Blog', id: '29496' },
-  { path: '/contact', label: 'Contact Us', id: '29498' },
-];
-
-function isActive(itemPath, pathname) {
-  if (itemPath === '/') return pathname === '/';
-  return pathname === itemPath || pathname.startsWith(itemPath + '/');
-}
-
-function buildMobileMenu(pathname) {
-  return NAV_ITEMS.map(item => {
-    const active = isActive(item.path, pathname);
-    const cls = active
-      ? `menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item menu-item-${item.id}`
-      : `menu-item menu-item-type-post_type menu-item-object-page menu-item-${item.id}`;
-    return `<li id="menu-item-${item.id}" class="${cls}"><a href="${item.path}"${active ? ' aria-current="page"' : ''}>${item.label}</a></li>`;
-  }).join('\n');
-}
-
-function buildDesktopMenu(pathname) {
-  return NAV_ITEMS.map(item => {
-    const active = isActive(item.path, pathname);
-    const cls = active
-      ? `menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item parent hfe-creative-menu`
-      : `menu-item menu-item-type-post_type menu-item-object-page parent hfe-creative-menu`;
-    return `<li id="menu-item-${item.id}" class="${cls}"><a href="${item.path}" class="hfe-menu-item">${item.label}<em class="rs__menu_sp_dyc"><i class="ri-arrow-right-line"></i></em></a></li>`;
-  }).join('\n');
-}
-
-function buildFooterMenu(pathname) {
-  return NAV_ITEMS.map(item => {
-    const active = isActive(item.path, pathname);
-    const cls = active
-      ? `menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item parent hfe-creative-menu`
-      : `menu-item menu-item-type-post_type menu-item-object-page parent hfe-creative-menu`;
-    return `<li id="menu-item-f-${item.id}" class="${cls}"><a href="${item.path}" class="hfe-menu-item">${item.label}<em class="rs__menu_sp_dyc"><i class="ri-arrow-right-line"></i></em></a></li>`;
-  }).join('\n');
-}
-
 export default function Layout({ children, pageCss = [], bodyClass = '' }) {
   const { pathname } = useLocation();
 
@@ -306,16 +629,6 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
       } catch (e) { }
 
       try {
-        $(window).off('scroll.sticky').on('scroll.sticky', function () {
-          if ($(this).scrollTop() > 100) {
-            $('header, .rs-header, .menu-sticky').addClass('sticky');
-          } else {
-            $('header, .rs-header, .menu-sticky').removeClass('sticky');
-          }
-        });
-      } catch (e) { }
-
-      try {
         if ($.fn.isotope && $.fn.imagesLoaded) {
           const $grid = $('.portfolio-items, .isotope-grid, .rs-portfolio');
           $grid.imagesLoaded(function () {
@@ -346,20 +659,6 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
 
       try {
         $('#pre-load, .rs-loader, .preloader').fadeOut(500);
-      } catch (e) { }
-
-      // Nav expander (offcanvas)
-      try {
-        $('.nav-expander').off('click.offcanvas').on('click.offcanvas', function () {
-          $('body').addClass('nav-expanded');
-          $('.right_menu_togle').addClass('menu-toggle-open');
-          $('.rsoffwrap').addClass('rsoffwrap-open');
-        });
-        $('.rsoffwrap, .rsoffwrap-close').off('click.offcanvas').on('click.offcanvas', function () {
-          $('body').removeClass('nav-expanded');
-          $('.right_menu_togle').removeClass('menu-toggle-open');
-          $('.rsoffwrap').removeClass('rsoffwrap-open');
-        });
       } catch (e) { }
 
     }, 400);
@@ -397,115 +696,10 @@ export default function Layout({ children, pageCss = [], bodyClass = '' }) {
     };
   }, []);
 
-  const mobileMenu = buildMobileMenu(pathname);
-  const desktopMenu = buildDesktopMenu(pathname);
-  const footerMenu = buildFooterMenu(pathname);
-
-  const offcanvasHtml = `
-<div class="rsoffwrap"></div>
-<nav class="right_menu_togle">
-  <div class="rsoffwrap-close"><i class="ri-close-line"></i></div>
-  <nav class="nav navbar">
-    <div class="navbar-menu">
-      <div class="menu-main-menu-container">
-        <ul id="mobile_menu_rstheme" class="menu rs_mobile_menu">
-          ${mobileMenu}
-        </ul>
-      </div>
-    </div>
-  </nav>
-</nav>`;
-
-  const headerInnerHtml = `
-<div data-elementor-type="wp-post" data-elementor-id="20407" class="elementor elementor-20407">
-  <header class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-a40512c e-con-full e-flex e-con e-parent e-lazyloaded" data-id="a40512c" data-element_type="container" data-e-type="container">
-    <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-4d7d6b1 e-con-full rs-full-responsive rs--mobile-hides rs--mobile-hides-header2 elementor-hidden-mobile e-flex e-con e-child" data-id="4d7d6b1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-916cfd1 e-con-full e-flex e-con e-child" data-id="916cfd1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="elementor-element elementor-element-56b81d1 elementor-widget elementor-widget-image" data-id="56b81d1" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
-          <a href="/"><img fetchpriority="high" width="640" height="228" src="/images/engitech-2-1-768x274-1.png" class="attachment-large size-large wp-image-29638" alt="Engitech Expo"></a>
-        </div>
-      </div>
-      <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-0a0cb0b e-con-full e-flex e-con e-child" data-id="0a0cb0b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-21bb47d e-con-full e-flex e-con e-child" data-id="21bb47d" data-element_type="container" data-e-type="container">
-          <div class="elementor-element elementor-element-dfc4242 elementor-hidden-tablet elementor-hidden-mobile hfe-nav-menu__breakpoint-none elementor-widget-laptop__width-inherit hfe-nav-menu__align-left hfe-submenu-icon-arrow hfe-submenu-animation-none hfe-link-redirect-child elementor-widget elementor-widget-navigation-menu" data-id="dfc4242" data-element_type="widget" data-e-type="widget" data-widget_type="navigation-menu.default">
-            <div class="elementor-widget-container">
-              <div class="hfe-nav-menu hfe-layout-horizontal normal hfe-nav-menu-layout mega_columns3 horizontal hfe-pointer__none" data-layout="horizontal">
-                <div class="hfe-nav-menu__toggle elementor-clickable" aria-haspopup="true" aria-expanded="false">
-                  <div class="hfe-nav-menu-icon"></div>
-                </div>
-                <nav class="hfe-nav-menu__layout-horizontal hfe-nav-menu__submenu-arrow no-separator border-tops no-circle arrow rs-icon-dis" data-toggle-icon="" data-close-icon="" data-full-width="">
-                  <ul id="menu-1-dfc4242" class="hfe-nav-menu">${desktopMenu}</ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="default no-position show_shadow rs-sticky-default elementor-element elementor-element-65ff9aa e-con-full e-flex e-con e-child" data-id="65ff9aa" data-element_type="container" data-e-type="container">
-          <div class="elementor-element elementor-element-2bf8d67 elementor-widget elementor-widget-rs-button" data-id="2bf8d67" data-element_type="widget" data-e-type="widget" data-widget_type="rs-button.default">
-            <div class="elementor-widget-container">
-              <div class="rs-button style1">
-                <a class="rs-btn" href="/Ahmedabad-2026-Rajkot-2027-Vadodara-2028-12-1.pdf" target="_blank">
-                  <span>Download Brochure <em><svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 5.66249 0.273604 5.38889 0.611111 5.38889L15.0246 5.38889L11.179 1.54323C10.9403 1.30458 10.9403 0.917645 11.179 0.678991C11.4176 0.440337 11.8046 0.440337 12.0432 0.678991L16.9321 5.56788C17.1708 5.80653 17.1708 6.19347 16.9321 6.43212L12.0432 11.321C11.8046 11.5597 11.4176 11.5597 11.179 11.321C10.9403 11.0824 10.9403 10.6954 11.179 10.4568L15.0246 6.61111L0.611111 6.61111C0.273604 6.61111 0 6.33751 0 6Z" fill="white"></path></svg></em></span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="elementor-element elementor-element-e6809d7 elementor-hidden-desktop elementor-hidden-laptop elementor-widget elementor-widget-rsoffcanvas" data-id="e6809d7" data-element_type="widget" data-e-type="widget" data-widget_type="rsoffcanvas.default">
-            <div class="elementor-widget-container">
-              <div class="rs-offcanvas-area">
-                <ul><li class="nav-link pr-20"><a class="nav-expander"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><path d="M8.55566 11H1.55566C1.29045 11 1.03609 11.1054 0.848557 11.2929C0.661021 11.4804 0.555664 11.7348 0.555664 12V19C0.555664 19.2652 0.661021 19.5196 0.848557 19.7071C1.03609 19.8946 1.29045 20 1.55566 20H8.55566C8.82088 20 9.07523 19.8946 9.26277 19.7071C9.45031 19.5196 9.55566 19.2652 9.55566 19V12C9.55566 11.7348 9.45031 11.4804 9.26277 11.2929C9.07523 11.1054 8.82088 11 8.55566 11ZM7.55566 18H2.55566V13H7.55566V18ZM19.5557 0H12.5557C12.2904 0 12.0361 0.105357 11.8486 0.292893C11.661 0.48043 11.5557 0.734784 11.5557 1V8C11.5557 8.26522 11.661 8.51957 11.8486 8.70711C12.0361 8.89464 12.2904 9 12.5557 9H19.5557C19.8209 9 20.0752 8.89464 20.2628 8.70711C20.4503 8.51957 20.5557 8.26522 20.5557 8V1C20.5557 0.734784 20.4503 0.48043 20.2628 0.292893C20.0752 0.105357 19.8209 0 19.5557 0ZM18.5557 7H13.5557V2H18.5557V7ZM19.5557 11H12.5557C12.2904 11 12.0361 11.1054 11.8486 11.2929C11.661 11.4804 11.5557 11.7348 11.5557 12V19C11.5557 19.2652 11.661 19.5196 11.8486 19.7071C12.0361 19.8946 12.2904 20 12.5557 20H19.5557C19.8209 20 20.0752 19.8946 20.2628 19.7071C20.4503 19.5196 20.5557 19.2652 20.5557 19V12C20.5557 11.7348 20.4503 11.4804 20.2628 11.2929C20.0752 11.1054 19.8209 11 19.5557 11ZM18.5557 18H13.5557V13H18.5557V18ZM8.55566 0H1.55566C1.29045 0 1.03609 0.105357 0.848557 0.292893C0.661021 0.48043 0.555664 0.734784 0.555664 1V8C0.555664 8.26522 0.661021 8.51957 0.848557 8.70711C1.03609 8.89464 1.29045 9 1.55566 9H8.55566C8.82088 9 9.07523 8.89464 9.26277 8.70711C9.45031 8.51957 9.55566 8.26522 9.55566 8V1C9.55566 0.734784 9.45031 0.48043 9.26277 0.292893C9.07523 0.105357 8.82088 0 8.55566 0ZM7.55566 7H2.55566V2H7.55566V7Z" fill="#616161"></path></svg></a></li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-</div>`;
-
   return (
     <div className="page-transition">
-      <div id="pre-load" style={{ display: 'none' }}>
-        <div id="loader" className="loader">
-          <div className="loader-container">
-            <div className="loader-icon">
-              <img src="/images/engitech-2-1-768x274-1.png" alt="Engitech Expo" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="rs-offcanvas-area" dangerouslySetInnerHTML={{ __html: offcanvasHtml }} />
-
       <div id="page" className="hfeed site">
-        <header id="rs-header" className="single-header">
-          <div className="header-inner">
-            <div dangerouslySetInnerHTML={{ __html: headerInnerHtml }} />
-            
-            {/* Native React Mobile Header - For perfect control */}
-            <div className="mobile-header-react elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet">
-              <div className="mobile-nav-container">
-                <div className="mobile-logo">
-                  <Link to="/">
-                    <img src="/images/engitech-2-1-768x274-1.png" alt="Engitech Expo" />
-                  </Link>
-                </div>
-                <div className="mobile-menu-btn">
-                  <div className="rs-offcanvas-area">
-                    <ul>
-                      <li className="nav-link">
-                        <a className="nav-expander">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 21 20" fill="none">
-                            <path d="M8.55566 11H1.55566C1.29045 11 1.03609 11.1054 0.848557 11.2929C0.661021 11.4804 0.555664 11.7348 0.555664 12V19C0.555664 19.2652 0.661021 19.5196 0.848557 19.7071C1.03609 19.8946 1.29045 20 1.55566 20H8.55566C8.82088 20 9.07523 19.8946 9.26277 19.7071C9.45031 19.5196 9.55566 19.2652 9.55566 19V12C9.55566 11.7348 9.45031 11.4804 9.26277 11.2929C9.07523 11.1054 8.82088 11 8.55566 11ZM7.55566 18H2.55566V13H7.55566V18ZM19.5557 0H12.5557C12.2904 0 12.0361 0.105357 11.8486 0.292893C11.661 0.48043 11.5557 0.734784 11.5557 1V8C11.5557 8.26522 11.661 8.51957 11.8486 8.70711C12.0361 8.89464 12.2904 9 12.5557 9H19.5557C19.8209 9 20.0752 8.89464 20.2628 8.70711C20.4503 8.51957 20.5557 8.26522 20.5557 8V1C20.5557 0.734784 20.4503 0.48043 20.2628 0.292893C20.0752 0.105357 19.8209 0 19.5557 0ZM18.5557 7H13.5557V2H18.5557V7ZM19.5557 11H12.5557C12.2904 11 12.0361 11.1054 11.8486 11.2929C11.661 11.4804 11.5557 11.7348 11.5557 12V19C11.5557 19.2652 11.661 19.5196 11.8486 19.7071C12.0361 19.8946 12.2904 20 12.5557 20H19.5557C19.8209 20 20.0752 19.8946 20.2628 19.7071C20.4503 19.5196 20.5557 19.2652 20.5557 19V12C20.5557 11.7348 20.4503 11.4804 20.2628 11.2929C20.0752 11.1054 19.8209 11 19.5557 11ZM18.5557 18H13.5557V13H18.5557V18ZM8.55566 0H1.55566C1.29045 0 1.03609 0.105357 0.848557 0.292893C0.661021 0.48043 0.555664 0.734784 0.555664 1V8C0.555664 8.26522 0.661021 8.51957 0.848557 8.70711C1.03609 8.89464 1.29045 9 1.55566 9H8.55566C8.82088 9 9.07523 8.89464 9.26277 8.70711C9.45031 8.51957 9.55566 8.26522 9.55566 8V1C9.55566 0.734784 9.45031 0.48043 9.26277 0.292893C9.07523 0.105357 8.82088 0 8.55566 0ZM7.55566 7H2.55566V2H7.55566V7Z" fill="#616161"></path>
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Navbar pathname={pathname} />
 
         {children}
 

@@ -1,38 +1,134 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 import '../assets/css/sponsorsstyle.css';
+import '../assets/css/supported-assoc-slider.css';
 
 export default function Sponsors() {
+  useEffect(() => {
+    const init = () => {
+      const $ = window.jQuery;
+      if (!$ || !$.fn.slick) return;
+      const $slider = $('#rsaddon-slick-slider-216578');
+      if (!$slider.length) return;
+
+      // Extract the actual slide elements (grid-items) and clone them
+      const $slides = $slider.find('.grid-item:not(.slick-cloned)').clone();
+      if (!$slides.length) return;
+
+      // Strip leftover slick classes and attributes from the cloned slides
+      $slides.removeClass('slick-slide slick-active slick-current slick-center slick-cloned')
+        .removeAttr('style')
+        .removeAttr('data-slick-index')
+        .removeAttr('aria-hidden')
+        .removeAttr('tabindex')
+        .removeAttr('id');
+
+      // Clear the pre-rendered HTML (slick-list, slick-track, static arrows etc.)
+      $slider.empty();
+
+      // Append the clean slide elements as direct children of the slider
+      $slider.append($slides);
+
+      // Strip slider classes
+      $slider.removeClass('slick-initialized slick-slider');
+
+      // Initialize slick slider
+      $slider.slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        infinite: true,
+        centerMode: false,
+        variableWidth: false,
+        dots: false,
+        arrows: true,
+        pauseOnHover: false,
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 4 } },
+          { breakpoint: 768,  settings: { slidesToShow: 3 } },
+          { breakpoint: 480,  settings: { slidesToShow: 2 } },
+        ],
+      });
+    };
+    const timer = setTimeout(init, 600);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Layout
       bodyClass="page-template-default page page-id-241 wp-custom-logo elementor-default elementor-kit-23 elementor-page elementor-page-241"
     >
       <style>{`
-        .elementor-element-5998176 .title-inner,
-        .elementor-element-4a6fc35 .title-inner,
-        .elementor-element-5998176 .prelements-heading,
-        .elementor-element-4a6fc35 .prelements-heading {
+        /* Center "Ahmedabad Sponsors list 2026" and "Rajkot Sponsors list 2025" and their parent containers strictly using high specificity */
+        #page div.elementor-element-55cae97,
+        #page div.elementor-element-3877931,
+        #page div[data-id="55cae97"],
+        #page div[data-id="3877931"],
+        #page div.elementor-element-5998176.elementor-widget__width-initial,
+        #page div.elementor-element-4a6fc35.elementor-widget__width-initial,
+        #page div[data-id="5998176"],
+        #page div[data-id="4a6fc35"] {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            align-self: center !important;
+            flex-grow: 1 !important;
+        }
+
+        /* Center the inner wrappers of these specific headings */
+        #page div[data-id="5998176"] .elementor-widget-container,
+        #page div[data-id="5998176"] .prelements-heading,
+        #page div[data-id="5998176"] .title-inner,
+        #page div[data-id="4a6fc35"] .elementor-widget-container,
+        #page div[data-id="4a6fc35"] .prelements-heading,
+        #page div[data-id="4a6fc35"] .title-inner {
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
-            text-align: center !important;
-            width: 100% !important;
             justify-content: center !important;
-
-        }
-        .elementor-element-5998176 .title,
-        .elementor-element-4a6fc35 .title {
             text-align: center !important;
             width: 100% !important;
-            display: flex !important;
         }
-        .elementor-element-5998176 .sub-text,
-        .elementor-element-4a6fc35 .sub-text {
+
+        /* Center the title element strictly within these headings */
+        #page div[data-id="5998176"] .title,
+        #page div[data-id="4a6fc35"] .title {
+            text-align: center !important;
+            width: 100% !important;
+            display: block !important;
+            white-space: normal !important;
+        }
+
+        /* Center the sub-text (icon + text) wrapper strictly within these headings */
+        #page div[data-id="5998176"] .sub-text,
+        #page div[data-id="4a6fc35"] .sub-text {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-align: center !important;
+            width: 100% !important;
+        }
+        #page .elementor-element-5998176 .title .word,
+        #page .elementor-element-5998176 .title .char,
+        #page .elementor-element-4a6fc35 .title .word,
+        #page .elementor-element-4a6fc35 .title .char {
+            display: inline !important;
+            white-space: normal !important;
+        }
+        #page .elementor-element-5998176 .sub-text,
+        #page .elementor-element-4a6fc35 .sub-text {
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
             width: 100% !important;
             text-align: center !important;
         }
+
 
         /* Custom Sponsor Labels Style */
         .custom-sponsor-label { 
@@ -87,9 +183,16 @@ export default function Sponsors() {
         .elementor-element-a0c1c9e,
         .elementor-element-f5e8d1a,
         .elementor-element-6dcbbbd,
-        .elementor-element-537fd9e,
-        .elementor-element-e34ce62 {
+        .elementor-element-537fd9e {
             max-width: 600px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* Allow Supported Association Slider container to span full width safely */
+        .elementor-element-e34ce62 {
+            max-width: 1200px !important;
+            width: 100% !important;
             margin-left: auto !important;
             margin-right: auto !important;
         }
@@ -150,7 +253,8 @@ export default function Sponsors() {
 			<div class="title-inner">
 									<span class="sub-text text-center">
 						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M10.9091 8.57143L16.3636 12L0 12L5.45454 8.57143L10.9091 8.57143Z" fill="#F7C600"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.9091 5.14286L16.3636 8.57143L10.9091 8.57143L8.18182 6.85714L5.45454 8.57143L-1.49868e-07 8.57143L5.45454 5.14286L10.9091 5.14286ZM10.9091 5.14286L8.18182 3.42857L5.45454 5.14286L-2.99735e-07 5.14286L8.18182 -3.57639e-07L16.3636 5.14286L10.9091 5.14286Z" fill="#F7C600"></path></svg>						Ahmedabad					</span>
-				<h2 class="title rs-split-text-enable split-in-fade text-center">Ahmedabad Sponsors list 2026</h2>
+				<h2 class="title   text-center">Ahmedabad Sponsors list 2026</h2>
+				
 			</div>
 					</div>
 				</div>

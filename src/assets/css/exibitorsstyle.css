@@ -87,14 +87,8 @@
 .slick-slide-item img {
     max-height: 80px;
     width: auto !important;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
     display: block;
     margin: 0 auto;
-}
-
-.slick-slide-item:hover img {
-    filter: grayscale(0%);
 }
 
 .elementor-image-carousel-wrapper.slick-initialized {

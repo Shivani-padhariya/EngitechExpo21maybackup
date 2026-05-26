@@ -1,0 +1,108 @@
+/* ── Supported Association Slider ─────────────────────────────── */
+
+.rs-addon-slider-216578 {
+  width: 100%;
+  position: relative;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* Reset any leftover inline transforms from the pre-rendered HTML */
+.rs-addon-slider-216578 .slick-list {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.rs-addon-slider-216578 .slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
+/* Each slide */
+.rs-addon-slider-216578 .slick-slide {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+/* Logo image */
+.rs-addon-slider-216578 .logo-img img,
+.rs-addon-slider-216578 .mains-logos {
+  max-height: 190px;
+  width: auto !important;
+  max-width: 190px;
+  object-fit: contain;
+  display: block !important;
+  margin: 0 auto;
+  filter: none !important;
+}
+
+/* Hide the left-bottom decorative shape */
+.rs-addon-slider-216578 .left-bottom-shape {
+  display: none;
+}
+
+/* Arrow buttons */
+.rs-addon-slider-216578 .slick-prev,
+.rs-addon-slider-216578 .slick-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 50% !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  line-height: 0 !important;
+}
+
+.rs-addon-slider-216578 .slick-prev {
+  left: 0 !important;
+}
+
+.rs-addon-slider-216578 .slick-next {
+  right: 0 !important;
+}
+
+.rs-addon-slider-216578 .slick-prev:hover,
+.rs-addon-slider-216578 .slick-next:hover {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08) !important;
+  opacity: 1 !important;
+}
+
+.rs-addon-slider-216578 .slick-prev::before,
+.rs-addon-slider-216578 .slick-next::before {
+  font-family: inherit !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  color: #334155 !important;
+  opacity: 1 !important;
+  display: block !important;
+  font-weight: 500 !important;
+}
+
+.rs-addon-slider-216578 .slick-prev::before {
+  content: "←" !important;
+}
+
+.rs-addon-slider-216578 .slick-next::before {
+  content: "→" !important;
+}
+
+/* Hide cloned slides from pre-rendered HTML until slick takes over */
+.rs-addon-slider-216578:not(.slick-initialized) .slick-cloned {
+  display: none;
+}

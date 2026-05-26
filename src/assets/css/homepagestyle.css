@@ -73,8 +73,102 @@
 
 /* Elementor container ka right padding */
 .elementor-element-a40512c {
-    padding-right: 0px !important;
-}
+     padding-right: 0px !important;
+ }
+
+ /* Fix navbar layout: Logo -> Button -> Menu */
+ @media (max-width: 1366px) and (min-width: 992px) {
+     .elementor-element-916cfd1 {
+         width: 12% !important;
+         --width: 12% !important;
+         display: flex !important;
+         align-items: center !important;
+     }
+     .elementor-element-0a0cb0b {
+         width: 88% !important;
+         --width: 88% !important;
+         display: flex !important;
+         flex-direction: row !important;
+         justify-content: flex-start !important;
+         align-items: center !important;
+     }
+     .elementor-element-65ff9aa {
+         width: 180px !important; /* Fixed width for button */
+         flex: 0 0 180px !important;
+         display: flex !important;
+         justify-content: flex-start !important;
+         margin-right: 10px !important;
+         margin-left: 10px !important;
+     }
+     .elementor-element-21bb47d {
+         flex: 1 !important; /* Menu takes remaining space */
+         display: flex !important;
+         justify-content: flex-start !important;
+         overflow: hidden !important;
+     }
+     
+     /* Force single row for menu */
+     .hfe-nav-menu {
+         display: flex !important;
+         flex-wrap: nowrap !important;
+         justify-content: flex-start !important;
+         width: 100% !important;
+     }
+     
+     .hfe-nav-menu > li > a {
+         padding: 10px 5px !important; /* Minimal padding */
+         font-size: 12px !important;    /* Smaller font size for many items */
+         white-space: nowrap !important;
+     }
+
+     .elementor-element-2bf8d67 .rs-button .rs-btn {
+          font-size: 12px !important; 
+          padding: 6px 10px !important;
+          white-space: nowrap !important;
+      }
+
+      .elementor-element-dfc4242 > .elementor-widget-container {
+          margin: 0 !important;
+      }
+  }
+
+ /* Desktop view (> 1366px) */
+ @media (min-width: 1367px) {
+    .elementor-element-916cfd1 {
+        width: 12% !important;
+    }
+    .elementor-element-0a0cb0b {
+        width: 88% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+    .elementor-element-65ff9aa {
+        width: 200px !important;
+        flex: 0 0 200px !important;
+        margin-right: 15px !important;
+        margin-left: 10px !important;
+    }
+    .elementor-element-21bb47d {
+        flex: 1 !important;
+    }
+    .hfe-nav-menu {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+    }
+    .hfe-nav-menu > li > a {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        font-size: 14px !important;
+    }
+    .elementor-element-2bf8d67 .rs-button .rs-btn {
+        font-size: 14px !important;
+        padding: 8px 15px !important;
+    }
+ }
+
  @media (max-width: 767px) {
      .mobile-header-react {
          display: block !important;

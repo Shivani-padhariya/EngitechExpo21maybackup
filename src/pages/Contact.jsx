@@ -202,6 +202,7 @@ const customStyles = `
   color: #000 !important;
   font-weight: 600 !important;
   border: none !important;
+  border-radius: 0px !important;
   padding: 10px 30px !important;
   cursor: pointer !important;
   transition: background-color 0.3s !important;
@@ -220,8 +221,9 @@ const customStyles = `
 .wpcf7-form input[type="text"],
 .wpcf7-form input[type="email"],
 .wpcf7-form textarea {
-  background-color: #f9f9f9 !important;
-  border: 1px solid #eee !important;
+  background-color: #ffffff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 0px !important;
   padding: 10px 15px !important;
   width: 100% !important;
   margin-top: 5px !important;
@@ -416,7 +418,7 @@ export default function Contact() {
               className="default no-position show_shadow rs-sticky-default elementor-element e-con-full e-flex e-con e-child contact-form-wrapper"
               style={{ maxWidth: '600px', margin: '40px auto', padding: '0 20px' }}
             >
-              <div style={{ width: '100%', borderTop: '3px solid #ffb600', backgroundColor: '#fff', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}>
+              <div style={{ width: '100%', borderTop: '4px solid #f7c600', backgroundColor: '#f7f7f7', boxShadow: '0px 0px 0px 5px #ffffff', borderRadius: '4px', zIndex: 1 }}>
                 <div className="elementor-widget-container" style={{ textAlign: 'center' }}>
                   <div className="prelements-heading style1" style={{ marginTop: '60px', textAlign: 'center' }}>
                     <div className="title-inner">
