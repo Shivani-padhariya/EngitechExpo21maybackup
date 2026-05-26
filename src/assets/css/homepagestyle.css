@@ -60,7 +60,7 @@
      display: none !important;
  }
 
- @media (max-width: 991px) {
+ @media (max-width: 767px) {
      .mobile-header-react {
          display: block !important;
          background: #fff !important;
@@ -747,6 +747,36 @@
           .bg-image-banner {
               margin: 5px !important;
               padding: 15px !important;
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+          }
+
+          .bg-image-banner .elementor-element-441f79f,
+          .bg-image-banner .elementor-element-5fc2ab9 {
+              width: 100% !important;
+              max-width: 100% !important;
+              flex: 1 1 100% !important;
+          }
+
+          .elementor-element-9538403 {
+              flex-direction: row !important;
+              justify-content: center !important;
+              align-items: center !important;
+              flex-wrap: wrap !important;
+              gap: 12px !important;
+          }
+
+          /* Allow Download Brochure button to be visible — override overflow: hidden below */
+          .elementor-widget-rs-button .elementor-widget-container {
+              overflow: visible !important;
+          }
+
+          .rs-button .rs-btn {
+              min-width: auto !important;
+              width: auto !important;
+              padding: 12px 24px !important;
+              font-size: 14px !important;
           }
 
           /* Image sizing on mobile */
@@ -804,4 +834,62 @@
               overflow: hidden !important;
               max-width: 100% !important;
           }
-      }
+      } /* END @media (max-width: 767px) */
+
+/* ===== DOWNLOAD BROCHURE / SECURE YOUR BOOTH SECTION — GLOBAL ===== */
+.bg-image-banner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+}
+
+.bg-image-banner .elementor-element-441f79f {
+    flex: 1 1 280px !important;
+    min-width: 0 !important;
+}
+
+.bg-image-banner .elementor-element-5fc2ab9 {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+}
+
+.elementor-element-9538403 {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+}
+
+/* ===== SMALL LAPTOP RESPONSIVE (768px – 1199px) ===== */
+@media (max-width: 1199px) {
+    .bg-image-banner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px !important;
+        margin: 0 10px !important;
+    }
+
+    .bg-image-banner .elementor-element-441f79f,
+    .bg-image-banner .elementor-element-5fc2ab9 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+    }
+
+    .elementor-element-9538403 {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+    }
+
+    .rs-button .rs-btn {
+        min-width: auto !important;
+        padding: 13px 28px !important;
+        font-size: 15px !important;
+    }
+}
