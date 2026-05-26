@@ -275,12 +275,12 @@ const customStyles = `
     width: 100%;
   }
   .contact-form-wrapper {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
   }
   .contact-form-wrapper .wpcf7-form {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
   }
 }
 `;
