@@ -4,7 +4,7 @@ import '../assets/css/footerstyle.css';
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About us", href: "/about" },
+  { label: "About us", href: "/about-engitech-expo-team" },
   { label: "Exhibitors", href: "/exhibitors" },
   { label: "Visitors", href: "/visitors" },
   { label: "Stall Booking", href: "/stall-booking" },

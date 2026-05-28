@@ -45,6 +45,8 @@ const breadcrumbHtml = `
 \t\t</div>\t
 `;
 
+const PAGE_SIZE = 12;
+
 function formatDate(dateStr) {
   if (!dateStr) return '';
   const d = new Date(dateStr);
@@ -56,19 +58,40 @@ export default function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
 
-  useEffect(() => {
-    blogAPI.getPublished({ status: 'published' })
+  const fetchPage = (pageNum, append = false) => {
+    if (pageNum === 1) setLoading(true);
+    else setLoadingMore(true);
+
+    blogAPI.getPublished({ status: 'published', page: pageNum, limit: PAGE_SIZE })
       .then(res => {
         const data = res.data;
-        setBlogs(data.blogs || []);
+        const newBlogs = data.blogs || [];
+        setBlogs(prev => append ? [...prev, ...newBlogs] : newBlogs);
+        setTotalPages(data.pagination?.pages || 1);
       })
       .catch(err => {
         console.error('Failed to fetch blogs:', err);
-        setError('Failed to load blogs.');
+        if (!append) setError('Unable to load blogs right now. Please try again later.');
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setLoadingMore(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchPage(1);
   }, []);
+
+  const handleLoadMore = () => {
+    const next = page + 1;
+    setPage(next);
+    fetchPage(next, true);
+  };
 
   return (
     <Layout
@@ -91,7 +114,7 @@ export default function Blog() {
                             <div className="row blog_style_defaultlayout">
 
                               {loading && (
-                                <div className="col-12">
+                                <div className="col-12 text-center" style={{ padding: '60px 0' }}>
                                   <div className="premium-preloader-wrapper">
                                     <div className="premium-preloader-circle">
                                       <img
@@ -106,17 +129,17 @@ export default function Blog() {
 
                               {!loading && error && (
                                 <div className="col-12 text-center" style={{ padding: '60px 0' }}>
-                                  <p>{error}</p>
+                                  <p style={{ color: '#666' }}>{error}</p>
                                 </div>
                               )}
 
                               {!loading && !error && blogs.length === 0 && (
                                 <div className="col-12 text-center" style={{ padding: '60px 0' }}>
-                                  <p>No blogs published yet.</p>
+                                  <p style={{ color: '#666' }}>No blogs published yet.</p>
                                 </div>
                               )}
 
-                              {!loading && !error && blogs.map(blog => (
+                              {blogs.map(blog => (
                                 <div key={blog._id} className="pre-blog-item col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: '40px' }}>
                                   <div className="blog-item">
                                     <div className="image-part">
@@ -138,14 +161,10 @@ export default function Blog() {
                                     </div>
                                     <div className="blog-content">
                                       {blog.category && (
-                                        <span className="blog-category">
-                                          {blog.category}
-                                        </span>
+                                        <span className="blog-category">{blog.category}</span>
                                       )}
                                       <h3 className="blog-title">
-                                        <a href={`/blog/${blog.slug}`}>
-                                          {blog.title}
-                                        </a>
+                                        <a href={`/blog/${blog.slug}`}>{blog.title}</a>
                                       </h3>
                                       {blog.shortDescription && (
                                         <p className="blog-desc">
@@ -156,9 +175,7 @@ export default function Blog() {
                                       )}
                                       <div className="blog-bottom">
                                         {blog.publishDate && (
-                                          <span className="blog-date">
-                                            {formatDate(blog.publishDate)}
-                                          </span>
+                                          <span className="blog-date">{formatDate(blog.publishDate)}</span>
                                         )}
                                         <a href={`/blog/${blog.slug}`} className="read-more-link">
                                           Read More <span>&rarr;</span>
@@ -170,6 +187,28 @@ export default function Blog() {
                               ))}
 
                             </div>
+
+                            {!loading && !error && page < totalPages && (
+                              <div className="col-12 text-center" style={{ padding: '20px 0 40px' }}>
+                                <button
+                                  onClick={handleLoadMore}
+                                  disabled={loadingMore}
+                                  style={{
+                                    background: '#e8301b',
+                                    color: '#fff',
+                                    border: 'none',
+                                    padding: '12px 36px',
+                                    fontSize: '16px',
+                                    borderRadius: '4px',
+                                    cursor: loadingMore ? 'not-allowed' : 'pointer',
+                                    opacity: loadingMore ? 0.7 : 1
+                                  }}
+                                >
+                                  {loadingMore ? 'Loading...' : 'Load More'}
+                                </button>
+                              </div>
+                            )}
+
                           </div>
                         </div>
                       </div>

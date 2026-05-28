@@ -40,7 +40,7 @@ function LinkInterceptor() {
       if (!href) return;
 
       // Only intercept internal paths
-      const internalPaths = ["/", "/about", "/exhibitors", "/visitors",
+      const internalPaths = ["/", "/about-engitech-expo-team", "/exhibitors", "/visitors",
         "/stall-booking", "/sponsors-partners", "/media-gallery",
         "/faqs", "/blog", "/contact"];
 
@@ -68,7 +68,7 @@ export default function App() {
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about-engitech-expo-team" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/exhibitors" element={<Exhibitors />} />
           <Route path="/faqs" element={<FAQs />} />

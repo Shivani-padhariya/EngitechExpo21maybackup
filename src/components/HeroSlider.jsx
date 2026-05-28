@@ -21,7 +21,7 @@ const slides = [
       </>
     ),
     info: 'A Multi Category Industrial Exhibition',
-    link: '/about'
+    link: '/about-engitech-expo-team'
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const slides = [
       </>
     ),
     info: 'A Multi Category Industrial Exhibition',
-    link: '/about'
+    link: '/about-engitech-expo-team'
   },
 
   {
@@ -51,7 +51,7 @@ const slides = [
       </>
     ),
     info: 'A Multi Category Industrial Exhibition',
-    link: '/about'
+    link: '/about-engitech-expo-team'
   }
 ];
 

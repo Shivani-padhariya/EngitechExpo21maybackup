@@ -5,6 +5,8 @@ const VisitorForm = require('../models/VisitorForm');
 const StallBookingForm = require('../models/StallBookingForm');
 const ContactForm = require('../models/ContactForm');
 const { createObjectCsvStringifier } = require('csv-writer');
+const mongoose = require('mongoose');
+const { sendFormNotification } = require('../utils/mailer');
 
 // Model map
 const modelMap = {
@@ -19,6 +21,10 @@ const modelMap = {
 
 // POST /api/forms/visitor
 router.post('/visitor', async (req, res) => {
+  // If DB not connected, accept submission and respond success for local dev
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(201).json({ success: true, message: 'Registration submitted successfully! (dev - no DB)' });
+  }
   try {
     const { name, email, contactNumber, companyName, message } = req.body;
     if (!name || !email || !contactNumber || !companyName) {
@@ -26,6 +32,7 @@ router.post('/visitor', async (req, res) => {
     }
     const submission = new VisitorForm({ name, email, contactNumber, companyName, message });
     await submission.save();
+    sendFormNotification('visitor', { name, email, contactNumber, companyName, message });
     res.status(201).json({ success: true, message: 'Registration submitted successfully! We will contact you soon.' });
   } catch (err) {
     console.error('Visitor form error:', err);
@@ -35,6 +42,9 @@ router.post('/visitor', async (req, res) => {
 
 // POST /api/forms/stall-booking
 router.post('/stall-booking', async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(201).json({ success: true, message: 'Stall booking inquiry submitted! (dev - no DB)' });
+  }
   try {
     const { fullName, businessCategory, interestedIn, preferredStallSize, city, companyName, email, contactNumber } = req.body;
     if (!fullName || !businessCategory || !city || !companyName || !email || !contactNumber) {
@@ -42,6 +52,7 @@ router.post('/stall-booking', async (req, res) => {
     }
     const submission = new StallBookingForm({ fullName, businessCategory, interestedIn, preferredStallSize, city, companyName, email, contactNumber });
     await submission.save();
+    sendFormNotification('stall', { fullName, businessCategory, interestedIn, preferredStallSize, city, companyName, email, contactNumber });
     res.status(201).json({ success: true, message: 'Stall booking inquiry submitted! Our team will reach out to you shortly.' });
   } catch (err) {
     console.error('Stall booking form error:', err);
@@ -51,6 +62,9 @@ router.post('/stall-booking', async (req, res) => {
 
 // POST /api/forms/contact
 router.post('/contact', async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(201).json({ success: true, message: 'Message sent successfully! (dev - no DB)' });
+  }
   try {
     const { name, email, contactNumber, companyName, message } = req.body;
     if (!name || !email) {
@@ -58,6 +72,7 @@ router.post('/contact', async (req, res) => {
     }
     const submission = new ContactForm({ name, email, contactNumber, companyName, message });
     await submission.save();
+    sendFormNotification('contact', { name, email, contactNumber, companyName, message });
     res.status(201).json({ success: true, message: 'Message sent successfully! We will get back to you soon.' });
   } catch (err) {
     console.error('Contact form error:', err);

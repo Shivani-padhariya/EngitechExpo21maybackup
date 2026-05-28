@@ -6,6 +6,7 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const auth = require('../middleware/auth');
 const Blog = require('../models/Blog');
 const slugify = require('../utils/slugify');
+const mongoose = require('mongoose');
 
 // Configure Cloudinary
 cloudinary.config({
@@ -31,6 +32,13 @@ const upload = multer({ storage });
 
 // GET /api/blogs — public blog listing with pagination
 router.get('/', async (req, res) => {
+  // If DB not connected, return an empty list to avoid long timeouts during development
+  console.log('blogs route - mongoose.readyState =', mongoose.connection.readyState);
+  if (mongoose.connection.readyState !== 1) {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 9;
+    return res.json({ success: true, blogs: [], pagination: { page, limit, total: 0, pages: 0 } });
+  }
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 9;
@@ -211,6 +219,9 @@ router.get('/admin/stats', auth, async (req, res) => {
 
 // GET /api/blogs/:slug — single blog by slug (public)
 router.get('/:slug', async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(404).json({ success: false, message: 'Blog not found' });
+  }
   try {
     const blog = await Blog.findOne({ slug: req.params.slug, status: 'published' });
     if (!blog) return res.status(404).json({ success: false, message: 'Blog not found' });

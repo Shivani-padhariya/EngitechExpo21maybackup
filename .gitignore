@@ -25,3 +25,10 @@ yarn-error.log*
 # backend
 backend/node_modules
 backend/.env
+
+# env files
+.env
+
+# build artifacts & data exports
+*.zip
+all-blogs.json

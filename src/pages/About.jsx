@@ -354,7 +354,7 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 								  													  		
 								  <div class="social-icons">	
 									  															  
-										  <a href="/about" class="social-icon">
+										  <a href="/about-engitech-expo-team" class="social-icon">
 											  										  </a>			
 									  
 										    
@@ -392,7 +392,7 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 								  													  		
 								  <div class="social-icons">	
 									  															  
-										  <a href="/about" class="social-icon">
+										  <a href="/about-engitech-expo-team" class="social-icon">
 											  										  </a>			
 									  
 										    
@@ -430,7 +430,7 @@ passionate about engineering – Engitech Expo is your gateway to the future.  	
 								  													  		
 								  <div class="social-icons">	
 									  															  
-										  <a href="/about" class="social-icon">
+										  <a href="/about-engitech-expo-team" class="social-icon">
 											  										  </a>			
 									  
 										    
